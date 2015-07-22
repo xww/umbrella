@@ -1,0 +1,17 @@
+*.pyc
+*.swp
+*.log
+.glance-venv
+.venv
+.tox
+.coverage
+cover/*
+nosetests.xml
+coverage.xml
+AUTHORS
+ChangeLog
+build
+dist
+*.egg
+*.egg-info
+.*project

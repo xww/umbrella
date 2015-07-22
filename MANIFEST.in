@@ -1,0 +1,17 @@
+include run_tests.sh ChangeLog
+include README.rst builddeb.sh
+include MANIFEST.in pylintrc
+include AUTHORS
+include LICENSE
+include ChangeLog
+include openstack-common.conf
+include umbrella/versioninfo
+include umbrella/db/sqlalchemy/migrate_repo/README
+include umbrella/db/sqlalchemy/migrate_repo/migrate.cfg
+include umbrella/db/sqlalchemy/migrate_repo/versions/*.sql
+graft doc
+graft etc
+graft umbrella/locale
+graft umbrella/tests
+graft tools
+global-exclude *.pyc

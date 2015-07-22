@@ -1,0 +1,5 @@
+[run]
+omit = umbrella/tests/*, umbrella/common/*, umbrella/openstack/*, umbrella/db/*, umbrella/monitor/alarm.py
+
+[html]
+directory = cover

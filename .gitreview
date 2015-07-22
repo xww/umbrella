@@ -1,0 +1,7 @@
+[gerrit]
+host=scm.service.163.org
+port=29418
+project=openstack/umbrella.git
+defaultbranch=master
+defaultremote=scm
+defaultrebase=0
