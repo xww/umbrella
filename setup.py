@@ -1,5 +1,4 @@
-#!/usr/bin/python
-# Copyright (c) 2010 OpenStack, LLC.
+# Copyright (c) 2013 Hewlett-Packard Development Company, L.P.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,36 +13,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# THIS FILE IS MANAGED BY THE GLOBAL REQUIREMENTS REPO - DO NOT EDIT
 import setuptools
 
-from umbrella.common import setup
-from umbrella.version import version_info as version
-
-requires = setup.parse_requirements()
-depend_links = setup.parse_dependency_links()
+# In python < 2.7.4, a lazy loading of package `pbr` will break
+# setuptools if some other modules registered functions in `atexit`.
+# solution from: http://bugs.python.org/issue15881#msg170215
+try:
+    import multiprocessing  # noqa
+except ImportError:
+    pass
 
 setuptools.setup(
-    name='umbrella',
-    version=version.canonical_version_string(always=True),
-    description='The umbrella project provides services for administrator '
-                'action, statistics for platform',
-    license='Apache License (2.0)',
-    author='hzzhoushaoyu',
-    author_email='openstack@lists.launchpad.net',
-    url='',
-    packages=setuptools.find_packages(exclude=['bin']),
-    test_suite='nose.collector',
-    cmdclass=setup.get_cmdclass(),
-    include_package_data=True,
-    install_requires=requires,
-    dependency_links=depend_links,
-    classifiers=[
-        'Development Status :: 4 - Beta',
-        'License :: OSI Approved :: Apache Software License',
-        'Operating System :: POSIX :: Linux',
-        'Programming Language :: Python :: 2.6',
-        'Environment :: No Input/Output (Daemon)',
-    ],
-    scripts=['bin/umbrella-api',
-             'bin/umbrella-manage'],
-    py_modules=[])
+    setup_requires=['pbr>=0.10'],
+    pbr=True)

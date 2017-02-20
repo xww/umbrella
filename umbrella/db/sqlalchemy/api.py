@@ -1,9 +1,9 @@
-# vim: tabstop=4 shiftwidth=4 softtabstop=4
-
 # Copyright 2010 United States Government as represented by the
 # Administrator of the National Aeronautics and Space Administration.
-# Copyright 2010-2011 OpenStack LLC.
+# Copyright 2010-2011 OpenStack Foundation
 # Copyright 2012 Justin Santa Barbara
+# Copyright 2013 IBM Corp.
+# Copyright 2015 Mirantis, Inc.
 # All Rights Reserved.
 #
 #    Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -18,228 +18,85 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-"""
-Defines interface for DB access
-"""
 
-import logging
-import time
+"""Defines interface for DB access."""
 
+import threading
+
+from oslo_config import cfg
+from oslo_db import exception as db_exception
+from oslo_db.sqlalchemy import session
+from oslo_log import log as logging
+#from oslo_utils import timeutils
+# NOTE(jokke): simplified transition to py3, behaves like py2 xrange
+from six.moves import range
 import sqlalchemy
-import sqlalchemy.engine
-import sqlalchemy.orm
-import sqlalchemy.sql
+import sqlalchemy.sql as sa_sql
 
 from umbrella.common import exception
-from umbrella.db.sqlalchemy import migration
 from umbrella.db.sqlalchemy import models
-from umbrella.common import cfg
-import umbrella.common.log as os_logging
-from umbrella.common import timeutils
+from umbrella import i18n
 
-
-_ENGINE = None
-_MAKER = None
-_MAX_RETRIES = None
-_RETRY_INTERVAL = None
 BASE = models.BASE
 sa_logger = None
-LOG = os_logging.getLogger(__name__)
+LOG = logging.getLogger(__name__)
+_ = i18n._
+_LW = i18n._LW
 
 
-db_opts = [
-    cfg.IntOpt('sql_idle_timeout', default=3600),
-    cfg.IntOpt('sql_max_retries', default=10),
-    cfg.IntOpt('sql_retry_interval', default=1),
-    cfg.BoolOpt('db_auto_create', default=False),
-    ]
+STATUSES = ['active', 'saving', 'queued', 'killed', 'pending_delete',
+            'deleted', 'deactivated']
 
 CONF = cfg.CONF
-CONF.register_opts(db_opts)
+
+_FACADE = None
+_LOCK = threading.Lock()
 
 
-def ping_listener(dbapi_conn, connection_rec, connection_proxy):
+def _retry_on_deadlock(exc):
+    """Decorator to retry a DB API call if Deadlock was received."""
 
-    """
-    Ensures that MySQL connections checked out of the
-    pool are alive.
-
-    Borrowed from:
-    http://groups.google.com/group/sqlalchemy/msg/a4ce563d802c929f
-    """
-
-    try:
-        dbapi_conn.cursor().execute('select 1')
-    except dbapi_conn.OperationalError, ex:
-        if ex.args[0] in (2006, 2013, 2014, 2045, 2055):
-            msg = 'Got mysql server has gone away: %s' % ex
-            LOG.warn(msg)
-            raise sqlalchemy.exc.DisconnectionError(msg)
-        else:
-            raise
-
-
-def configure_db():
-    """
-    Establish the database, create an engine if needed, and
-    register the models.
-    """
-    global _ENGINE, sa_logger, _MAX_RETRIES, _RETRY_INTERVAL
-    if not _ENGINE:
-        sql_connection = CONF.sql_connection
-        _MAX_RETRIES = CONF.sql_max_retries
-        _RETRY_INTERVAL = CONF.sql_retry_interval
-        connection_dict = sqlalchemy.engine.url.make_url(sql_connection)
-        engine_args = {'pool_recycle': CONF.sql_idle_timeout,
-                       'echo': False,
-                       'convert_unicode': True
-                       }
-
-        try:
-            _ENGINE = sqlalchemy.create_engine(sql_connection, **engine_args)
-
-            if 'mysql' in connection_dict.drivername:
-                sqlalchemy.event.listen(_ENGINE, 'checkout', ping_listener)
-
-            _ENGINE.connect = wrap_db_error(_ENGINE.connect)
-            _ENGINE.connect()
-        except Exception, err:
-            msg = _("Error configuring database with supplied "
-                    "sql_connection '%(sql_connection)s'. "
-                    "Got error:\n%(err)s") % locals()
-            LOG.error(msg)
-            raise
-
-        sa_logger = logging.getLogger('sqlalchemy.engine')
-        if CONF.debug:
-            sa_logger.setLevel(logging.DEBUG)
-
-        if CONF.db_auto_create:
-            LOG.info('auto-creating umbrella DB')
-            models.register_models(_ENGINE)
-            try:
-                migration.version_control()
-            except exception.DatabaseMigrationError:
-                # only arises when the DB exists and is under version control
-                pass
-        else:
-            LOG.info('not auto-creating umbrella DB')
-
-
-def get_session(autocommit=True, expire_on_commit=False):
-    """Helper method to grab session"""
-    global _MAKER
-    if not _MAKER:
-        assert _ENGINE
-        _MAKER = sqlalchemy.orm.sessionmaker(bind=_ENGINE,
-                                             autocommit=autocommit,
-                                             expire_on_commit=expire_on_commit)
-    return _MAKER()
-
-
-def is_db_connection_error(args):
-    """Return True if error in connecting to db."""
-    conn_err_codes = ('2002', '2003', '2006')
-    for err_code in conn_err_codes:
-        if args.find(err_code) != -1:
-            return True
+    if isinstance(exc, db_exception.DBDeadlock):
+        LOG.warn(_LW("Deadlock detected. Retrying..."))
+        return True
     return False
 
 
-def wrap_db_error(f):
-    """Retry DB connection. Copied from nova and modified."""
-    def _wrap(*args, **kwargs):
-        try:
-            return f(*args, **kwargs)
-        except sqlalchemy.exc.OperationalError, e:
-            if not is_db_connection_error(e.args[0]):
-                raise
+def _create_facade_lazily():
+    global _LOCK, _FACADE
+    if _FACADE is None:
+        with _LOCK:
+            if _FACADE is None:
+                _FACADE = session.EngineFacade.from_config(CONF)
 
-            remaining_attempts = _MAX_RETRIES
-            while True:
-                LOG.warning(_('SQL connection failed. %d attempts left.'),
-                                remaining_attempts)
-                remaining_attempts -= 1
-                time.sleep(_RETRY_INTERVAL)
-                try:
-                    return f(*args, **kwargs)
-                except sqlalchemy.exc.OperationalError, e:
-                    if (remaining_attempts == 0 or
-                        not is_db_connection_error(e.args[0])):
-                        raise
-                except sqlalchemy.exc.DBAPIError:
-                    raise
-        except sqlalchemy.exc.DBAPIError:
-            raise
-    _wrap.func_name = f.func_name
-    return _wrap
+                #if CONF.profiler.enabled and CONF.profiler.trace_sqlalchemy:
+                #    osprofiler.sqlalchemy.add_tracing(sqlalchemy,
+                #                                      _FACADE.get_engine(),
+                #                                      "db")
+    return _FACADE
 
 
-def setting_create(values):
-    """Create an setting from the values dictionary."""
-    return _setting_update(values, None)
+def get_engine():
+    facade = _create_facade_lazily()
+    return facade.get_engine()
 
 
-def setting_update(setting_uuid, values):
+def get_session(autocommit=True, expire_on_commit=False):
+    facade = _create_facade_lazily()
+    return facade.get_session(autocommit=autocommit,
+                              expire_on_commit=expire_on_commit)
+
+
+def clear_db_env():
     """
-    Set the given properties on an setting and update it.
-
-    :raises NotFound if setting does not exist.
+    Unset global configuration variables for database.
     """
-    return _setting_update(values, setting_uuid)
+    global _FACADE
+    _FACADE = None
 
 
-def setting_destroy(setting_uuid):
-    """Destroy the setting or raise if it does not exist."""
-    session = get_session()
-    with session.begin():
-        setting_ref = setting_get(setting_uuid, session=session)
-        setting_ref.delete(session=session)
-        return setting_ref
-
-
-def setting_get(setting_uuid, session=None, force_show_deleted=False):
-    """Get an setting or raise if it does not exist."""
-    session = session or get_session()
-
-    try:
-        query = session.query(models.Settings).\
-                filter_by(uuid=setting_uuid)
-
-        if not force_show_deleted:
-            query = query.filter_by(deleted=False)
-
-        setting = query.one()
-
-    except sqlalchemy.orm.exc.NoResultFound:
-        raise exception.NotFound("No setting found with UUID %s" %
-                                 setting_uuid)
-
-    return setting
-
-
-def setting_get_by_lever_type(level, setting_type, session=None):
-    """Get an setting or raise if it does not exist."""
-    session = session or get_session()
-
-    try:
-        query = session.query(models.Settings).\
-                options(sqlalchemy.orm.joinedload(models.Settings.alarming)).\
-                filter_by(level=level).\
-                filter_by(type=setting_type).\
-                filter_by(deleted=False)
-
-        setting = query.one()
-
-    except sqlalchemy.orm.exc.NoResultFound:
-        raise exception.NotFound("No setting found with level %(level)s"
-                                 " and type %(setting_type)s" % locals())
-
-    return setting
-
-
-def paginate_query(query, model, limit, sort_keys, marker=None,
-                   sort_dir=None, sort_dirs=None):
+def _paginate_query(query, model, limit, sort_keys, marker=None,
+                    sort_dir=None, sort_dirs=None):
     """Returns a query with sorting / pagination criteria added.
 
     Pagination works by requiring a unique sort_key, specified by sort_keys.
@@ -273,7 +130,7 @@ def paginate_query(query, model, limit, sort_keys, marker=None,
     if 'id' not in sort_keys:
         # TODO(justinsb): If this ever gives a false-positive, check
         # the actual primary key, rather than assuming its id
-        LOG.warn(_('Id not in sort_keys; is sort_keys unique?'))
+        LOG.warn(_LW('Id not in sort_keys; is sort_keys unique?'))
 
     assert(not (sort_dir and sort_dirs))
 
@@ -300,34 +157,49 @@ def paginate_query(query, model, limit, sort_keys, marker=None,
             raise exception.InvalidSortKey()
         query = query.order_by(sort_dir_func(sort_key_attr))
 
+    default = ''  # Default to an empty string if NULL
+
     # Add pagination
     if marker is not None:
         marker_values = []
         for sort_key in sort_keys:
             v = getattr(marker, sort_key)
+            if v is None:
+                v = default
             marker_values.append(v)
 
         # Build up an array of sort criteria as in the docstring
         criteria_list = []
-        for i in xrange(0, len(sort_keys)):
+        for i in range(len(sort_keys)):
             crit_attrs = []
-            for j in xrange(0, i):
+            for j in range(i):
                 model_attr = getattr(model, sort_keys[j])
-                crit_attrs.append((model_attr == marker_values[j]))
+                default = None if isinstance(
+                    model_attr.property.columns[0].type,
+                    sqlalchemy.DateTime) else ''
+                attr = sa_sql.expression.case([(model_attr != None,
+                                              model_attr), ],
+                                              else_=default)
+                crit_attrs.append((attr == marker_values[j]))
 
             model_attr = getattr(model, sort_keys[i])
+            default = None if isinstance(model_attr.property.columns[0].type,
+                                         sqlalchemy.DateTime) else ''
+            attr = sa_sql.expression.case([(model_attr != None,
+                                          model_attr), ],
+                                          else_=default)
             if sort_dirs[i] == 'desc':
-                crit_attrs.append((model_attr < marker_values[i]))
+                crit_attrs.append((attr < marker_values[i]))
             elif sort_dirs[i] == 'asc':
-                crit_attrs.append((model_attr > marker_values[i]))
+                crit_attrs.append((attr > marker_values[i]))
             else:
                 raise ValueError(_("Unknown sort direction, "
                                    "must be 'desc' or 'asc'"))
 
-            criteria = sqlalchemy.sql.and_(*crit_attrs)
+            criteria = sa_sql.and_(*crit_attrs)
             criteria_list.append(criteria)
 
-        f = sqlalchemy.sql.or_(*criteria_list)
+        f = sa_sql.or_(*criteria_list)
         query = query.filter(f)
 
     if limit is not None:
@@ -336,254 +208,64 @@ def paginate_query(query, model, limit, sort_keys, marker=None,
     return query
 
 
-def setting_get_all(filters=None, marker=None, limit=None,
-                  sort_key='created_at', sort_dir='desc'):
-    """
-    Get all settings that match zero or more filters.
-
-    :param filters: dict of filter keys and values.
-    :param marker: setting uuid after which to start page
-    :param limit: maximum number of settings to return
-    :param sort_key: setting attribute by which results should be sorted
-    :param sort_dir: direction in which results should be sorted (asc, desc)
-    """
-    filters = filters or {}
-
+def get_one_net():
     session = get_session()
-    query = session.query(models.Settings).\
-            options(sqlalchemy.orm.joinedload(models.Settings.alarming))
-
-    showing_deleted = False
-    if 'changes-since' in filters:
-        # normalize timestamp to UTC, as sqlalchemy doesn't appear to
-        # respect timezone offsets
-        changes_since = timeutils.normalize_time(filters.pop('changes-since'))
-        query = query.filter(models.Settings.updated_at > changes_since)
-        showing_deleted = True
-
-    if 'deleted' in filters:
-        deleted_filter = filters.pop('deleted')
-        query = query.filter_by(deleted=deleted_filter)
-        showing_deleted = deleted_filter
-
-    for (k, v) in filters.items():
-        if v is not None:
-            key = k
-            if k.endswith('_min') or k.endswith('_max'):
-                key = key[0:-4]
-                try:
-                    v = int(v)
-                except ValueError:
-                    msg = _("Unable to filter on a range "
-                            "with a non-numeric value.")
-                    raise exception.InvalidFilterRangeValue(msg)
-
-            if k.endswith('_min'):
-                query = query.filter(getattr(models.Settings, key) >= v)
-            elif k.endswith('_max'):
-                query = query.filter(getattr(models.Settings, key) <= v)
-            elif hasattr(models.Settings, key):
-                query = query.filter(getattr(models.Settings, key) == v)
-
-    marker_setting = None
-    if marker is not None:
-        marker_setting = setting_get(marker,
-                                 force_show_deleted=showing_deleted)
-
-    query = paginate_query(query, models.Settings, limit,
-                           [sort_key, 'created_at', 'id'],
-                           marker=marker_setting,
-                           sort_dir=sort_dir)
-
-    return query.all()
+    query = session.query(models.Net)
+    return query.first()
 
 
-def _drop_protected_attrs(model_class, values):
-    """
-    Removed protected attributes from values dictionary using the models
-    __protected_attributes__ field.
-    """
-    for attr in model_class.__protected_attributes__:
-        if attr in values:
-            del values[attr]
-
-
-def _update_values(setting_ref, values):
-    for k in values.keys():
-        if getattr(setting_ref, k) != values[k]:
-            setattr(setting_ref, k, values[k])
-
-
-def _setting_update(values, setting_uuid):
-    """
-    Used internally by setting_create and setting_update
-
-    :param values: A dict of attributes to set
-    :param setting_uuid: If None, create the setting, otherwise,
-                        find and update it
-    """
+def add_net_sample(sample):
     session = get_session()
     with session.begin():
-        # should not update uuid
-        values.pop("uuid", None)
-        # Remove the properties passed in the values mapping. We
-        # handle properties separately from base setting attributes,
-        # and leaving properties in the values mapping will cause
-        # a SQLAlchemy model error because SQLAlchemy expects the
-        # properties attribute of an setting model to be a list and
-        # not a dict.
-        if setting_uuid:
-            setting_ref = setting_get(setting_uuid, session=session)
-        else:
-            setting_ref = models.Settings()
-        if setting_ref:
-            # Don't drop created_at if we're passing it in...
-            _drop_protected_attrs(models.Settings, values)
-            values['updated_at'] = timeutils.utcnow()
-        setting_ref.update(values)
-        # Should not set duplicate level and type pair
-        if setting_ref.level is not None and setting_ref.type is not None:
-            try:
-                setting_dup = setting_get_by_lever_type(setting_ref.level,
-                                                    setting_ref.type)
-            except exception.NotFound:
-                setting_dup = None
-            if setting_dup and not setting_uuid:
-                raise exception.Duplicate(_("Setting level(%s)"
-                                          "-type(%s) pair already exists!") % \
-                                          (setting_ref.level,
-                                           setting_ref.type))
-        # Validate the attributes before we go any further. From my
-        # investigation, the @validates decorator does not validate
-        # on new records, only on existing records, which is, well,
-        # idiotic.
-        _update_values(setting_ref, values)
+        value = models.Net(
+           instance_uuid=sample['instance_uuid'],
+            tenant_id=sample['tenant_id'],
+            tx_bytes_rate=sample['tx_bytes_rate'],
+            tx_packets_rate=sample['tx_packets_rate'],
+            rx_bytes_rate=sample['rx_bytes_rate'],
+            rx_packets_rate=sample['tx_packets_rate']
+        )
 
-        try:
-            setting_ref.save(session=session)
-        except sqlalchemy.exc.IntegrityError:
-            raise exception.Duplicate(_("Setting uuid already exists!"))
+        value.save(session=session)
+        #session.commit()
 
-    return setting_get(setting_ref.uuid)
-
-
-def alarming_create(values, session=None):
-    """Create an Alarming object"""
-    session = session if session else get_session()
-    alarming_ref = models.Alarming()
-    return _alarming_update(alarming_ref, values, session=session)
-
-
-def _alarming_update(alarming_ref, values, session=None):
+def add_disk_sample(sample):
+    session = get_session()
     with session.begin():
-        _drop_protected_attrs(models.Alarming, values)
-        alarming_ref.update(values)
-        alarming_ref.save(session=session)
-        return alarming_ref
+        value = models.Disk(
+           instance_uuid=sample['instance_uuid'],
+            tenant_id=sample['tenant_id'],
+            rd_req_rate=sample['rd_req_rate'],
+            rd_bytes_rate=sample['rd_bytes_rate'],
+            wr_req_rate=sample['wr_req_rate'],
+            wr_bytes_rate=sample['wr_bytes_rate']
+        )
+
+        value.save(session=session)
+        #session.commit()
 
 
-def alarming_update(alarm_id, values, session=None):
-    '''
-    update alarm values.
-    if values contain unable updating values, raise UnableUpdateValue.
-    '''
-    session = session or get_session()
-
-    for key in values.keys():
-        if key not in models.Alarming.__updatable_attributes__:
-            raise exception.UnableUpdateValue(_("Unable to update '%(key)s'.")
-                                              % locals())
-    alarm_ref = alarming_get(alarm_id, session)
-    return _alarming_update(alarm_ref, values, session)
-
-
-def _alarming_delete(alarming_ref, session=None):
-    alarming_ref.delete(session=session)
-
-
-def alarming_delete(alarming_id, session=None):
-    session = session or get_session()
+def add_cpu_sample(sample):
+    session = get_session()
     with session.begin():
-        alarming_ref = alarming_get(alarming_id, session)
-        _alarming_delete(alarming_ref, session)
-        return alarming_ref
+        value = models.Cpu(
+           instance_uuid=sample['instance_uuid'],
+            tenant_id=sample['tenant_id'],
+            cpu_load=sample['cpu_load'],
+        )
+
+        value.save(session=session)
+        #session.commit()
 
 
-def alarmings_clear(session=None):
-    session = session or get_session()
+def add_mem_sample(sample):
+    session = get_session()
     with session.begin():
-        for alarm_ref in alarming_get_all(filters={'deleted': False},
-                                        session=session):
-            _alarming_delete(alarm_ref, session)
+        value = models.Mem(
+           instance_uuid=sample['instance_uuid'],
+            tenant_id=sample['tenant_id'],
+            mem_used=sample['mem_used'],
+        )
 
-
-def alarming_get(alarming_id, session=None, force_show_deleted=False):
-    """Get an alarming or raise if it does not exist."""
-    session = session or get_session()
-
-    try:
-        query = session.query(models.Alarming).\
-                options(sqlalchemy.orm.joinedload(models.Alarming.setting)).\
-                filter_by(id=alarming_id)
-
-        if not force_show_deleted:
-            query = query.filter_by(deleted=False)
-
-        alarming = query.one()
-
-    except sqlalchemy.orm.exc.NoResultFound:
-        raise exception.NotFound("No alarming found with ID %s" %
-                                 alarming_id)
-    return alarming
-
-
-def alarming_get_all(filters=None, marker=None, limit=None,
-                  sort_key='created_at', sort_dir='desc', session=None):
-    """
-    Get all alarmings that match zero or more filters.
-
-    :param filters: dict of filter keys and values.
-    :param marker: alarming id after which to start page
-    :param limit: maximum number of alarmings to return
-    :param sort_key: alarming attribute by which results should be sorted
-    :param sort_dir: direction in which results should be sorted (asc, desc)
-    """
-    filters = filters or {}
-
-    session = session or get_session()
-    query = session.query(models.Alarming).\
-            options(sqlalchemy.orm.joinedload(models.Alarming.setting))
-
-    showing_deleted = False
-    if 'changes-since' in filters:
-        # normalize timestamp to UTC, as sqlalchemy doesn't appear to
-        # respect timezone offsets
-        changes_since = timeutils.normalize_time(filters.pop('changes-since'))
-        query = query.filter(models.Alarming.updated_at > changes_since)
-        showing_deleted = True
-
-    if 'deleted' in filters:
-        deleted_filter = filters.pop('deleted')
-        query = query.filter_by(deleted=deleted_filter)
-        showing_deleted = deleted_filter
-
-    if 'readed' in filters:
-        query = query.filter_by(readed=filters.pop('readed'))
-
-    if 'done' in filters:
-        query = query.filter_by(done=filters.pop('done'))
-
-    if 'setting-uuid' in filters:
-        query = query.filter_by(settings_uuid=filters.pop('setting-uuid'))
-
-    marker_alarming = None
-    if marker is not None:
-        marker_alarming = alarming_get(marker,
-                                       force_show_deleted=showing_deleted)
-
-    query = paginate_query(query, models.Alarming, limit,
-                           [sort_key, 'created_at', 'id'],
-                           marker=marker_alarming,
-                           sort_dir=sort_dir)
-
-    return query.all()
+        value.save(session=session)
+        #session.commit()

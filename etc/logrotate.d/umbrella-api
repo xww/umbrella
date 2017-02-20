@@ -1,7 +1,0 @@
-/data/log/umbrella/*.log {
-    daily
-    missingok
-    rotate 30
-    compress
-    delaycompress
-}

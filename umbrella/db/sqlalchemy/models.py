@@ -1,5 +1,3 @@
-# vim: tabstop=4 shiftwidth=4 softtabstop=4
-
 # Copyright 2010 United States Government as represented by the
 # Administrator of the National Aeronautics and Space Administration.
 # All Rights Reserved.
@@ -16,38 +14,34 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-
 """
-SQLAlchemy models for glance data
+SQLAlchemy models for umbrella data
 """
 
+import uuid
+
+from oslo_db.sqlalchemy import models
+from oslo_serialization import jsonutils
+from oslo_utils import timeutils
+from sqlalchemy import BigInteger
+from sqlalchemy import Boolean
+from sqlalchemy import Column
+from sqlalchemy import DateTime
 from sqlalchemy.ext.compiler import compiles
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import backref
-from sqlalchemy.orm import relationship
-from sqlalchemy.orm.util import object_mapper
-from sqlalchemy.schema import Column
-from sqlalchemy.schema import ForeignKey
-from sqlalchemy.schema import UniqueConstraint
-from sqlalchemy.types import BigInteger
-from sqlalchemy.types import Float
-from sqlalchemy.types import Boolean
-from sqlalchemy.types import DateTime
-from sqlalchemy.types import Integer
-from sqlalchemy.types import String
-from sqlalchemy.types import Text
-from umbrella.common import timeutils
-from umbrella.common import utils
-import umbrella.common.log as logging
+from sqlalchemy import ForeignKey
+from sqlalchemy import Index
+from sqlalchemy import Integer
+from sqlalchemy.orm import backref, relationship
+from sqlalchemy import sql
+from sqlalchemy import String
+from sqlalchemy import Text
+from sqlalchemy.types import TypeDecorator
+from sqlalchemy import UniqueConstraint
 
-LOG = logging.getLogger(__name__)
+from umbrella.common import timeutils as our_timeutils
 
 BASE = declarative_base()
-
-PLATFORM_LEVEL = 0
-HOST_LEVEL = 1
-USER_LEVEL = 2
-AZ_LEVEL = 3
 
 
 @compiles(BigInteger, 'sqlite')
@@ -55,53 +49,54 @@ def compile_big_int_sqlite(type_, compiler, **kw):
     return 'INTEGER'
 
 
-class ModelBase(object):
-    """Base class for Umbrella Models"""
+class JSONEncodedDict(TypeDecorator):
+    """Represents an immutable structure as a json-encoded string"""
+
+    impl = Text
+
+    def process_bind_param(self, value, dialect):
+        if value is not None:
+            value = jsonutils.dumps(value)
+        return value
+
+    def process_result_value(self, value, dialect):
+        if value is not None:
+            value = jsonutils.loads(value)
+        return value
+
+
+class UmbrellaBase(models.ModelBase, models.TimestampMixin):
+    """Base class for Glance Models."""
+
     __table_args__ = {'mysql_engine': 'InnoDB'}
     __table_initialized__ = False
     __protected_attributes__ = set([
-        "id", "created_at", "updated_at", "deleted_at", "deleted"])
-
-    id = Column(Integer(), primary_key=True, nullable=False)
-    created_at = Column(DateTime, default=timeutils.utcnow,
-                        nullable=False)
-    updated_at = Column(DateTime, default=timeutils.utcnow,
-                        nullable=False, onupdate=timeutils.utcnow)
-    deleted_at = Column(DateTime)
-    deleted = Column(Boolean, nullable=False, default=False)
+        "created_at", "updated_at"])
 
     def save(self, session=None):
-        """Save this object"""
-        if session is None:
-            LOG.error(_("method deprecated as no session passed in."))
-            return
-        session.add(self)
-        session.flush()
+        from umbrella.db.sqlalchemy import api as db_api
+        super(UmbrellaBase, self).save(session or db_api.get_session())
 
-    def delete(self, session=None):
-        """Delete this object"""
-        self.deleted = True
-        self.deleted_at = timeutils.utcnow()
-        self.save(session=session)
+    created_at = Column(DateTime, default=lambda: our_timeutils.utc_to_local(
+                        timeutils.utcnow()), nullable=False)
+    # TODO(vsergeyev): Column `updated_at` have no default value in
+    #                  openstack common code. We should decide, is this value
+    #                  required and make changes in oslo (if required) or
+    #                  in umbrella (if not).
+    updated_at = Column(DateTime, default=lambda: our_timeutils.utc_to_local(
+                        timeutils.utcnow()), nullable=True, onupdate=lambda: \
+                        our_timeutils.utc_to_local(timeutils.utcnow()))
+    # TODO(boris-42): Use SoftDeleteMixin instead of deleted Column after
+    #                 migration that provides UniqueConstraints and change
+    #                 type of this column.
+    #deleted_at = Column(DateTime)
+    #deleted = Column(Boolean, nullable=False, default=False)
 
-    def update(self, values):
-        """dict.update() behaviour."""
-        for k, v in values.iteritems():
-            self[k] = v
-
-    def __setitem__(self, key, value):
-        setattr(self, key, value)
-
-    def __getitem__(self, key):
-        return getattr(self, key)
-
-    def __iter__(self):
-        self._i = iter(object_mapper(self).columns)
-        return self
-
-    def next(self):
-        n = self._i.next().name
-        return n, getattr(self, n)
+    #def delete(self, session=None):
+    #    """Delete this object."""
+    #    self.deleted = True
+    #    self.deleted_at = timeutils.utcnow()
+    #    self.save(session=session)
 
     def keys(self):
         return self.__dict__.keys()
@@ -113,52 +108,65 @@ class ModelBase(object):
         return self.__dict__.items()
 
     def to_dict(self):
-        return self.__dict__.copy()
+        d = self.__dict__.copy()
+        # NOTE(flaper87): Remove
+        # private state instance
+        # It is not serializable
+        # and causes CircularReference
+        d.pop("_sa_instance_state")
+        return d
 
 
-class Alarming(BASE, ModelBase):
-    """Represents an alarming info in the datastore"""
-    __tablename__ = 'alarming'
-    __updatable_attributes__ = set([
-        "done", "readed", "read_user_id"])
+class Net(BASE, UmbrellaBase):
+    __tablename__ = 'net'
+    __table_args__ = (Index('ix_instance_uuid', 'instance_uuid'),
+                      Index('ix_tenant_id', 'tenant_id'),
+                      Index('ix_id', 'id'))
 
-    settings_uuid = Column(String(36), ForeignKey('settings.uuid'),
-                      nullable=False)
-    usage = Column(Integer(), default=0)
-    done = Column(Boolean(), default=False)
-    readed = Column(Boolean(), default=False)
-    read_user_id = Column(String(255))
-
-
-class Settings(BASE, ModelBase):
-    """Represents an setting in the datastore"""
-    __tablename__ = 'settings'
-    __table_args__ = (UniqueConstraint('uuid'), {})
-
-    uuid = Column(String(36), default=utils.generate_uuid)
-    level = Column(Integer(), default=-1)
-    type = Column(String(30))
-    capacity = Column(Integer(), default=0)
-    threshold = Column(Float(), default=0.0)
-    alarm_title = Column(Text)
-    alarm_content = Column(Text)
-    enable = Column(Boolean(), nullable=False, default=True)
-    alarming = relationship(Alarming, backref=backref('setting'))
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    instance_uuid = Column(String(30), nullable=False)
+    tenant_id = Column(String(30), nullable=False)
+    rx_packets_rate = Column(Integer)
+    rx_bytes_rate = Column(Integer)
+    tx_packets_rate = Column(Integer)
+    tx_bytes_rate = Column(Integer)
 
 
-def register_models(engine):
-    """
-    Creates database tables for all models with the given engine
-    """
-    models = (Alarming, Settings)
-    for model in models:
-        model.metadata.create_all(engine)
+class Disk(BASE, UmbrellaBase):
+    __tablename__ = 'disk'
+    __table_args__ = (Index('ix_instance_uuid', 'instance_uuid'),
+                      Index('ix_tenant_id', 'tenant_id'),
+                      Index('ix_id', 'id'))
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    instance_uuid = Column(String(30), nullable=False)
+    tenant_id = Column(String(30), nullable=False)
+    rd_req_rate = Column(Integer)
+    rd_bytes_rate = Column(Integer)
+    wr_req_rate = Column(Integer)
+    wr_bytes_rate = Column(Integer)
 
 
-def unregister_models(engine):
-    """
-    Drops database tables for all models with the given engine
-    """
-    models = (Alarming, Settings)
-    for model in models:
-        model.metadata.drop_all(engine)
+class Cpu(BASE, UmbrellaBase):
+    __tablename__ = 'cpu'
+    __table_args__ = (Index('ix_instance_uuid', 'instance_uuid'),
+                      Index('ix_tenant_id', 'tenant_id'),
+                      Index('ix_id', 'id'))
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    instance_uuid = Column(String(30), nullable=False)
+    tenant_id = Column(String(30), nullable=False)
+    cpu_load = Column(Integer)
+
+
+class Mem(BASE, UmbrellaBase):
+    """Represents an image in the datastore."""
+    __tablename__ = 'mem'
+    __table_args__ = (Index('ix_instance_uuid', 'instance_uuid'),
+                      Index('ix_tenant_id', 'tenant_id'),
+                      Index('ix_id', 'id'))
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    instance_uuid = Column(String(30), nullable=False)
+    tenant_id = Column(String(30), nullable=False)
+    mem_used = Column(Integer)

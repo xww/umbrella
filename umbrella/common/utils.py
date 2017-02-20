@@ -1,7 +1,7 @@
-# vim: tabstop=4 shiftwidth=4 softtabstop=4
-
 # Copyright 2010 United States Government as represented by the
 # Administrator of the National Aeronautics and Space Administration.
+# Copyright 2014 SoftLayer Technologies, Inc.
+# Copyright 2015 Mirantis, Inc
 # All Rights Reserved.
 #
 #    Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -26,196 +26,54 @@ try:
     from eventlet import sleep
 except ImportError:
     from time import sleep
+from eventlet.green import socket
 from eventlet import greenthread
 from eventlet import event
 
 import functools
-import inspect
 import os
 import platform
+import re
+import stevedore
 import subprocess
 import sys
-import time
 import uuid
 
+#from OpenSSL import crypto
+from oslo_config import cfg
+from oslo_log import log as logging
+from oslo_utils import encodeutils
+from oslo_utils import excutils
+from oslo_utils import netutils
+from oslo_utils import strutils
+import six
 from webob import exc
 
 from umbrella.common import exception
-import umbrella.common.log as logging
+from umbrella import i18n
 
+CONF = cfg.CONF
 
 LOG = logging.getLogger(__name__)
+_ = i18n._
+_LE = i18n._LE
 
+FEATURE_BLACKLIST = ['content-length', 'content-type', 'x-image-meta-size']
 
-def get_support_keys(search_opts={}, support_params={}):
-    values = {}
-    for params in support_params:
-        if params in search_opts:
-            values[params] = search_opts[params]
-    return values
+# Whitelist of v1 API headers of form x-image-meta-xxx
+IMAGE_META_HEADERS = ['x-image-meta-location', 'x-image-meta-size',
+                      'x-image-meta-is_public', 'x-image-meta-disk_format',
+                      'x-image-meta-container_format', 'x-image-meta-name',
+                      'x-image-meta-status', 'x-image-meta-copy_from',
+                      'x-image-meta-uri', 'x-image-meta-checksum',
+                      'x-image-meta-created_at', 'x-image-meta-updated_at',
+                      'x-image-meta-deleted_at', 'x-image-meta-min_ram',
+                      'x-image-meta-min_disk', 'x-image-meta-owner',
+                      'x-image-meta-store', 'x-image-meta-id',
+                      'x-image-meta-protected', 'x-image-meta-deleted',
+                      'x-image-meta-virtual_size']
 
-
-def mb_to_gb(result):
-    return round((float(result) / 1024), 2)
-
-
-def convert_mem_to_gb_for_monitor(result):
-    # Note(hzrandd): Depend on the different  levels,
-    #convert the memory unit from MB to GB for monitor.
-    #level info: PLATFORM_LEVEL = 0, HOST_LEVEL = 1
-    #USER_LEVEL = 2, AZ_LEVEL = 3
-
-    for k in result:
-        if k['metricName'].endswith('_mb'):
-            k['value'] = mb_to_gb(k['value'])
-            k['metricName'] = k['metricName'].rstrip('_mb') + '_gb'
-
-
-def _convert_mb_info_to_gb(result):
-    for re in result:
-        if 'memory_mb' == re['name']:
-            re['name'] = 'memory_gb'
-            for k in re['values']:
-                k['currentValue'] = mb_to_gb(k['currentValue'])
-                if k['description'].endswith('mb'):
-                    k['description'] = \
-                        k['description'].rstrip('mb') + 'gb'
-                if k['metricName'].endswith('mb'):
-                    k['metricName'] = \
-                        k['metricName'].rstrip('mb') + 'gb'
-    return result
-
-
-def convert_mem_from_mb_to_gb(f):
-   #Note(hzrandd): modfiy the memory unit and description from mb to gb
-    def wrapper(*args, **kwargs):
-        if f.__name__ == 'index':
-            result = f(*args, **kwargs)
-            for k, v in result['memory_mb'].iteritems():
-                result['memory_mb'][k] = mb_to_gb(v)
-            result.update(memory_gb=result.pop('memory_mb'))
-            return result
-
-        if f.__name__ == 'list_platform_usage':
-            result = f(*args, **kwargs)
-            return _convert_mb_info_to_gb(result)
-
-        if f.__name__ == 'list_az_usage':
-            result = f(*args, **kwargs)
-            return _convert_mb_info_to_gb(result)
-
-        if f.__name__ == 'show_by_host':
-            result = f(*args, **kwargs)
-            for k in result['hosts']:
-                if 'memory_mb' in k:
-                    k['memory_mb'] = mb_to_gb(k['memory_mb'])
-                    k.update(memory_gb=k.pop('memory_mb'))
-                    if 'memory_mb_used' in k:
-                        k['memory_mb_used'] = \
-                            mb_to_gb(k['memory_mb_used'])
-                        k.update(memory_gb_used=k.pop('memory_mb_used'))
-            return result
-
-        if f.__name__ == 'show_by_tenant':
-            result = f(*args, **kwargs)
-            for k in result['tenants']:
-                if 'memory_mb_used' in k:
-                    k['memory_mb_used'] = \
-                        mb_to_gb(k['memory_mb_used'])
-                    k.update(memory_gb_used=k.pop('memory_mb_used'))
-            return result
-
-        if f.__name__ == 'list_all_quotas':
-            result = f(*args, **kwargs)
-            for rams in result['quotas']:
-                for k, v in rams['ram'].iteritems():
-                    rams['ram'][k] = mb_to_gb(v)
-            return result
-
-        if f.__name__ == 'list_quotas':
-            result = f(*args, **kwargs)
-            result['quota_set']['ram'] = mb_to_gb(result['quota_set']['ram'])
-            return result
-
-    return wrapper
-
-
-def is_admin_context(context):
-    """Indicates if the request context is an administrator."""
-    if not context:
-        raise Exception('Use of empty request context is deprecated')
-    return context.is_admin
-
-
-def require_admin_context(f):
-    def wrapper(*args, **kwargs):
-        if not args[1] or not is_admin_context(args[1].context):
-            raise exception.AdminRequired()
-        return f(*args, **kwargs)
-    return wrapper
-
-
-def log_func_exe_time(fn):
-    def wrapper(*args, **kwargs):
-        start = time.time()
-        result = fn(*args, **kwargs)
-        end = time.time()
-        LOG.debug(_('function %s takes %s seconds.') %
-                        (inspect.getmodule(fn), str(end - start)))
-        return result
-    return wrapper
-
-
-def get_lower_case_value_by_key(item, key):
-    value = get_value_by_key(item, key)
-    if value and (type(value) is str or type(value) is unicode):
-        return value.lower()
-    return value
-
-
-def get_value_by_key(item, key):
-    '''
-    :param item: item should be dict object
-    :param key: a certain key or looks like a/#list/b
-                to search multiple layers.
-    '''
-    temp = item
-    if isinstance(key, list):
-        hierarchy_keys = key
-    else:
-        hierarchy_keys = key.split('/')
-    if hierarchy_keys[0] == '#list' and len(hierarchy_keys) <= 1:
-        LOG.error(_("hierarchy_keys ends with #list. %s") % temp)
-    elif hierarchy_keys[0] == '#list' and len(hierarchy_keys) > 1:
-        value_list = []
-        for attr in temp:
-            value = get_value_by_key(attr, hierarchy_keys[1])
-            if value is not None and not isinstance(value, dict) \
-                    and not isinstance(value, list):
-                value_list.append(value)
-            elif value is None:
-                # search other attributes
-                continue
-            else:
-                # not support key more than 3 hierarchies.
-                LOG.warn(_('Not support searching for item %s and key %s') %
-                            (item, key))
-        return value_list if len(value_list) > 0 else None
-    elif len(hierarchy_keys) == 1:
-        return item.get(hierarchy_keys[0], None)
-    else:
-        key = hierarchy_keys.pop(0)
-        return get_value_by_key(item.get(key, {}), hierarchy_keys)
-
-
-def convert_IP_to_tuple(ip):
-    if not ip:
-        ip = tuple('')
-    if not isinstance(ip, str) and not isinstance(ip, unicode):
-        ip = tuple('')
-    else:
-        ip = tuple(int(part) for part in ip.split('.'))
-    return ip
+UMBRELLA_TEST_SOCKET_FD_STR = 'UMBRELLA_TEST_SOCKET_FD'
 
 
 def chunkreadable(iter, chunk_size=65536):
@@ -255,10 +113,10 @@ def cooperative_iter(iter):
         for chunk in iter:
             sleep(0)
             yield chunk
-    except Exception, err:
-        msg = _("Error: cooperative_iter exception %s") % err
-        LOG.error(msg)
-        raise
+    except Exception as err:
+        with excutils.save_and_reraise_exception():
+            msg = _LE("Error: cooperative_iter exception %s") % err
+            LOG.error(msg)
 
 
 def cooperative_read(fd):
@@ -273,6 +131,9 @@ def cooperative_read(fd):
         sleep(0)
         return result
     return readfn
+
+
+MAX_COOP_READER_BUFFER_SIZE = 134217728  # 128M seems like a sane buffer limit
 
 
 class CooperativeReader(object):
@@ -290,11 +151,107 @@ class CooperativeReader(object):
         :param fd: Underlying image file object
         """
         self.fd = fd
+        self.iterator = None
+        # NOTE(markwash): if the underlying supports read(), overwrite the
+        # default iterator-based implementation with cooperative_read which
+        # is more straightforward
         if hasattr(fd, 'read'):
             self.read = cooperative_read(fd)
+        else:
+            self.iterator = None
+            self.buffer = ''
+            self.position = 0
+
+    def read(self, length=None):
+        """Return the requested amount of bytes, fetching the next chunk of
+        the underlying iterator when needed.
+
+        This is replaced with cooperative_read in __init__ if the underlying
+        fd already supports read().
+        """
+        if length is None:
+            if len(self.buffer) - self.position > 0:
+                # if no length specified but some data exists in buffer,
+                # return that data and clear the buffer
+                result = self.buffer[self.position:]
+                self.buffer = ''
+                self.position = 0
+                return str(result)
+            else:
+                # otherwise read the next chunk from the underlying iterator
+                # and return it as a whole. Reset the buffer, as subsequent
+                # calls may specify the length
+                try:
+                    if self.iterator is None:
+                        self.iterator = self.__iter__()
+                    return self.iterator.next()
+                except StopIteration:
+                    return ''
+                finally:
+                    self.buffer = ''
+                    self.position = 0
+        else:
+            result = bytearray()
+            while len(result) < length:
+                if self.position < len(self.buffer):
+                    to_read = length - len(result)
+                    chunk = self.buffer[self.position:self.position + to_read]
+                    result.extend(chunk)
+
+                    # This check is here to prevent potential OOM issues if
+                    # this code is called with unreasonably high values of read
+                    # size. Currently it is only called from the HTTP clients
+                    # of Umbrella backend stores, which use httplib for data
+                    # streaming, which has readsize hardcoded to 8K, so this
+                    # check should never fire. Regardless it still worths to
+                    # make the check, as the code may be reused somewhere else.
+                    if len(result) >= MAX_COOP_READER_BUFFER_SIZE:
+                        raise exception.LimitExceeded()
+                    self.position += len(chunk)
+                else:
+                    try:
+                        if self.iterator is None:
+                            self.iterator = self.__iter__()
+                        self.buffer = self.iterator.next()
+                        self.position = 0
+                    except StopIteration:
+                        self.buffer = ''
+                        self.position = 0
+                        return str(result)
+            return str(result)
 
     def __iter__(self):
         return cooperative_iter(self.fd.__iter__())
+
+
+class LimitingReader(object):
+    """
+    Reader designed to fail when reading image data past the configured
+    allowable amount.
+    """
+    def __init__(self, data, limit):
+        """
+        :param data: Underlying image data object
+        :param limit: maximum number of bytes the reader should allow
+        """
+        self.data = data
+        self.limit = limit
+        self.bytes_read = 0
+
+    def __iter__(self):
+        for chunk in self.data:
+            self.bytes_read += len(chunk)
+            if self.bytes_read > self.limit:
+                raise exception.ImageSizeLimitExceeded()
+            else:
+                yield chunk
+
+    def read(self, i):
+        result = self.data.read(i)
+        self.bytes_read += len(result)
+        if self.bytes_read > self.limit:
+            raise exception.ImageSizeLimitExceeded()
+        return result
 
 
 def image_meta_to_http_headers(image_meta):
@@ -312,23 +269,10 @@ def image_meta_to_http_headers(image_meta):
                 for pk, pv in v.items():
                     if pv is not None:
                         headers["x-image-meta-property-%s"
-                                % pk.lower()] = unicode(pv)
+                                % pk.lower()] = six.text_type(pv)
             else:
-                headers["x-image-meta-%s" % k.lower()] = unicode(v)
+                headers["x-image-meta-%s" % k.lower()] = six.text_type(v)
     return headers
-
-
-def add_features_to_http_headers(features, headers):
-    """
-    Adds additional headers representing glance features to be enabled.
-
-    :param headers: Base set of headers
-    :param features: Map of enabled features
-    """
-    if features:
-        for k, v in features.items():
-            if v is not None:
-                headers[k.lower()] = unicode(v)
 
 
 def get_image_meta_from_headers(response):
@@ -354,47 +298,64 @@ def get_image_meta_from_headers(response):
             properties[field_name] = value or None
         elif key.startswith('x-image-meta-'):
             field_name = key[len('x-image-meta-'):].replace('-', '_')
+            if 'x-image-meta-' + field_name not in IMAGE_META_HEADERS:
+                msg = _("Bad header: %(header_name)s") % {'header_name': key}
+                raise exc.HTTPBadRequest(msg, content_type="text/plain")
             result[field_name] = value or None
     result['properties'] = properties
-    if 'size' in result:
-        try:
-            result['size'] = int(result['size'])
-        except ValueError:
-            raise exception.Invalid
+
+    for key, nullable in [('size', False), ('min_disk', False),
+                          ('min_ram', False), ('virtual_size', True)]:
+        if key in result:
+            try:
+                result[key] = int(result[key])
+            except ValueError:
+                if nullable and result[key] == str(None):
+                    result[key] = None
+                else:
+                    extra = (_("Cannot convert image %(key)s '%(value)s' "
+                               "to an integer.")
+                             % {'key': key, 'value': result[key]})
+                    raise exception.InvalidParameterValue(value=result[key],
+                                                          param=key,
+                                                          extra_msg=extra)
+            if result[key] < 0 and result[key] is not None:
+                extra = _('Cannot be a negative value.')
+                raise exception.InvalidParameterValue(value=result[key],
+                                                      param=key,
+                                                      extra_msg=extra)
+
     for key in ('is_public', 'deleted', 'protected'):
         if key in result:
-            result[key] = bool_from_string(result[key])
+            result[key] = strutils.bool_from_string(result[key])
     return result
 
 
-def bool_from_string(subject):
-    """Interpret a string as a boolean-like value."""
-    if isinstance(subject, bool):
-        return subject
-    elif isinstance(subject, int):
-        return subject == 1
-    if hasattr(subject, 'startswith'):  # str or unicode...
-        if subject.strip().lower() in ('true', 'on', '1', 'yes', 'y'):
-            return True
-    return False
+def create_mashup_dict(image_meta):
+    """
+    Returns a dictionary-like mashup of the image core properties
+    and the image custom properties from given image metadata.
 
+    :param image_meta: metadata of image with core and custom properties
+    """
 
-def generate_uuid():
-    return str(uuid.uuid4())
+    def get_items():
+        for key, value in six.iteritems(image_meta):
+            if isinstance(value, dict):
+                for subkey, subvalue in six.iteritems(
+                        create_mashup_dict(value)):
+                    if subkey not in image_meta:
+                        yield subkey, subvalue
+            else:
+                yield key, value
 
-
-def is_uuid_like(value):
-    try:
-        uuid.UUID(value)
-        return True
-    except Exception:
-        return False
+    return dict(get_items())
 
 
 def safe_mkdirs(path):
     try:
         os.makedirs(path)
-    except OSError, e:
+    except OSError as e:
         if e.errno != errno.EEXIST:
             raise
 
@@ -402,73 +363,13 @@ def safe_mkdirs(path):
 def safe_remove(path):
     try:
         os.remove(path)
-    except OSError, e:
+    except OSError as e:
         if e.errno != errno.ENOENT:
             raise
 
 
-class LoopingCallDone(Exception):
-    """Exception to break out and stop a LoopingCall.
-
-    The poll-function passed to LoopingCall can raise this exception to
-    break out of the loop normally. This is somewhat analogous to
-    StopIteration.
-
-    An optional return-value can be included as the argument to the exception;
-    this return-value will be returned by LoopingCall.wait()
-
-    """
-
-    def __init__(self, retvalue=True):
-        """:param retvalue: Value that LoopingCall.wait() should return."""
-        self.retvalue = retvalue
-
-
-class LoopingCall(object):
-    def __init__(self, f=None, *args, **kw):
-        self.args = args
-        self.kw = kw
-        self.f = f
-        self._running = False
-
-    def start(self, interval, initial_delay=None):
-        self._running = True
-        done = event.Event()
-
-        def _inner():
-            if initial_delay:
-                greenthread.sleep(initial_delay)
-
-            try:
-                while self._running:
-                    self.f(*self.args, **self.kw)
-                    if not self._running:
-                        break
-                    greenthread.sleep(interval)
-            except LoopingCallDone, e:
-                self.stop()
-                done.send(e.retvalue)
-            except Exception:
-                LOG.exception(_('in looping call'))
-                done.send_exception(*sys.exc_info())
-                return
-            else:
-                done.send(True)
-
-        self.done = done
-
-        greenthread.spawn(_inner)
-        return self.done
-
-    def stop(self):
-        self._running = False
-
-    def wait(self):
-        return self.done.wait()
-
-
 class PrettyTable(object):
-    """Creates an ASCII art table for use in bin/glance
+    """Creates an ASCII art table for use in bin/umbrella
 
     Example:
 
@@ -540,38 +441,39 @@ def get_terminal_size():
 
         try:
             height_width = struct.unpack('hh', fcntl.ioctl(sys.stderr.fileno(),
-                                        termios.TIOCGWINSZ,
-                                        struct.pack('HH', 0, 0)))
-        except:
+                                         termios.TIOCGWINSZ,
+                                         struct.pack('HH', 0, 0)))
+        except Exception:
             pass
 
         if not height_width:
             try:
                 p = subprocess.Popen(['stty', 'size'],
-                                    shell=False,
-                                    stdout=subprocess.PIPE,
-                                    stderr=open(os.devnull, 'w'))
+                                     shell=False,
+                                     stdout=subprocess.PIPE,
+                                     stderr=open(os.devnull, 'w'))
                 result = p.communicate()
                 if p.returncode == 0:
                     return tuple(int(x) for x in result[0].split())
-            except:
+            except Exception:
                 pass
 
         return height_width
 
     def _get_terminal_size_win32():
         try:
-            from ctypes import windll, create_string_buffer
+            from ctypes import create_string_buffer
+            from ctypes import windll
             handle = windll.kernel32.GetStdHandle(-12)
             csbi = create_string_buffer(22)
             res = windll.kernel32.GetConsoleScreenBufferInfo(handle, csbi)
-        except:
+        except Exception:
             return None
         if res:
             import struct
             unpack_tmp = struct.unpack("hhhhHhhhhhh", csbi.raw)
             (bufx, bufy, curx, cury, wattr,
-            left, top, right, bottom, maxx, maxy) = unpack_tmp
+             left, top, right, bottom, maxx, maxy) = unpack_tmp
             height = bottom - top + 1
             width = right - left + 1
             return (height, width)
@@ -586,7 +488,7 @@ def get_terminal_size():
 
     height_width = func.get(platform.os.name, _get_terminal_size_unknownOS)()
 
-    if height_width == None:
+    if height_width is None:
         raise exception.Invalid()
 
     for i in height_width:
@@ -601,9 +503,256 @@ def mutating(func):
     @functools.wraps(func)
     def wrapped(self, req, *args, **kwargs):
         if req.context.read_only:
-            msg = _("Read-only access")
+            msg = "Read-only access"
             LOG.debug(msg)
             raise exc.HTTPForbidden(msg, request=req,
                                     content_type="text/plain")
         return func(self, req, *args, **kwargs)
     return wrapped
+
+
+def setup_remote_pydev_debug(host, port):
+    error_msg = _LE('Error setting up the debug environment. Verify that the'
+                    ' option pydev_worker_debug_host is pointing to a valid '
+                    'hostname or IP on which a pydev server is listening on'
+                    ' the port indicated by pydev_worker_debug_port.')
+
+    try:
+        try:
+            from pydev import pydevd
+        except ImportError:
+            import pydevd
+
+        pydevd.settrace(host,
+                        port=port,
+                        stdoutToServer=True,
+                        stderrToServer=True)
+        return True
+    except Exception:
+        with excutils.save_and_reraise_exception():
+            LOG.exception(error_msg)
+
+
+def get_test_suite_socket():
+    global UMBRELLA_TEST_SOCKET_FD_STR
+    if UMBRELLA_TEST_SOCKET_FD_STR in os.environ:
+        fd = int(os.environ[UMBRELLA_TEST_SOCKET_FD_STR])
+        sock = socket.fromfd(fd, socket.AF_INET, socket.SOCK_STREAM)
+        if six.PY2:
+            sock = socket.SocketType(_sock=sock)
+        sock.listen(CONF.backlog)
+        del os.environ[UMBRELLA_TEST_SOCKET_FD_STR]
+        os.close(fd)
+        return sock
+    return None
+
+
+def is_uuid_like(val):
+    """Returns validation of a value as a UUID.
+
+    For our purposes, a UUID is a canonical form string:
+    aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+    """
+    try:
+        return str(uuid.UUID(val)) == val
+    except (TypeError, ValueError, AttributeError):
+        return False
+
+
+def is_valid_hostname(hostname):
+    """Verify whether a hostname (not an FQDN) is valid."""
+    return re.match('^[a-zA-Z0-9-]+$', hostname) is not None
+
+
+def is_valid_fqdn(fqdn):
+    """Verify whether a host is a valid FQDN."""
+    return re.match('^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', fqdn) is not None
+
+
+def parse_valid_host_port(host_port):
+    """
+    Given a "host:port" string, attempts to parse it as intelligently as
+    possible to determine if it is valid. This includes IPv6 [host]:port form,
+    IPv4 ip:port form, and hostname:port or fqdn:port form.
+
+    Invalid inputs will raise a ValueError, while valid inputs will return
+    a (host, port) tuple where the port will always be of type int.
+    """
+
+    try:
+        try:
+            host, port = netutils.parse_host_port(host_port)
+        except Exception:
+            raise ValueError(_('Host and port "%s" is not valid.') % host_port)
+
+        if not netutils.is_valid_port(port):
+            raise ValueError(_('Port "%s" is not valid.') % port)
+
+        # First check for valid IPv6 and IPv4 addresses, then a generic
+        # hostname. Failing those, if the host includes a period, then this
+        # should pass a very generic FQDN check. The FQDN check for letters at
+        # the tail end will weed out any hilariously absurd IPv4 addresses.
+
+        if not (netutils.is_valid_ipv6(host) or netutils.is_valid_ipv4(host) or
+                is_valid_hostname(host) or is_valid_fqdn(host)):
+            raise ValueError(_('Host "%s" is not valid.') % host)
+
+    except Exception as ex:
+        raise ValueError(_('%s '
+                           'Please specify a host:port pair, where host is an '
+                           'IPv4 address, IPv6 address, hostname, or FQDN. If '
+                           'using an IPv6 address, enclose it in brackets '
+                           'separately from the port (i.e., '
+                           '"[fe80::a:b:c]:9876").') % ex)
+
+    return (host, int(port))
+
+
+def exception_to_str(exc):
+    try:
+        error = six.text_type(exc)
+    except UnicodeError:
+        try:
+            error = str(exc)
+        except UnicodeError:
+            error = ("Caught '%(exception)s' exception." %
+                     {"exception": exc.__class__.__name__})
+    return encodeutils.safe_encode(error, errors='ignore')
+
+
+try:
+    REGEX_4BYTE_UNICODE = re.compile(u'[\U00010000-\U0010ffff]')
+except re.error:
+    # UCS-2 build case
+    REGEX_4BYTE_UNICODE = re.compile(u'[\uD800-\uDBFF][\uDC00-\uDFFF]')
+
+
+def no_4byte_params(f):
+    """
+    Checks that no 4 byte unicode characters are allowed
+    in dicts' keys/values and string's parameters
+    """
+    def wrapper(*args, **kwargs):
+
+        def _is_match(some_str):
+            return (isinstance(some_str, six.text_type) and
+                    REGEX_4BYTE_UNICODE.findall(some_str) != [])
+
+        def _check_dict(data_dict):
+            # a dict of dicts has to be checked recursively
+            for key, value in six.iteritems(data_dict):
+                if isinstance(value, dict):
+                    _check_dict(value)
+                else:
+                    if _is_match(key):
+                        msg = _("Property names can't contain 4 byte unicode.")
+                        raise exception.Invalid(msg)
+                    if _is_match(value):
+                        msg = (_("%s can't contain 4 byte unicode characters.")
+                               % key.title())
+                        raise exception.Invalid(msg)
+
+        for data_dict in [arg for arg in args if isinstance(arg, dict)]:
+            _check_dict(data_dict)
+        # now check args for str values
+        for arg in args:
+            if _is_match(arg):
+                msg = _("Param values can't contain 4 byte unicode.")
+                raise exception.Invalid(msg)
+        # check kwargs as well, as params are passed as kwargs via
+        # registry calls
+        _check_dict(kwargs)
+        return f(*args, **kwargs)
+    return wrapper
+
+
+def validate_mysql_int(*args, **kwargs):
+    """
+    Make sure that all arguments are less than 2 ** 31 - 1.
+
+    This limitation is introduced because mysql stores INT in 4 bytes.
+    If the validation fails for some argument, exception.Invalid is raised with
+    appropriate information.
+    """
+    max_int = (2 ** 31) - 1
+    for param in args:
+        if param > max_int:
+            msg = _("Value %(value)d out of range, "
+                    "must not exceed %(max)d") % {"value": param,
+                                                  "max": max_int}
+            raise exception.Invalid(msg)
+
+    for param_str in kwargs:
+        param = kwargs.get(param_str)
+        if param and param > max_int:
+            msg = _("'%(param)s' value out of range, "
+                    "must not exceed %(max)d") % {"param": param_str,
+                                                  "max": max_int}
+            raise exception.Invalid(msg)
+
+
+def stash_conf_values():
+    """
+    Make a copy of some of the current global CONF's settings.
+    Allows determining if any of these values have changed
+    when the config is reloaded.
+    """
+    conf = {}
+    conf['bind_host'] = CONF.bind_host
+    conf['bind_port'] = CONF.bind_port
+    conf['tcp_keepidle'] = CONF.cert_file
+    conf['backlog'] = CONF.backlog
+    conf['key_file'] = CONF.key_file
+    conf['cert_file'] = CONF.cert_file
+
+    return conf
+
+
+def get_search_plugins():
+    namespace = 'umbrella.search.index_backend'
+    ext_manager = stevedore.extension.ExtensionManager(
+        namespace, invoke_on_load=True)
+    return ext_manager.extensions
+
+
+class LoopingCall(object):
+    def __init__(self, f=None, *args, **kw):
+        self.args = args
+        self.kw = kw
+        self.f = f
+        self._running = False
+
+    def start(self, interval, initial_delay=None):
+        self._running = True
+        done = event.Event()
+
+        def _inner():
+            if initial_delay:
+                greenthread.sleep(initial_delay)
+
+            try:
+                while self._running:
+                    self.f(*self.args, **self.kw)
+                    if not self._running:
+                        break
+                    greenthread.sleep(interval)
+            except LoopingCallDone, e:
+                self.stop()
+                done.send(e.retvalue)
+            except Exception:
+                LOG.exception(_('in looping call'))
+                done.send_exception(*sys.exc_info())
+                return
+            else:
+                done.send(True)
+
+        self.done = done
+
+        greenthread.spawn(_inner)
+        return self.done
+
+    def stop(self):
+        self._running = False
+
+    def wait(self):
+        return self.done.wait()
