@@ -72,9 +72,8 @@ class Controller():
         return timeStr
 
     def get_net_sample(self, req, instance_uuid):
-        import ipdb;ipdb.set_trace()
         params = {}
-        params.update(req.GET)        
+        params.update(req.GET)
         start_time = self.time_format(params['start'])
         end_time = self.time_format(params['end'])
         session = db_api.get_session()
@@ -90,7 +89,7 @@ class Controller():
 
     def get_disk_sample(self, req, instance_uuid):
         params = {}
-        params.update(req.GET)        
+        params.update(req.GET)
         start_time = self.time_format(params['start'])
         end_time = self.time_format(params['end'])
         session = db_api.get_session()
@@ -106,7 +105,7 @@ class Controller():
 
     def get_cpu_sample(self, req, instance_uuid):
         params = {}
-        params.update(req.GET)        
+        params.update(req.GET)
         start_time = self.time_format(params['start'])
         end_time = self.time_format(params['end'])
         session = db_api.get_session()
@@ -122,7 +121,7 @@ class Controller():
 
     def get_mem_sample(self, req, instance_uuid):
         params = {}
-        params.update(req.GET)        
+        params.update(req.GET)
         start_time = self.time_format(params['start'])
         end_time = self.time_format(params['end'])
         session = db_api.get_session()

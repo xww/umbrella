@@ -1,3 +1,5 @@
+import os
+import string
 import random
 import time
 from eventlet import greenthread
@@ -5,6 +7,7 @@ from lxml import etree
 from oslo_config import cfg
 from oslo_log import log as logging
 from umbrella import i18n
+from umbrella.common import utils
 
 from umbrella.virt import libvirt
 from umbrella.db.sqlalchemy import api as db_api
@@ -79,6 +82,15 @@ class NetController(object):
                 nics['tx_packets'] = nics.get('tx_packets',
                                               0) + iface_stats[5]
                 domain_sample['net'] = nics
+
+            # for public netfow static
+            chain_name = string.atoi(domain.name()[9:],16)
+            #cmdz = "iptables -L -nv|grep yinst|grep -v Chain|grep yinst-1036|awk '{print $2}'"
+            cmdz = "iptables -L -nv|grep zinst|grep -v Chain|grep zinst-"+chain_name+"|awk '{print $2}'"
+            resultz = os.popen(cmdz).read()
+            cmdy = "iptables -L -nv|grep yinst|grep -v Chain|grep yinst-"+chain_name+"|awk '{print $2}'"
+            resultz = os.popen(cmdz).read()
+
 
             domain_sample['time'] = time.time()
 

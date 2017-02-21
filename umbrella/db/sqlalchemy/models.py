@@ -126,10 +126,18 @@ class Net(BASE, UmbrellaBase):
     id = Column(Integer, primary_key=True, autoincrement=True)
     instance_uuid = Column(String(30), nullable=False)
     tenant_id = Column(String(30), nullable=False)
-    rx_packets_rate = Column(Integer)
-    rx_bytes_rate = Column(Integer)
-    tx_packets_rate = Column(Integer)
-    tx_bytes_rate = Column(Integer)
+    total_packets_rate_rx = Column(Integer)
+    total_bytes_rate_rx = Column(Integer)
+    total_packets_rate_tx = Column(Integer)
+    total_bytes_rate_tx = Column(Integer)
+    pubnet_bytes_tx = Column(Integer)
+    pubnet_bytes_rx = Column(Integer)
+    pubnet_packets_tx = Column(Integer)
+    pubnet_packets_rx = Column(Integer)
+    pubnet_bytes_rate_tx = Column(Integer)
+    pubnet_bytes_rate_rx = Column(Integer)
+    pubnet_packets_rate_tx = Column(Integer)
+    pubnet_packets_rate_rx = Column(Integer)
 
 
 class Disk(BASE, UmbrellaBase):
@@ -170,3 +178,13 @@ class Mem(BASE, UmbrellaBase):
     instance_uuid = Column(String(30), nullable=False)
     tenant_id = Column(String(30), nullable=False)
     mem_used = Column(Integer)
+
+
+    pubnet_bytes_tx = Column(Integer)
+    pubnet_bytes_rx = Column(Integer)
+    pubnet_packets_tx = Column(Integer)
+    pubnet_packets_rx = Column(Integer)
+    pubnet_bytes_rate_tx = Column(Integer)
+    pubnet_bytes_rate_rx = Column(Integer)
+    pubnet_packets_rate_tx = Column(Integer)
+    pubnet_packets_rate_rx = Column(Integer)

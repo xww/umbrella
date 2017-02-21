@@ -84,25 +84,3 @@ class LibvirtInspector(object):
     #    dom_info = domain.info()
     #    return virt_inspector.CPUStats(number=dom_info[3], time=dom_info[4])
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

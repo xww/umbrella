@@ -18,7 +18,6 @@ from sqlalchemy.schema import (Column, MetaData, Table)
 from umbrella.db.sqlalchemy.migrate_repo.schema import (
     Boolean, DateTime, Integer, String, Text, create_tables, drop_tables)  # noqa
 
-
 def define_net_table(meta):
     net = Table('net',
                    meta,
@@ -27,10 +26,18 @@ def define_net_table(meta):
                    Column('instance_uuid', String(40), nullable=False,
                           index=True),
                    Column('tenant_id', String(40), nullable=False, index=True),
-                   Column('rx_packets_rate', Integer()),
-                   Column('rx_bytes_rate', Integer()),
-                   Column('tx_packets_rate', Integer()),
-                   Column('tx_bytes_rate', Integer()),
+                   Column('total_packets_rate_rx', Integer()),
+                   Column('total_bytes_rate_rx', Integer()),
+                   Column('total_packets_rate_tx', Integer()),
+                   Column('total_bytes_rate_tx', Integer()),
+                   Column('pubnet_bytes_tx', Integer()),
+                   Column('pubnet_bytes_rx', Integer()),
+                   Column('pubnet_packets_tx', Integer()),
+                   Column('pubnet_packets_rx', Integer()),
+                   Column('pubnet_bytes_rate_tx', Integer()),
+                   Column('pubnet_bytes_rate_rx', Integer()),
+                   Column('pubnet_packets_rate_tx', Integer()),
+                   Column('pubnet_packets_rate_rx', Integer()),
                    Column('created_at', DateTime(), nullable=False),
                    Column('updated_at', DateTime()),
                    mysql_engine='InnoDB',

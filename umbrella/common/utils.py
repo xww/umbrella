@@ -608,6 +608,15 @@ def parse_valid_host_port(host_port):
     return (host, int(port))
 
 
+def execute(*cmd, **kwargs):
+    """Convenience wrapper around oslo's execute() method."""
+    if 'run_as_root' in kwargs and 'root_helper' not in kwargs:
+        kwargs['root_helper'] = _get_root_helper()
+    return processutils.execute(*cmd, **kwargs)
+
+def execute_cmd(*cmd):
+    return os.popen(cmd)
+
 def exception_to_str(exc):
     try:
         error = six.text_type(exc)

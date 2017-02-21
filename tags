@@ -1,0 +1,1683 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ACTIVE_IMMUTABLE	umbrella/api/v1/__init__.py	/^ACTIVE_IMMUTABLE = ('size', 'checksum')$/;"	v
+API	umbrella/api/router.py	/^class API(wsgi.Router):$/;"	c
+API	umbrella/api/v1/router.py	/^class API(wsgi.Router):$/;"	c
+APIMapper	umbrella/common/wsgi.py	/^class APIMapper(routes.Mapper):$/;"	c
+ASYNC_EVENTLET_THREAD_POOL_LIST	umbrella/common/wsgi.py	/^ASYNC_EVENTLET_THREAD_POOL_LIST = []$/;"	v
+AlarmCheck	umbrella/monitor/alarm.py	/^class AlarmCheck(object):$/;"	c
+AlarmTest	umbrella/tests/alarm_test.py	/^class AlarmTest(base.IsolatedUnitTest):$/;"	c
+ArgsAlreadyParsedError	umbrella/common/cfg.py	/^class ArgsAlreadyParsedError(Error):$/;"	c
+ArtifactCircularDependency	umbrella/common/exception.py	/^class ArtifactCircularDependency(Invalid):$/;"	c
+ArtifactDuplicateDirectDependency	umbrella/common/exception.py	/^class ArtifactDuplicateDirectDependency(Duplicate):$/;"	c
+ArtifactDuplicateNameTypeVersion	umbrella/common/exception.py	/^class ArtifactDuplicateNameTypeVersion(Duplicate):$/;"	c
+ArtifactDuplicateTransitiveDependency	umbrella/common/exception.py	/^class ArtifactDuplicateTransitiveDependency(Duplicate):$/;"	c
+ArtifactForbidden	umbrella/common/exception.py	/^class ArtifactForbidden(Forbidden):$/;"	c
+ArtifactInvalidProperty	umbrella/common/exception.py	/^class ArtifactInvalidProperty(Invalid):$/;"	c
+ArtifactInvalidPropertyParameter	umbrella/common/exception.py	/^class ArtifactInvalidPropertyParameter(Invalid):$/;"	c
+ArtifactInvalidStateTransition	umbrella/common/exception.py	/^class ArtifactInvalidStateTransition(Invalid):$/;"	c
+ArtifactLoadError	umbrella/common/exception.py	/^class ArtifactLoadError(UmbrellaException):$/;"	c
+ArtifactNonMatchingTypeName	umbrella/common/exception.py	/^class ArtifactNonMatchingTypeName(ArtifactLoadError):$/;"	c
+ArtifactNotFound	umbrella/common/exception.py	/^class ArtifactNotFound(NotFound):$/;"	c
+ArtifactPluginNotFound	umbrella/common/exception.py	/^class ArtifactPluginNotFound(NotFound):$/;"	c
+ArtifactPropertyValueNotFound	umbrella/common/exception.py	/^class ArtifactPropertyValueNotFound(NotFound):$/;"	c
+ArtifactUnsupportedPropertyOperator	umbrella/common/exception.py	/^class ArtifactUnsupportedPropertyOperator(Invalid):$/;"	c
+ArtifactUnsupportedShowLevel	umbrella/common/exception.py	/^class ArtifactUnsupportedShowLevel(Invalid):$/;"	c
+AuthBadRequest	umbrella/common/exception.py	/^class AuthBadRequest(UmbrellaException):$/;"	c
+AuthContextMiddleware	umbrella/api/middleware/context.py	/^class AuthContextMiddleware(ContextMiddleware):$/;"	c
+AuthUrlNotFound	umbrella/common/exception.py	/^class AuthUrlNotFound(UmbrellaException):$/;"	c
+AuthorizationFailure	umbrella/common/exception.py	/^class AuthorizationFailure(UmbrellaException):$/;"	c
+AuthorizationRedirect	umbrella/common/exception.py	/^class AuthorizationRedirect(UmbrellaException):$/;"	c
+BASE	umbrella/db/sqlalchemy/api.py	/^BASE = models.BASE$/;"	v
+BASE	umbrella/db/sqlalchemy/models.py	/^BASE = declarative_base()$/;"	v
+BASE_MODEL_ATTRS	umbrella/db/__init__.py	/^BASE_MODEL_ATTRS = set(['id', 'created_at', 'updated_at', 'deleted_at',$/;"	v
+BUILDING	umbrella/api/server.py	/^BUILDING = 0x09$/;"	v
+BadAuthStrategy	umbrella/common/exception.py	/^class BadAuthStrategy(UmbrellaException):$/;"	c
+BadDriverConfiguration	umbrella/common/exception.py	/^class BadDriverConfiguration(UmbrellaException):$/;"	c
+BadRegistryConnectionConfiguration	umbrella/common/exception.py	/^class BadRegistryConnectionConfiguration(UmbrellaException):$/;"	c
+BadStoreUri	umbrella/common/exception.py	/^class BadStoreUri(UmbrellaException):$/;"	c
+BadTaskConfiguration	umbrella/common/exception.py	/^class BadTaskConfiguration(UmbrellaException):$/;"	c
+BaseClient	umbrella/common/client.py	/^class BaseClient(object):$/;"	c
+BaseClient	umbrella/openstack/client.py	/^class BaseClient(client.BaseClient):$/;"	c
+BaseParser	umbrella/common/iniparser.py	/^class BaseParser(object):$/;"	c
+BaseStrategy	umbrella/common/auth.py	/^class BaseStrategy(object):$/;"	c
+BaseTest	umbrella/tests/__init__.py	/^class BaseTest(unittest.TestCase):$/;"	c
+BaseTestCase	umbrella/tests/utils.py	/^class BaseTestCase(unittest.TestCase):$/;"	c
+BigInteger	umbrella/db/sqlalchemy/migrate_repo/schema.py	/^BigInteger = lambda: sqlalchemy.types.BigInteger()$/;"	v
+BoolOpt	umbrella/common/cfg.py	/^class BoolOpt(Opt):$/;"	c
+Boolean	umbrella/db/sqlalchemy/migrate_repo/schema.py	/^Boolean = lambda: sqlalchemy.types.Boolean(create_constraint=True, name=None)$/;"	v
+CATEGORIES	umbrella/cmd/manage.py	/^CATEGORIES = {$/;"	v
+CHECK_ATTRIBUTES	umbrella/monitor/alarm.py	/^CHECK_ATTRIBUTES = [$/;"	v
+CHUNKSIZE	umbrella/common/client.py	/^CHUNKSIZE = 65536$/;"	v
+CONF	umbrella/api/__init__.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/api/image.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/api/middleware/context.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/api/monitor.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/api/server.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/api/v1/api.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/api/v1/myservers.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/cmd/api.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/cmd/collector.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/cmd/manage.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/common/cfg.py	/^CONF = CommonConfigOpts()$/;"	v
+CONF	umbrella/common/config.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/common/log.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/common/utils.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/common/wsgi.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/db/__init__.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/db/sqlalchemy/api.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/db/sqlalchemy/migration.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/monitor/alarm.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/monitor/manager.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/monitor/monitor.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/openstack/api.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/openstack/client.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/tests/base.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/tests/db_test.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/tests/utils.py	/^CONF = cfg.CONF$/;"	v
+CONF	umbrella/virt/libvirt.py	/^CONF = cfg.CONF$/;"	v
+CRASHED	umbrella/api/server.py	/^CRASHED = 0x06$/;"	v
+Calculator	umbrella/api/v1/example.py	/^class Calculator():$/;"	c
+Calculator	umbrella/api/v1/pastedeploylab.py	/^class Calculator():$/;"	c
+ClientConfigurationError	umbrella/common/exception.py	/^class ClientConfigurationError(UmbrellaException):$/;"	c
+ClientConnectionError	umbrella/common/exception.py	/^class ClientConnectionError(UmbrellaException):$/;"	c
+ColorHandler	umbrella/common/log.py	/^class ColorHandler(logging.StreamHandler):$/;"	c
+CommonConfigOpts	umbrella/common/cfg.py	/^class CommonConfigOpts(ConfigOpts):$/;"	c
+ConfigFileParseError	umbrella/common/cfg.py	/^class ConfigFileParseError(Error):$/;"	c
+ConfigFileValueError	umbrella/common/cfg.py	/^class ConfigFileValueError(Error):$/;"	c
+ConfigFilesNotFoundError	umbrella/common/cfg.py	/^class ConfigFilesNotFoundError(Error):$/;"	c
+ConfigOpts	umbrella/common/cfg.py	/^class ConfigOpts(collections.Mapping):$/;"	c
+ConfigParser	umbrella/common/cfg.py	/^class ConfigParser(iniparser.BaseParser):$/;"	c
+Conflict	umbrella/common/exception.py	/^class Conflict(UmbrellaException):$/;"	c
+Connection	umbrella/virt/libvirt.py	/^Connection = None$/;"	v
+ContextAdapter	umbrella/common/log.py	/^class ContextAdapter(logging.LoggerAdapter):$/;"	c
+ContextMiddleware	umbrella/api/middleware/context.py	/^class ContextMiddleware(wsgi.Middleware):$/;"	c
+Controller	umbrella/api/image.py	/^class Controller(object):$/;"	c
+Controller	umbrella/api/monitor.py	/^class Controller():$/;"	c
+Controller	umbrella/api/server.py	/^class Controller():$/;"	c
+Controller	umbrella/api/statistic.py	/^class Controller(object):$/;"	c
+Controller	umbrella/api/user.py	/^class Controller():$/;"	c
+Controller	umbrella/api/v1/api.py	/^class Controller():$/;"	c
+Controller	umbrella/api/v1/myservers.py	/^class Controller():$/;"	c
+ControllerTest	umbrella/tests/server_test.py	/^class ControllerTest(base.IsolatedUnitTest):$/;"	c
+ControllerTest	umbrella/tests/statistic_test.py	/^class ControllerTest(base.IsolatedUnitTest):$/;"	c
+CooperativeReader	umbrella/common/utils.py	/^class CooperativeReader(object):$/;"	c
+Cpu	umbrella/db/sqlalchemy/models.py	/^class Cpu(BASE, UmbrellaBase):$/;"	c
+CpuController	umbrella/monitor/cpu.py	/^class CpuController(object):$/;"	c
+DB_API	umbrella/tests/db_test.py	/^DB_API = db.get_api()$/;"	v
+DEFAULT_CA_FILE_PATH	umbrella/common/client.py	/^    DEFAULT_CA_FILE_PATH = ('\/etc\/ssl\/certs\/ca-certificates.crt:'$/;"	v	class:BaseClient
+DEFAULT_CHANGE_SINCE_SECONDS	umbrella/api/statistic.py	/^DEFAULT_CHANGE_SINCE_SECONDS = 3600 * 24 * 30$/;"	v
+DEFAULT_DOC_ROOT	umbrella/common/client.py	/^    DEFAULT_DOC_ROOT = None$/;"	v	class:BaseClient
+DEFAULT_LOG_DATE_FORMAT	umbrella/common/cfg.py	/^    DEFAULT_LOG_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"$/;"	v	class:CommonConfigOpts
+DEFAULT_LOG_FORMAT	umbrella/common/cfg.py	/^    DEFAULT_LOG_FORMAT = "%(asctime)s %(levelname)8s [%(name)s] %(message)s"$/;"	v	class:CommonConfigOpts
+DEFAULT_PORT	umbrella/common/client.py	/^    DEFAULT_PORT = 80$/;"	v	class:BaseClient
+DateTime	umbrella/db/sqlalchemy/migrate_repo/schema.py	/^DateTime = lambda: sqlalchemy.types.DateTime(timezone=False)$/;"	v
+DbCommands	umbrella/cmd/manage.py	/^class DbCommands(object):$/;"	c
+DbLegacyCommands	umbrella/cmd/manage.py	/^class DbLegacyCommands(object):$/;"	c
+Debug	umbrella/common/wsgi.py	/^class Debug(Middleware):$/;"	c
+Disk	umbrella/db/sqlalchemy/models.py	/^class Disk(BASE, UmbrellaBase):$/;"	c
+DiskController	umbrella/monitor/disk.py	/^class DiskController(object):$/;"	c
+Distro	tools/install_venv_common.py	/^class Distro(InstallVenv):$/;"	c
+Duplicate	umbrella/common/exception.py	/^class Duplicate(UmbrellaException):$/;"	c
+DuplicateLocation	umbrella/common/exception.py	/^class DuplicateLocation(Duplicate):$/;"	c
+DuplicateOptError	umbrella/common/cfg.py	/^class DuplicateOptError(Error):$/;"	c
+Error	umbrella/common/cfg.py	/^class Error(Exception):$/;"	c
+ExceptionMiddleware	umbrella/api/middleware/exc_filter.py	/^class ExceptionMiddleware(wsgi.Middleware):$/;"	c
+FEATURE_BLACKLIST	umbrella/common/utils.py	/^FEATURE_BLACKLIST = ['content-length', 'content-type', 'x-image-meta-size']$/;"	v
+FLOAT_IP_REQUEST_PATH	umbrella/monitor/manager.py	/^FLOAT_IP_REQUEST_PATH = "\/{tenant_id}\/os-floating-ips-search"$/;"	v
+FakeAuthMiddleware	umbrella/tests/utils.py	/^class FakeAuthMiddleware(wsgi.Middleware):$/;"	c
+FakeDB	umbrella/tests/utils.py	/^class FakeDB(object):$/;"	c
+FakeHTTPResponse	umbrella/tests/utils.py	/^class FakeHTTPResponse(object):$/;"	c
+Fedora	tools/install_venv_common.py	/^class Fedora(Distro):$/;"	c
+FilterTest	umbrella/tests/filter_test.py	/^class FilterTest(tests.BaseTest):$/;"	c
+FloatOpt	umbrella/common/cfg.py	/^class FloatOpt(Opt):$/;"	c
+Forbidden	umbrella/common/exception.py	/^class Forbidden(UmbrellaException):$/;"	c
+ForbiddenPublicImage	umbrella/common/exception.py	/^class ForbiddenPublicImage(Forbidden):$/;"	c
+GLANCE_OPTS	umbrella/openstack/client.py	/^GLANCE_OPTS = [$/;"	v
+GlanceClient	umbrella/openstack/client.py	/^class GlanceClient(BaseClient):$/;"	c
+Global	umbrella/common/local.py	/^class Global(object):$/;"	c
+GroupAttr	umbrella/common/cfg.py	/^    class GroupAttr(collections.Mapping):$/;"	c	class:ConfigOpts
+HOST_REQUEST_PATH	umbrella/monitor/manager.py	/^HOST_REQUEST_PATH = "\/{tenant_id}\/os-hosts"$/;"	v
+HTTPSClientAuthConnection	umbrella/common/client.py	/^class HTTPSClientAuthConnection(httplib.HTTPSConnection):$/;"	c
+IMAGE_META_HEADERS	umbrella/common/utils.py	/^IMAGE_META_HEADERS = ['x-image-meta-location', 'x-image-meta-size',$/;"	v
+IMAGE_REMOVE_PROPERTIES	umbrella/api/image.py	/^IMAGE_REMOVE_PROPERTIES = ["each_time_info", "image_total_info"]$/;"	v
+INIT_VERSION	umbrella/db/migration.py	/^INIT_VERSION = 0$/;"	v
+ImageBodyIterator	umbrella/common/client.py	/^class ImageBodyIterator(object):$/;"	c
+ImageDataNotFound	umbrella/common/exception.py	/^class ImageDataNotFound(NotFound):$/;"	c
+ImageLocationLimitExceeded	umbrella/common/exception.py	/^class ImageLocationLimitExceeded(LimitExceeded):$/;"	c
+ImageMemberLimitExceeded	umbrella/common/exception.py	/^class ImageMemberLimitExceeded(LimitExceeded):$/;"	c
+ImageNotFound	umbrella/common/exception.py	/^class ImageNotFound(NotFound):$/;"	c
+ImagePropertyLimitExceeded	umbrella/common/exception.py	/^class ImagePropertyLimitExceeded(LimitExceeded):$/;"	c
+ImageSerialize	umbrella/api/image.py	/^class ImageSerialize(wsgi.JSONResponseSerializer):$/;"	c
+ImageSizeLimitExceeded	umbrella/common/exception.py	/^class ImageSizeLimitExceeded(UmbrellaException):$/;"	c
+ImageTagLimitExceeded	umbrella/common/exception.py	/^class ImageTagLimitExceeded(LimitExceeded):$/;"	c
+InstallVenv	tools/install_venv_common.py	/^class InstallVenv(object):$/;"	c
+IntOpt	umbrella/common/cfg.py	/^class IntOpt(Opt):$/;"	c
+Integer	umbrella/db/sqlalchemy/migrate_repo/schema.py	/^Integer = lambda: sqlalchemy.types.Integer()$/;"	v
+Invalid	umbrella/common/exception.py	/^class Invalid(UmbrellaException):$/;"	c
+InvalidArtifactPropertyValue	umbrella/common/exception.py	/^class InvalidArtifactPropertyValue(Invalid):$/;"	c
+InvalidArtifactStateTransition	umbrella/common/exception.py	/^class InvalidArtifactStateTransition(Invalid):$/;"	c
+InvalidArtifactTypeDefinition	umbrella/common/exception.py	/^class InvalidArtifactTypeDefinition(Invalid):$/;"	c
+InvalidArtifactTypePropertyDefinition	umbrella/common/exception.py	/^class InvalidArtifactTypePropertyDefinition(Invalid):$/;"	c
+InvalidContentType	umbrella/common/exception.py	/^class InvalidContentType(UmbrellaException):$/;"	c
+InvalidFilterRangeValue	umbrella/common/exception.py	/^class InvalidFilterRangeValue(Invalid):$/;"	c
+InvalidImageStatusTransition	umbrella/common/exception.py	/^class InvalidImageStatusTransition(Invalid):$/;"	c
+InvalidJsonPatchBody	umbrella/common/exception.py	/^class InvalidJsonPatchBody(JsonPatchException):$/;"	c
+InvalidJsonPatchPath	umbrella/common/exception.py	/^class InvalidJsonPatchPath(JsonPatchException):$/;"	c
+InvalidObject	umbrella/common/exception.py	/^class InvalidObject(UmbrellaException):$/;"	c
+InvalidOptionValue	umbrella/common/exception.py	/^class InvalidOptionValue(Invalid):$/;"	c
+InvalidParameterValue	umbrella/common/exception.py	/^class InvalidParameterValue(Invalid):$/;"	c
+InvalidPropertyProtectionConfiguration	umbrella/common/exception.py	/^class InvalidPropertyProtectionConfiguration(Invalid):$/;"	c
+InvalidRedirect	umbrella/common/exception.py	/^class InvalidRedirect(UmbrellaException):$/;"	c
+InvalidSortDir	umbrella/common/exception.py	/^class InvalidSortDir(Invalid):$/;"	c
+InvalidSortKey	umbrella/common/exception.py	/^class InvalidSortKey(Invalid):$/;"	c
+InvalidTaskStatus	umbrella/common/exception.py	/^class InvalidTaskStatus(TaskException, Invalid):$/;"	c
+InvalidTaskStatusTransition	umbrella/common/exception.py	/^class InvalidTaskStatusTransition(TaskException, Invalid):$/;"	c
+InvalidTaskType	umbrella/common/exception.py	/^class InvalidTaskType(TaskException, Invalid):$/;"	c
+InvalidVersion	umbrella/common/exception.py	/^class InvalidVersion(Invalid):$/;"	c
+IsolatedUnitTest	umbrella/tests/base.py	/^class IsolatedUnitTest(test_utils.BaseTestCase):$/;"	c
+JSONEncodedDict	umbrella/db/sqlalchemy/models.py	/^class JSONEncodedDict(TypeDecorator):$/;"	c
+JSONFormatter	umbrella/common/log.py	/^class JSONFormatter(logging.Formatter):$/;"	c
+JSONRequestDeserializer	umbrella/common/wsgi.py	/^class JSONRequestDeserializer(object):$/;"	c
+JSONResponseSerializer	umbrella/common/wsgi.py	/^class JSONResponseSerializer(object):$/;"	c
+JsonPatchException	umbrella/common/exception.py	/^class JsonPatchException(UmbrellaException):$/;"	c
+KEYSTONE_OPTS	umbrella/openstack/client.py	/^KEYSTONE_OPTS = [$/;"	v
+KeystoneAdminClient	umbrella/openstack/client.py	/^class KeystoneAdminClient(BaseClient):$/;"	c
+KeystonePublicClient	umbrella/openstack/client.py	/^class KeystonePublicClient(BaseClient):$/;"	c
+KeystoneStrategy	umbrella/common/auth.py	/^class KeystoneStrategy(BaseStrategy):$/;"	c
+LEVEL_COLORS	umbrella/common/log.py	/^    LEVEL_COLORS = {$/;"	v	class:ColorHandler
+LOG	umbrella/api/image.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/api/list_operation/filter.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/api/list_operation/sort.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/api/middleware/context.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/api/middleware/exc_filter.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/api/monitor.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/api/server.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/api/statistic.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/api/user.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/api/v1/api.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/api/v1/myservers.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/cmd/manage.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/common/auth.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/common/client.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/common/local.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/common/utils.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/common/wsgi.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/db/sqlalchemy/api.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/db/sqlalchemy/migrate_repo/schema.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/db/sqlalchemy/migration.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/monitor/alarm.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/monitor/cpu.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/monitor/disk.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/monitor/manager.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/monitor/mem.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/monitor/monitor.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/monitor/net.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/openstack/api.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/openstack/client.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LOG	umbrella/virt/libvirt.py	/^LOG = logging.getLogger(__name__)$/;"	v
+LegacyFormatter	umbrella/common/log.py	/^class LegacyFormatter(logging.Formatter):$/;"	c
+Libvirt	umbrella/virt/libvirt.py	/^Libvirt = None$/;"	v
+LibvirtInspector	umbrella/virt/libvirt.py	/^class LibvirtInspector(object):$/;"	c
+LimitExceeded	umbrella/common/exception.py	/^class LimitExceeded(UmbrellaException):$/;"	c
+LimitingReader	umbrella/common/utils.py	/^class LimitingReader(object):$/;"	c
+ListOpt	umbrella/common/cfg.py	/^class ListOpt(Opt):$/;"	c
+LocalBuildDoc	umbrella/common/setup.py	/^        class LocalBuildDoc(BuildDoc):$/;"	c	class:get_cmdclass.LocalSDist
+LocalSDist	umbrella/common/setup.py	/^    class LocalSDist(sdist.sdist):$/;"	c	function:get_cmdclass
+LogFilter	umbrella/api/v1/example.py	/^class LogFilter():$/;"	c
+LogFilter	umbrella/api/v1/pastedeploylab.py	/^class LogFilter():$/;"	c
+LoopingCall	umbrella/common/utils.py	/^class LoopingCall(object):$/;"	c
+MAX_COOP_READER_BUFFER_SIZE	umbrella/common/utils.py	/^MAX_COOP_READER_BUFFER_SIZE = 134217728  # 128M seems like a sane buffer limit$/;"	v
+MAX_REDIRECTS	umbrella/common/auth.py	/^    MAX_REDIRECTS = 10$/;"	v	class:KeystoneStrategy
+MIGRATE_REPO_PATH	umbrella/db/migration.py	/^MIGRATE_REPO_PATH = os.path.join($/;"	v
+Manager	umbrella/monitor/manager.py	/^class Manager(object):$/;"	c
+ManagerTest	umbrella/tests/test_monitor_manager.py	/^class ManagerTest(tests.BaseTest):$/;"	c
+MaxRedirectsExceeded	umbrella/common/exception.py	/^class MaxRedirectsExceeded(UmbrellaException):$/;"	c
+Mem	umbrella/db/sqlalchemy/models.py	/^class Mem(BASE, UmbrellaBase):$/;"	c
+MemController	umbrella/monitor/mem.py	/^class MemController(object):$/;"	c
+MetadefDuplicateNamespace	umbrella/common/exception.py	/^class MetadefDuplicateNamespace(Duplicate):$/;"	c
+MetadefDuplicateObject	umbrella/common/exception.py	/^class MetadefDuplicateObject(Duplicate):$/;"	c
+MetadefDuplicateProperty	umbrella/common/exception.py	/^class MetadefDuplicateProperty(Duplicate):$/;"	c
+MetadefDuplicateResourceType	umbrella/common/exception.py	/^class MetadefDuplicateResourceType(Duplicate):$/;"	c
+MetadefDuplicateResourceTypeAssociation	umbrella/common/exception.py	/^class MetadefDuplicateResourceTypeAssociation(Duplicate):$/;"	c
+MetadefDuplicateTag	umbrella/common/exception.py	/^class MetadefDuplicateTag(Duplicate):$/;"	c
+MetadefForbidden	umbrella/common/exception.py	/^class MetadefForbidden(Forbidden):$/;"	c
+MetadefIntegrityError	umbrella/common/exception.py	/^class MetadefIntegrityError(Forbidden):$/;"	c
+MetadefNamespaceNotFound	umbrella/common/exception.py	/^class MetadefNamespaceNotFound(NotFound):$/;"	c
+MetadefObjectNotFound	umbrella/common/exception.py	/^class MetadefObjectNotFound(NotFound):$/;"	c
+MetadefPropertyNotFound	umbrella/common/exception.py	/^class MetadefPropertyNotFound(NotFound):$/;"	c
+MetadefResourceTypeAssociationNotFound	umbrella/common/exception.py	/^class MetadefResourceTypeAssociationNotFound(NotFound):$/;"	c
+MetadefResourceTypeNotFound	umbrella/common/exception.py	/^class MetadefResourceTypeNotFound(NotFound):$/;"	c
+MetadefTagNotFound	umbrella/common/exception.py	/^class MetadefTagNotFound(NotFound):$/;"	c
+Metric_Name_Mapping	umbrella/api/statistic.py	/^Metric_Name_Mapping = monitor.Metric_Name_Mapping$/;"	v
+Metric_Name_Mapping	umbrella/monitor/monitor.py	/^Metric_Name_Mapping = {$/;"	v
+Middleware	umbrella/common/wsgi.py	/^class Middleware(object):$/;"	c
+MissingCredentialError	umbrella/common/exception.py	/^class MissingCredentialError(UmbrellaException):$/;"	c
+Monitor	umbrella/monitor/monitor.py	/^class Monitor(object):$/;"	c
+MonitorAPI	umbrella/api/router.py	/^class MonitorAPI(wsgi.Router):$/;"	c
+MonitorTest	umbrella/tests/monitor_test.py	/^class MonitorTest(tests.BaseTest):$/;"	c
+MultiConfigParser	umbrella/common/cfg.py	/^class MultiConfigParser(object):$/;"	c
+MultiStrOpt	umbrella/common/cfg.py	/^class MultiStrOpt(Opt):$/;"	c
+MultipleChoices	umbrella/common/exception.py	/^class MultipleChoices(UmbrellaException):$/;"	c
+NOSTATE	umbrella/api/server.py	/^NOSTATE = 0x00$/;"	v
+NOVA_OPTS	umbrella/openstack/client.py	/^NOVA_OPTS = [$/;"	v
+Net	umbrella/db/sqlalchemy/models.py	/^class Net(BASE, UmbrellaBase):$/;"	c
+NetController	umbrella/monitor/net.py	/^class NetController(object):$/;"	c
+NoAuthStrategy	umbrella/common/auth.py	/^class NoAuthStrategy(BaseStrategy):$/;"	c
+NoSuchGroupError	umbrella/common/cfg.py	/^class NoSuchGroupError(Error):$/;"	c
+NoSuchOptError	umbrella/common/cfg.py	/^class NoSuchOptError(Error, AttributeError):$/;"	c
+NotAuthenticated	umbrella/common/exception.py	/^class NotAuthenticated(UmbrellaException):$/;"	c
+NotFound	umbrella/common/exception.py	/^class NotFound(UmbrellaException):$/;"	c
+NovaClient	umbrella/openstack/client.py	/^class NovaClient(BaseClient):$/;"	c
+NullHandler	umbrella/common/log.py	/^    NullHandler = logging.NullHandler$/;"	v
+NullHandler	umbrella/common/log.py	/^    class NullHandler(logging.Handler):$/;"	c
+Numeric	umbrella/db/sqlalchemy/migrate_repo/schema.py	/^Numeric = lambda: sqlalchemy.types.Numeric()$/;"	v
+OK_RESPONSE_CODES	umbrella/common/client.py	/^    OK_RESPONSE_CODES = ($/;"	v	class:BaseClient
+OPTS	umbrella/virt/libvirt.py	/^OPTS = [$/;"	v
+OfLength	umbrella/common/client.py	/^        class OfLength:$/;"	c	function:SendFileIterator.__iter__
+Opt	umbrella/common/cfg.py	/^class Opt(object):$/;"	c
+OptGroup	umbrella/common/cfg.py	/^class OptGroup(object):$/;"	c
+PAUSED	umbrella/api/server.py	/^PAUSED = 0x03$/;"	v
+PERFECT_TIME_FORMAT	umbrella/common/timeutils.py	/^PERFECT_TIME_FORMAT = "%Y-%m-%dT%H:%M:%S.%f"$/;"	v
+ParseError	umbrella/common/cfg.py	/^class ParseError(iniparser.ParseError):$/;"	c
+ParseError	umbrella/common/iniparser.py	/^class ParseError(Exception):$/;"	c
+PickleType	umbrella/db/sqlalchemy/migrate_repo/schema.py	/^PickleType = lambda: sqlalchemy.types.PickleType()$/;"	v
+PrettyTable	umbrella/common/utils.py	/^class PrettyTable(object):$/;"	c
+ProtectedImageDelete	umbrella/common/exception.py	/^class ProtectedImageDelete(Forbidden):$/;"	c
+ProtectedMetadefNamespaceDelete	umbrella/common/exception.py	/^class ProtectedMetadefNamespaceDelete(Forbidden):$/;"	c
+ProtectedMetadefNamespacePropDelete	umbrella/common/exception.py	/^class ProtectedMetadefNamespacePropDelete(Forbidden):$/;"	c
+ProtectedMetadefObjectDelete	umbrella/common/exception.py	/^class ProtectedMetadefObjectDelete(Forbidden):$/;"	c
+ProtectedMetadefResourceTypeAssociationDelete	umbrella/common/exception.py	/^class ProtectedMetadefResourceTypeAssociationDelete(Forbidden):$/;"	c
+ProtectedMetadefResourceTypeSystemDelete	umbrella/common/exception.py	/^class ProtectedMetadefResourceTypeSystemDelete(Forbidden):$/;"	c
+ProtectedMetadefTagDelete	umbrella/common/exception.py	/^class ProtectedMetadefTagDelete(Forbidden):$/;"	c
+REDIRECT_RESPONSE_CODES	umbrella/common/client.py	/^    REDIRECT_RESPONSE_CODES = ($/;"	v	class:BaseClient
+REGEX_4BYTE_UNICODE	umbrella/common/utils.py	/^    REGEX_4BYTE_UNICODE = re.compile(u'[\\U00010000-\\U0010ffff]')$/;"	v
+REGEX_4BYTE_UNICODE	umbrella/common/utils.py	/^    REGEX_4BYTE_UNICODE = re.compile(u'[\\uD800-\\uDBFF][\\uDC00-\\uDFFF]')$/;"	v
+RPCError	umbrella/common/exception.py	/^class RPCError(UmbrellaException):$/;"	c
+RUNNING	umbrella/api/server.py	/^RUNNING = 0x01$/;"	v
+ReadonlyProperty	umbrella/common/exception.py	/^class ReadonlyProperty(Forbidden):$/;"	c
+RedirectException	umbrella/common/exception.py	/^class RedirectException(Exception):$/;"	c
+RegionAmbiguity	umbrella/common/exception.py	/^class RegionAmbiguity(UmbrellaException):$/;"	c
+RejectMethodController	umbrella/common/wsgi.py	/^class RejectMethodController(object):$/;"	c
+Request	umbrella/common/wsgi.py	/^class Request(webob.Request):$/;"	c
+RequestContext	umbrella/context.py	/^class RequestContext(object):$/;"	c
+RequestDeserializer	umbrella/api/monitor.py	/^class RequestDeserializer(wsgi.JSONRequestDeserializer):$/;"	c
+RequestDeserializer	umbrella/api/statistic.py	/^class RequestDeserializer(wsgi.JSONRequestDeserializer):$/;"	c
+RequiredOptError	umbrella/common/cfg.py	/^class RequiredOptError(Error):$/;"	c
+ReservedProperty	umbrella/common/exception.py	/^class ReservedProperty(Forbidden):$/;"	c
+Resource	umbrella/common/wsgi.py	/^class Resource(object):$/;"	c
+ResponseSerializer	umbrella/api/monitor.py	/^class ResponseSerializer(wsgi.JSONResponseSerializer):$/;"	c
+Router	umbrella/common/wsgi.py	/^class Router(object):$/;"	c
+SENDFILE_SUPPORTED	umbrella/common/client.py	/^    SENDFILE_SUPPORTED = False$/;"	v
+SENDFILE_SUPPORTED	umbrella/common/client.py	/^    SENDFILE_SUPPORTED = True$/;"	v
+SERVERS_REQUEST_PATH	umbrella/api/statistic.py	/^SERVERS_REQUEST_PATH = "\/{tenant_id}\/servers\/detail"$/;"	v
+SHUTDOWN	umbrella/api/server.py	/^SHUTDOWN = 0x04  # the VM is powered off$/;"	v
+SIGHUPInterrupt	umbrella/common/exception.py	/^class SIGHUPInterrupt(UmbrellaException):$/;"	c
+STATUSES	umbrella/db/sqlalchemy/api.py	/^STATUSES = ['active', 'saving', 'queued', 'killed', 'pending_delete',$/;"	v
+SUPPORTED_FILTERS	umbrella/api/v1/__init__.py	/^SUPPORTED_FILTERS = ['name', 'status', 'container_format', 'disk_format',$/;"	v
+SUPPORTED_PARAMS	umbrella/api/v1/__init__.py	/^SUPPORTED_PARAMS = ('limit', 'marker', 'sort_key', 'sort_dir')$/;"	v
+SUSPENDED	umbrella/api/server.py	/^SUSPENDED = 0x07$/;"	v
+SchemaLoadError	umbrella/common/exception.py	/^class SchemaLoadError(UmbrellaException):$/;"	c
+SearchNotAvailable	umbrella/common/exception.py	/^class SearchNotAvailable(UmbrellaException):$/;"	c
+SendFileIterator	umbrella/common/client.py	/^class SendFileIterator:$/;"	c
+Server	umbrella/common/wsgi.py	/^class Server(object):$/;"	c
+ServerError	umbrella/common/exception.py	/^class ServerError(UmbrellaException):$/;"	c
+ServiceUnavailable	umbrella/common/exception.py	/^class ServiceUnavailable(UmbrellaException):$/;"	c
+ShowVersion	umbrella/api/v1/example.py	/^class ShowVersion():$/;"	c
+ShowVersion	umbrella/api/v1/pastedeploylab.py	/^class ShowVersion():$/;"	c
+SortTest	umbrella/tests/sort_test.py	/^class SortTest(unittest.TestCase):$/;"	c
+SqlAlarmExceptionTest	umbrella/tests/db_test.py	/^class SqlAlarmExceptionTest(base.IsolatedUnitTest):$/;"	c
+SqlAlarmTest	umbrella/tests/db_test.py	/^class SqlAlarmTest(base.IsolatedUnitTest):$/;"	c
+SqlSettingExceptionTest	umbrella/tests/db_test.py	/^class SqlSettingExceptionTest(base.IsolatedUnitTest):$/;"	c
+SqlSettingTest	umbrella/tests/db_test.py	/^class SqlSettingTest(base.IsolatedUnitTest):$/;"	c
+StorageQuotaFull	umbrella/common/exception.py	/^class StorageQuotaFull(UmbrellaException):$/;"	c
+StrOpt	umbrella/common/cfg.py	/^class StrOpt(Opt):$/;"	c
+StrSubWrapper	umbrella/common/cfg.py	/^    class StrSubWrapper(object):$/;"	c	class:ConfigOpts
+String	umbrella/db/sqlalchemy/migrate_repo/schema.py	/^String = lambda length: sqlalchemy.types.String($/;"	v
+SubunitTestResult	tools/colorizer.py	/^class SubunitTestResult(testtools.TestResult):$/;"	c
+TIME_FORMAT	umbrella/common/timeutils.py	/^TIME_FORMAT = "%Y-%m-%dT%H:%M:%S"$/;"	v
+TRUE_STR_LIST	umbrella/api/list_operation/filter.py	/^TRUE_STR_LIST = ["1", "true", "y"]$/;"	v
+TaskException	umbrella/common/exception.py	/^class TaskException(UmbrellaException):$/;"	c
+TaskNotFound	umbrella/common/exception.py	/^class TaskNotFound(TaskException, NotFound):$/;"	c
+TemplateSubstitutionError	umbrella/common/cfg.py	/^class TemplateSubstitutionError(Error):$/;"	c
+Text	umbrella/db/sqlalchemy/migrate_repo/schema.py	/^Text = lambda: sqlalchemy.types.Text($/;"	v
+UMBRELLA_TEST_SOCKET_FD_STR	umbrella/common/utils.py	/^UMBRELLA_TEST_SOCKET_FD_STR = 'UMBRELLA_TEST_SOCKET_FD'$/;"	v
+UNIT_COUNT	umbrella/monitor/monitor.py	/^UNIT_COUNT = 'Count'$/;"	v
+UNIT_GB	umbrella/monitor/monitor.py	/^UNIT_GB = 'Gigabytes'$/;"	v
+UNIT_KEY_IN_USAGE	umbrella/monitor/monitor.py	/^UNIT_KEY_IN_USAGE = {$/;"	v
+UNIT_MB	umbrella/monitor/monitor.py	/^UNIT_MB = 'Megabytes'$/;"	v
+USAGE_REQUEST_PATH	umbrella/api/statistic.py	/^USAGE_REQUEST_PATH = manager.USAGE_REQUEST_PATH$/;"	v
+USAGE_REQUEST_PATH	umbrella/monitor/manager.py	/^USAGE_REQUEST_PATH = "\/{tenant_id}\/os-simple-tenant-usage"$/;"	v
+UmbrellaBase	umbrella/db/sqlalchemy/models.py	/^class UmbrellaBase(models.ModelBase, models.TimestampMixin):$/;"	c
+UmbrellaException	umbrella/common/exception.py	/^class UmbrellaException(Exception):$/;"	c
+UnexpectedStatus	umbrella/common/exception.py	/^class UnexpectedStatus(UmbrellaException):$/;"	c
+UnknownArtifactType	umbrella/common/exception.py	/^class UnknownArtifactType(NotFound):$/;"	c
+UnsupportedHeaderFeature	umbrella/common/exception.py	/^class UnsupportedHeaderFeature(UmbrellaException):$/;"	c
+UploadException	umbrella/common/exception.py	/^class UploadException(UmbrellaException):$/;"	c
+Utils	umbrella/tests/sort_test.py	/^class Utils(object):$/;"	c
+VERSION_REGEX	umbrella/common/client.py	/^VERSION_REGEX = re.compile(r"\/?v[0-9\\.]+")$/;"	v
+VersionInfo	umbrella/common/version.py	/^class VersionInfo(object):$/;"	c
+WeakLocal	umbrella/common/local.py	/^class WeakLocal(corolocal.local):$/;"	c
+WorkerCreationFailure	umbrella/common/exception.py	/^class WorkerCreationFailure(UmbrellaException):$/;"	c
+WritableLogger	umbrella/common/log.py	/^class WritableLogger(object):$/;"	c
+_	umbrella/api/v1/api.py	/^_ = i18n._$/;"	v
+_	umbrella/api/v1/myservers.py	/^_ = i18n._$/;"	v
+_	umbrella/cmd/manage.py	/^_ = i18n._$/;"	v
+_	umbrella/common/config.py	/^_ = i18n._$/;"	v
+_	umbrella/common/exception.py	/^_ = i18n._$/;"	v
+_	umbrella/common/gettextutils.py	/^def _(msg):$/;"	f
+_	umbrella/common/utils.py	/^_ = i18n._$/;"	v
+_	umbrella/common/wsgi.py	/^_ = i18n._$/;"	v
+_	umbrella/db/__init__.py	/^_ = i18n._$/;"	v
+_	umbrella/db/sqlalchemy/api.py	/^_ = i18n._$/;"	v
+_	umbrella/i18n.py	/^_ = _translators.primary$/;"	v
+_	umbrella/monitor/cpu.py	/^_ = i18n._$/;"	v
+_	umbrella/monitor/disk.py	/^_ = i18n._$/;"	v
+_	umbrella/monitor/mem.py	/^_ = i18n._$/;"	v
+_	umbrella/monitor/net.py	/^_ = i18n._$/;"	v
+_AnsiColorizer	tools/colorizer.py	/^class _AnsiColorizer(object):$/;"	c
+_FACADE	umbrella/db/sqlalchemy/api.py	/^_FACADE = None$/;"	v
+_FATAL_EXCEPTION_FORMAT_ERRORS	umbrella/common/exception.py	/^_FATAL_EXCEPTION_FORMAT_ERRORS = False$/;"	v
+_IMPL	umbrella/db/migration.py	/^_IMPL = None$/;"	v
+_LC	umbrella/i18n.py	/^_LC = _translators.log_critical$/;"	v
+_LE	umbrella/api/v1/api.py	/^_LE = i18n._LE$/;"	v
+_LE	umbrella/api/v1/myservers.py	/^_LE = i18n._LE$/;"	v
+_LE	umbrella/common/utils.py	/^_LE = i18n._LE$/;"	v
+_LE	umbrella/common/wsgi.py	/^_LE = i18n._LE$/;"	v
+_LE	umbrella/i18n.py	/^_LE = _translators.log_error$/;"	v
+_LE	umbrella/monitor/cpu.py	/^_LE = i18n._LE$/;"	v
+_LE	umbrella/monitor/disk.py	/^_LE = i18n._LE$/;"	v
+_LE	umbrella/monitor/mem.py	/^_LE = i18n._LE$/;"	v
+_LE	umbrella/monitor/net.py	/^_LE = i18n._LE$/;"	v
+_LI	umbrella/api/v1/api.py	/^_LI = i18n._LI$/;"	v
+_LI	umbrella/api/v1/myservers.py	/^_LI = i18n._LI$/;"	v
+_LI	umbrella/common/wsgi.py	/^_LI = i18n._LI$/;"	v
+_LI	umbrella/db/sqlalchemy/migrate_repo/schema.py	/^_LI = i18n._LI$/;"	v
+_LI	umbrella/i18n.py	/^_LI = _translators.log_info$/;"	v
+_LI	umbrella/monitor/cpu.py	/^_LI = i18n._LI$/;"	v
+_LI	umbrella/monitor/disk.py	/^_LI = i18n._LI$/;"	v
+_LI	umbrella/monitor/mem.py	/^_LI = i18n._LI$/;"	v
+_LI	umbrella/monitor/net.py	/^_LI = i18n._LI$/;"	v
+_LOCK	umbrella/db/migration.py	/^_LOCK = threading.Lock()$/;"	v
+_LOCK	umbrella/db/sqlalchemy/api.py	/^_LOCK = threading.Lock()$/;"	v
+_LW	umbrella/api/v1/api.py	/^_LW = i18n._LW$/;"	v
+_LW	umbrella/api/v1/myservers.py	/^_LW = i18n._LW$/;"	v
+_LW	umbrella/common/wsgi.py	/^_LW = i18n._LW$/;"	v
+_LW	umbrella/db/sqlalchemy/api.py	/^_LW = i18n._LW$/;"	v
+_LW	umbrella/i18n.py	/^_LW = _translators.log_warning$/;"	v
+_LW	umbrella/monitor/cpu.py	/^_LW = i18n._LW$/;"	v
+_LW	umbrella/monitor/disk.py	/^_LW = i18n._LW$/;"	v
+_LW	umbrella/monitor/mem.py	/^_LW = i18n._LW$/;"	v
+_LW	umbrella/monitor/net.py	/^_LW = i18n._LW$/;"	v
+_NullColorizer	tools/colorizer.py	/^class _NullColorizer(object):$/;"	c
+_STATE_MAP	umbrella/api/server.py	/^_STATE_MAP = {$/;"	v
+_Win32Colorizer	tools/colorizer.py	/^class _Win32Colorizer(object):$/;"	c
+__call__	umbrella/api/middleware/exc_filter.py	/^    def __call__(self, req):$/;"	m	class:ExceptionMiddleware	file:
+__call__	umbrella/api/v1/example.py	/^    def __call__(self,environ,start_response):$/;"	m	class:Calculator	file:
+__call__	umbrella/api/v1/example.py	/^    def __call__(self,environ,start_response):$/;"	m	class:LogFilter	file:
+__call__	umbrella/api/v1/example.py	/^    def __call__(self,environ,start_response):$/;"	m	class:ShowVersion	file:
+__call__	umbrella/api/v1/pastedeploylab.py	/^    def __call__(self,environ,start_response):$/;"	m	class:Calculator	file:
+__call__	umbrella/api/v1/pastedeploylab.py	/^    def __call__(self,environ,start_response):$/;"	m	class:LogFilter	file:
+__call__	umbrella/api/v1/pastedeploylab.py	/^    def __call__(self,environ,start_response):$/;"	m	class:ShowVersion	file:
+__call__	umbrella/common/cfg.py	/^    def __call__(self,$/;"	m	class:ConfigOpts	file:
+__call__	umbrella/common/wsgi.py	/^    def __call__(self, req):$/;"	m	class:Debug	file:
+__call__	umbrella/common/wsgi.py	/^    def __call__(self, req):$/;"	m	class:Middleware	file:
+__call__	umbrella/common/wsgi.py	/^    def __call__(self, req):$/;"	m	class:Router	file:
+__call__	umbrella/common/wsgi.py	/^    def __call__(self, request):$/;"	m	class:Resource	file:
+__call__	umbrella/tests/utils.py	/^    def __call__(self, func):$/;"	m	class:depends_on_exe	file:
+__call__	umbrella/tests/utils.py	/^    def __call__(self, func):$/;"	m	class:requires	file:
+__call__	umbrella/tests/utils.py	/^    def __call__(self, func):$/;"	m	class:skip_if	file:
+__call__	umbrella/tests/utils.py	/^    def __call__(self, func):$/;"	m	class:skip_test	file:
+__call__	umbrella/tests/utils.py	/^    def __call__(self, func):$/;"	m	class:skip_unless	file:
+__clear_cache	umbrella/common/cfg.py	/^    def __clear_cache(f):$/;"	m	class:ConfigOpts	file:
+__contains__	umbrella/common/cfg.py	/^        def __contains__(self, key):$/;"	m	class:ConfigOpts.GroupAttr	file:
+__contains__	umbrella/common/cfg.py	/^    def __contains__(self, key):$/;"	m	class:ConfigOpts	file:
+__getattr__	umbrella/common/cfg.py	/^        def __getattr__(self, name):$/;"	m	class:ConfigOpts.GroupAttr	file:
+__getattr__	umbrella/common/cfg.py	/^    def __getattr__(self, name):$/;"	m	class:ConfigOpts	file:
+__getattribute__	umbrella/common/local.py	/^    def __getattribute__(self, attr):$/;"	m	class:WeakLocal	file:
+__getitem__	umbrella/common/cfg.py	/^        def __getitem__(self, key):$/;"	m	class:ConfigOpts.GroupAttr	file:
+__getitem__	umbrella/common/cfg.py	/^        def __getitem__(self, key):$/;"	m	class:ConfigOpts.StrSubWrapper	file:
+__getitem__	umbrella/common/cfg.py	/^    def __getitem__(self, key):$/;"	m	class:ConfigOpts	file:
+__init__	tools/colorizer.py	/^    def __init__(self, stream):$/;"	m	class:_AnsiColorizer
+__init__	tools/colorizer.py	/^    def __init__(self, stream):$/;"	m	class:_NullColorizer
+__init__	tools/colorizer.py	/^    def __init__(self, stream):$/;"	m	class:_Win32Colorizer
+__init__	tools/colorizer.py	/^    def __init__(self, stream, descriptions, verbosity):$/;"	m	class:SubunitTestResult
+__init__	tools/install_venv_common.py	/^    def __init__(self, root, venv, requirements,$/;"	m	class:InstallVenv
+__init__	umbrella/api/monitor.py	/^    def __init__(self):$/;"	m	class:Controller
+__init__	umbrella/api/router.py	/^    def __init__(self, mapper):$/;"	m	class:API
+__init__	umbrella/api/router.py	/^    def __init__(self, mapper):$/;"	m	class:MonitorAPI
+__init__	umbrella/api/v1/api.py	/^    def __init__(self):$/;"	m	class:Controller
+__init__	umbrella/api/v1/example.py	/^    def __init__(self):$/;"	m	class:Calculator
+__init__	umbrella/api/v1/example.py	/^    def __init__(self):$/;"	m	class:ShowVersion
+__init__	umbrella/api/v1/example.py	/^    def __init__(self,app):$/;"	m	class:LogFilter
+__init__	umbrella/api/v1/myservers.py	/^    def __init__(self):$/;"	m	class:Controller
+__init__	umbrella/api/v1/pastedeploylab.py	/^    def __init__(self):$/;"	m	class:Calculator
+__init__	umbrella/api/v1/pastedeploylab.py	/^    def __init__(self):$/;"	m	class:ShowVersion
+__init__	umbrella/api/v1/pastedeploylab.py	/^    def __init__(self,app):$/;"	m	class:LogFilter
+__init__	umbrella/api/v1/router.py	/^    def __init__(self, mapper):$/;"	m	class:API
+__init__	umbrella/cmd/manage.py	/^    def __init__(self):$/;"	m	class:DbCommands
+__init__	umbrella/cmd/manage.py	/^    def __init__(self, command_object):$/;"	m	class:DbLegacyCommands
+__init__	umbrella/common/auth.py	/^    def __init__(self):$/;"	m	class:BaseStrategy
+__init__	umbrella/common/auth.py	/^    def __init__(self, creds, insecure=False):$/;"	m	class:KeystoneStrategy
+__init__	umbrella/common/cfg.py	/^        def __init__(self, conf):$/;"	m	class:ConfigOpts.StrSubWrapper
+__init__	umbrella/common/cfg.py	/^        def __init__(self, conf, group):$/;"	m	class:ConfigOpts.GroupAttr
+__init__	umbrella/common/cfg.py	/^    def __init__(self):$/;"	m	class:CommonConfigOpts
+__init__	umbrella/common/cfg.py	/^    def __init__(self):$/;"	m	class:ConfigOpts
+__init__	umbrella/common/cfg.py	/^    def __init__(self):$/;"	m	class:MultiConfigParser
+__init__	umbrella/common/cfg.py	/^    def __init__(self, config_file, msg):$/;"	m	class:ConfigFileParseError
+__init__	umbrella/common/cfg.py	/^    def __init__(self, config_files):$/;"	m	class:ConfigFilesNotFoundError
+__init__	umbrella/common/cfg.py	/^    def __init__(self, filename, sections):$/;"	m	class:ConfigParser
+__init__	umbrella/common/cfg.py	/^    def __init__(self, group_name):$/;"	m	class:NoSuchGroupError
+__init__	umbrella/common/cfg.py	/^    def __init__(self, msg, lineno, line, filename):$/;"	m	class:ParseError
+__init__	umbrella/common/cfg.py	/^    def __init__(self, msg=None):$/;"	m	class:Error
+__init__	umbrella/common/cfg.py	/^    def __init__(self, name, dest=None, short=None, default=None,$/;"	m	class:Opt
+__init__	umbrella/common/cfg.py	/^    def __init__(self, name, title=None, help=None):$/;"	m	class:OptGroup
+__init__	umbrella/common/cfg.py	/^    def __init__(self, opt_name):$/;"	m	class:DuplicateOptError
+__init__	umbrella/common/cfg.py	/^    def __init__(self, opt_name, group=None):$/;"	m	class:NoSuchOptError
+__init__	umbrella/common/cfg.py	/^    def __init__(self, opt_name, group=None):$/;"	m	class:RequiredOptError
+__init__	umbrella/common/client.py	/^            def __init__(self, len):$/;"	m	class:SendFileIterator.__iter__.OfLength
+__init__	umbrella/common/client.py	/^    def __init__(self, connection, body):$/;"	m	class:SendFileIterator
+__init__	umbrella/common/client.py	/^    def __init__(self, host, port, key_file, cert_file,$/;"	m	class:HTTPSClientAuthConnection
+__init__	umbrella/common/client.py	/^    def __init__(self, host, port=None, timeout=None, use_ssl=False,$/;"	m	class:BaseClient
+__init__	umbrella/common/client.py	/^    def __init__(self, source):$/;"	m	class:ImageBodyIterator
+__init__	umbrella/common/exception.py	/^    def __init__(self, *args, **kwargs):$/;"	m	class:LimitExceeded
+__init__	umbrella/common/exception.py	/^    def __init__(self, *args, **kwargs):$/;"	m	class:ServiceUnavailable
+__init__	umbrella/common/exception.py	/^    def __init__(self, message=None, *args, **kwargs):$/;"	m	class:InvalidArtifactPropertyValue
+__init__	umbrella/common/exception.py	/^    def __init__(self, message=None, *args, **kwargs):$/;"	m	class:InvalidJsonPatchPath
+__init__	umbrella/common/exception.py	/^    def __init__(self, message=None, *args, **kwargs):$/;"	m	class:UmbrellaException
+__init__	umbrella/common/exception.py	/^    def __init__(self, url):$/;"	m	class:RedirectException
+__init__	umbrella/common/iniparser.py	/^    def __init__(self, message, lineno, line):$/;"	m	class:ParseError
+__init__	umbrella/common/log.py	/^    def __init__(self, fmt=None, datefmt=None):$/;"	m	class:JSONFormatter
+__init__	umbrella/common/log.py	/^    def __init__(self, logger, level=logging.INFO):$/;"	m	class:WritableLogger
+__init__	umbrella/common/log.py	/^    def __init__(self, logger, project_name, version_string):$/;"	m	class:ContextAdapter
+__init__	umbrella/common/utils.py	/^    def __init__(self):$/;"	m	class:PrettyTable
+__init__	umbrella/common/utils.py	/^    def __init__(self, data, limit):$/;"	m	class:LimitingReader
+__init__	umbrella/common/utils.py	/^    def __init__(self, f=None, *args, **kw):$/;"	m	class:LoopingCall
+__init__	umbrella/common/utils.py	/^    def __init__(self, fd):$/;"	m	class:CooperativeReader
+__init__	umbrella/common/version.py	/^    def __init__(self, package, python_package=None, pre_version=None):$/;"	m	class:VersionInfo
+__init__	umbrella/common/version.py	/^    def __init__(self, version_info, prefix):$/;"	m	class:_deferred_version_string
+__init__	umbrella/common/wsgi.py	/^    def __init__(self, application):$/;"	m	class:Middleware
+__init__	umbrella/common/wsgi.py	/^    def __init__(self, controller, deserializer=None, serializer=None):$/;"	m	class:Resource
+__init__	umbrella/common/wsgi.py	/^    def __init__(self, mapper):$/;"	m	class:Router
+__init__	umbrella/common/wsgi.py	/^    def __init__(self, threads=1000):$/;"	m	class:Server
+__init__	umbrella/context.py	/^    def __init__(self, auth_tok=None, user=None, tenant=None, roles=None,$/;"	m	class:RequestContext
+__init__	umbrella/monitor/alarm.py	/^    def __init__(self):$/;"	m	class:AlarmCheck
+__init__	umbrella/monitor/cpu.py	/^    def __init__(self):$/;"	m	class:CpuController
+__init__	umbrella/monitor/disk.py	/^    def __init__(self):$/;"	m	class:DiskController
+__init__	umbrella/monitor/manager.py	/^    def __init__(self):$/;"	m	class:Manager
+__init__	umbrella/monitor/mem.py	/^    def __init__(self):$/;"	m	class:MemController
+__init__	umbrella/monitor/monitor.py	/^    def __init__(self, metric_list):$/;"	m	class:Monitor
+__init__	umbrella/monitor/net.py	/^    def __init__(self):$/;"	m	class:NetController
+__init__	umbrella/openstack/client.py	/^    def __init__(self, auth_tok=None, creds=None):$/;"	m	class:GlanceClient
+__init__	umbrella/openstack/client.py	/^    def __init__(self, auth_tok=None, creds=None):$/;"	m	class:KeystoneAdminClient
+__init__	umbrella/openstack/client.py	/^    def __init__(self, auth_tok=None, creds=None):$/;"	m	class:KeystonePublicClient
+__init__	umbrella/openstack/client.py	/^    def __init__(self, auth_tok=None, creds=None):$/;"	m	class:NovaClient
+__init__	umbrella/tests/utils.py	/^    def __init__(self, app, is_admin=True):$/;"	m	class:FakeAuthMiddleware
+__init__	umbrella/tests/utils.py	/^    def __init__(self, condition, msg):$/;"	m	class:skip_if
+__init__	umbrella/tests/utils.py	/^    def __init__(self, condition, msg):$/;"	m	class:skip_unless
+__init__	umbrella/tests/utils.py	/^    def __init__(self, exe):$/;"	m	class:depends_on_exe
+__init__	umbrella/tests/utils.py	/^    def __init__(self, msg):$/;"	m	class:skip_test
+__init__	umbrella/tests/utils.py	/^    def __init__(self, setting=None):$/;"	m	class:FakeDB
+__init__	umbrella/tests/utils.py	/^    def __init__(self, setup=None, teardown=None):$/;"	m	class:requires
+__init__	umbrella/tests/utils.py	/^    def __init__(self, status=200, headers=None, data=None, *args, **kwargs):$/;"	m	class:FakeHTTPResponse
+__init__	umbrella/virt/libvirt.py	/^    def __init__(self):$/;"	m	class:LibvirtInspector
+__inner	umbrella/common/cfg.py	/^        def __inner(self, *args, **kwargs):$/;"	f	function:ConfigOpts.__clear_cache	file:
+__iter__	umbrella/common/cfg.py	/^        def __iter__(self):$/;"	m	class:ConfigOpts.GroupAttr	file:
+__iter__	umbrella/common/cfg.py	/^    def __iter__(self):$/;"	m	class:ConfigOpts	file:
+__iter__	umbrella/common/client.py	/^    def __iter__(self):$/;"	m	class:ImageBodyIterator	file:
+__iter__	umbrella/common/client.py	/^    def __iter__(self):$/;"	m	class:SendFileIterator	file:
+__iter__	umbrella/common/utils.py	/^    def __iter__(self):$/;"	m	class:CooperativeReader	file:
+__iter__	umbrella/common/utils.py	/^    def __iter__(self):$/;"	m	class:LimitingReader	file:
+__len__	umbrella/common/cfg.py	/^        def __len__(self):$/;"	m	class:ConfigOpts.GroupAttr	file:
+__len__	umbrella/common/cfg.py	/^    def __len__(self):$/;"	m	class:ConfigOpts	file:
+__len__	umbrella/common/client.py	/^            def __len__(self):$/;"	m	class:SendFileIterator.__iter__.OfLength	file:
+__ne__	umbrella/common/cfg.py	/^    def __ne__(self, another):$/;"	m	class:Opt	file:
+__protected_attributes__	umbrella/db/sqlalchemy/models.py	/^    __protected_attributes__ = set([$/;"	v	class:UmbrellaBase
+__repr__	umbrella/common/version.py	/^    def __repr__(self):$/;"	m	class:_deferred_version_string	file:
+__setattr__	umbrella/common/local.py	/^    def __setattr__(self, attr, value):$/;"	m	class:WeakLocal	file:
+__str__	umbrella/common/cfg.py	/^    def __str__(self):$/;"	m	class:ArgsAlreadyParsedError	file:
+__str__	umbrella/common/cfg.py	/^    def __str__(self):$/;"	m	class:ConfigFileParseError	file:
+__str__	umbrella/common/cfg.py	/^    def __str__(self):$/;"	m	class:ConfigFilesNotFoundError	file:
+__str__	umbrella/common/cfg.py	/^    def __str__(self):$/;"	m	class:DuplicateOptError	file:
+__str__	umbrella/common/cfg.py	/^    def __str__(self):$/;"	m	class:Error	file:
+__str__	umbrella/common/cfg.py	/^    def __str__(self):$/;"	m	class:NoSuchGroupError	file:
+__str__	umbrella/common/cfg.py	/^    def __str__(self):$/;"	m	class:NoSuchOptError	file:
+__str__	umbrella/common/cfg.py	/^    def __str__(self):$/;"	m	class:ParseError	file:
+__str__	umbrella/common/cfg.py	/^    def __str__(self):$/;"	m	class:RequiredOptError	file:
+__str__	umbrella/common/cfg.py	/^    def __str__(self):$/;"	m	class:TemplateSubstitutionError	file:
+__str__	umbrella/common/iniparser.py	/^    def __str__(self):$/;"	m	class:ParseError	file:
+__str__	umbrella/common/version.py	/^    def __str__(self):$/;"	m	class:_deferred_version_string	file:
+__table_args__	umbrella/db/sqlalchemy/models.py	/^    __table_args__ = (Index('ix_instance_uuid', 'instance_uuid'),$/;"	v	class:Cpu
+__table_args__	umbrella/db/sqlalchemy/models.py	/^    __table_args__ = (Index('ix_instance_uuid', 'instance_uuid'),$/;"	v	class:Disk
+__table_args__	umbrella/db/sqlalchemy/models.py	/^    __table_args__ = (Index('ix_instance_uuid', 'instance_uuid'),$/;"	v	class:Mem
+__table_args__	umbrella/db/sqlalchemy/models.py	/^    __table_args__ = (Index('ix_instance_uuid', 'instance_uuid'),$/;"	v	class:Net
+__table_args__	umbrella/db/sqlalchemy/models.py	/^    __table_args__ = {'mysql_engine': 'InnoDB'}$/;"	v	class:UmbrellaBase
+__table_initialized__	umbrella/db/sqlalchemy/models.py	/^    __table_initialized__ = False$/;"	v	class:UmbrellaBase
+__tablename__	umbrella/db/sqlalchemy/models.py	/^    __tablename__ = 'cpu'$/;"	v	class:Cpu
+__tablename__	umbrella/db/sqlalchemy/models.py	/^    __tablename__ = 'disk'$/;"	v	class:Disk
+__tablename__	umbrella/db/sqlalchemy/models.py	/^    __tablename__ = 'mem'$/;"	v	class:Mem
+__tablename__	umbrella/db/sqlalchemy/models.py	/^    __tablename__ = 'net'$/;"	v	class:Net
+__unicode__	umbrella/common/exception.py	/^    def __unicode__(self):$/;"	m	class:UmbrellaException	file:
+_addResult	tools/colorizer.py	/^    def _addResult(self, test, *args):$/;"	m	class:SubunitTestResult
+_add_inverse_to_optparse	umbrella/common/cfg.py	/^    def _add_inverse_to_optparse(self, parser, group):$/;"	m	class:BoolOpt
+_add_to_cli	umbrella/common/cfg.py	/^    def _add_to_cli(self, parser, group=None):$/;"	m	class:BoolOpt
+_add_to_cli	umbrella/common/cfg.py	/^    def _add_to_cli(self, parser, group=None):$/;"	m	class:Opt
+_add_to_optparse	umbrella/common/cfg.py	/^    def _add_to_optparse(self, container, name, short, kwargs, prefix='',$/;"	m	class:Opt
+_all_opt_infos	umbrella/common/cfg.py	/^    def _all_opt_infos(self):$/;"	m	class:ConfigOpts
+_all_opts	umbrella/common/cfg.py	/^    def _all_opts(self):$/;"	m	class:ConfigOpts
+_and_quotas_filter	umbrella/api/list_operation/filter.py	/^def _and_quotas_filter(quotas, result, search_opts, tenantid, keys,$/;"	f
+_assignment	umbrella/common/iniparser.py	/^    def _assignment(self, key, value):$/;"	m	class:BaseParser
+_authenticate	umbrella/common/auth.py	/^        def _authenticate(auth_url):$/;"	f	function:KeystoneStrategy.authenticate
+_authenticate	umbrella/common/client.py	/^    def _authenticate(self, force_reauth=False):$/;"	m	class:BaseClient
+_boolean_states	umbrella/common/cfg.py	/^    _boolean_states = {'1': True, 'yes': True, 'true': True, 'on': True,$/;"	v	class:BoolOpt
+_build_usage_for_history	umbrella/api/statistic.py	/^    def _build_usage_for_history(self, name, usage,$/;"	m	class:Controller
+_check_dict	umbrella/common/utils.py	/^        def _check_dict(data_dict):$/;"	f	function:no_4byte_params.wrapper
+_check_required_opts	umbrella/common/cfg.py	/^    def _check_required_opts(self):$/;"	m	class:ConfigOpts
+_chunkbody	umbrella/common/client.py	/^            def _chunkbody(connection, iter):$/;"	f	function:BaseClient._do_request
+_clear	umbrella/common/cfg.py	/^    def _clear(self):$/;"	m	class:OptGroup
+_clip_and_justify	umbrella/common/utils.py	/^    def _clip_and_justify(data, width, just):$/;"	m	class:PrettyTable
+_colors	tools/colorizer.py	/^    _colors = dict(black=30, red=31, green=32, yellow=33,$/;"	v	class:_AnsiColorizer
+_construct_url	umbrella/common/client.py	/^    def _construct_url(self, action, params=None):$/;"	m	class:BaseClient
+_construct_usage	umbrella/api/statistic.py	/^    def _construct_usage(self, usages):$/;"	m	class:Controller
+_convert_floating_ips	umbrella/openstack/api.py	/^def _convert_floating_ips(result):$/;"	f
+_convert_network_qos	umbrella/openstack/api.py	/^def _convert_network_qos(result):$/;"	f
+_convert_servers	umbrella/openstack/api.py	/^def _convert_servers(result):$/;"	f
+_cparser_get_with_deprecated	umbrella/common/cfg.py	/^    def _cparser_get_with_deprecated(self, cparser, section):$/;"	m	class:MultiStrOpt
+_cparser_get_with_deprecated	umbrella/common/cfg.py	/^    def _cparser_get_with_deprecated(self, cparser, section):$/;"	m	class:Opt
+_create_facade_lazily	umbrella/db/sqlalchemy/api.py	/^def _create_facade_lazily():$/;"	f
+_create_logging_excepthook	umbrella/common/log.py	/^def _create_logging_excepthook(product_name):$/;"	f
+_decorator	umbrella/cmd/manage.py	/^    def _decorator(func):$/;"	f	function:args
+_deferred_version_string	umbrella/common/version.py	/^class _deferred_version_string(object):$/;"	c
+_dictbody	umbrella/common/client.py	/^            def _dictbody(body):$/;"	f	function:BaseClient._do_request
+_dictify_context	umbrella/common/log.py	/^def _dictify_context(context):$/;"	f
+_dispatch	umbrella/common/wsgi.py	/^    def _dispatch(req):$/;"	m	class:Router
+_do_get	umbrella/common/cfg.py	/^    def _do_get(self, name, group=None):$/;"	m	class:ConfigOpts
+_do_request	umbrella/common/auth.py	/^    def _do_request(self, url, method, headers=None, body=None):$/;"	m	class:KeystoneStrategy
+_do_request	umbrella/common/client.py	/^    def _do_request(self, method, url, body, headers):$/;"	m	class:BaseClient
+_extract_params	umbrella/common/client.py	/^    def _extract_params(self, actual_params, allowed_params):$/;"	m	class:BaseClient
+_fetch_attrs	umbrella/api/monitor.py	/^def _fetch_attrs(d, attrs):$/;"	f
+_filelike	umbrella/common/client.py	/^            def _filelike(body):$/;"	f	function:BaseClient._do_request
+_filter_detail_usage	umbrella/api/statistic.py	/^    def _filter_detail_usage(self, req, usage):$/;"	m	class:Controller
+_find_facility_from_conf	umbrella/common/log.py	/^def _find_facility_from_conf():$/;"	f
+_find_modules	umbrella/common/setup.py	/^    def _find_modules(arg, dirname, files):$/;"	f	function:get_cmdclass
+_fixpath	umbrella/common/cfg.py	/^def _fixpath(p):$/;"	f
+_generate_version	umbrella/common/version.py	/^    def _generate_version(self):$/;"	m	class:VersionInfo
+_get	umbrella/common/cfg.py	/^    def _get(self, name, group=None):$/;"	m	class:ConfigOpts
+_get_all_domains_one_sample	umbrella/monitor/cpu.py	/^    def _get_all_domains_one_sample(self, all_domains, all_domains_samples):$/;"	m	class:CpuController
+_get_all_domains_one_sample	umbrella/monitor/disk.py	/^    def _get_all_domains_one_sample(self, all_domains, all_domains_samples):$/;"	m	class:DiskController
+_get_all_domains_one_sample	umbrella/monitor/mem.py	/^    def _get_all_domains_one_sample(self, all_domains, all_domains_samples):$/;"	m	class:MemController
+_get_all_domains_one_sample	umbrella/monitor/net.py	/^    def _get_all_domains_one_sample(self, all_domains, all_domains_samples):$/;"	m	class:NetController
+_get_anonymous_context	umbrella/api/middleware/context.py	/^    def _get_anonymous_context(self):$/;"	m	class:AuthContextMiddleware
+_get_auth_token_context	umbrella/api/middleware/context.py	/^    def _get_auth_token_context(self, req):$/;"	m	class:AuthContextMiddleware
+_get_authenticated_context	umbrella/api/middleware/context.py	/^    def _get_authenticated_context(self, req):$/;"	m	class:AuthContextMiddleware
+_get_binary_name	umbrella/common/log.py	/^def _get_binary_name():$/;"	f
+_get_config_dirs	umbrella/common/cfg.py	/^def _get_config_dirs(project=None):$/;"	f
+_get_deployment_config_file	umbrella/common/config.py	/^def _get_deployment_config_file():$/;"	f
+_get_deployment_flavor	umbrella/common/config.py	/^def _get_deployment_flavor(flavor=None):$/;"	f
+_get_ecus_info	umbrella/api/server.py	/^def _get_ecus_info(flavor):$/;"	f
+_get_filters	umbrella/api/monitor.py	/^    def _get_filters(self, filters):$/;"	m	class:RequestDeserializer
+_get_from_config_parser	umbrella/common/cfg.py	/^    def _get_from_config_parser(self, cparser, section):$/;"	m	class:BoolOpt
+_get_from_config_parser	umbrella/common/cfg.py	/^    def _get_from_config_parser(self, cparser, section):$/;"	m	class:FloatOpt
+_get_from_config_parser	umbrella/common/cfg.py	/^    def _get_from_config_parser(self, cparser, section):$/;"	m	class:IntOpt
+_get_from_config_parser	umbrella/common/cfg.py	/^    def _get_from_config_parser(self, cparser, section):$/;"	m	class:ListOpt
+_get_from_config_parser	umbrella/common/cfg.py	/^    def _get_from_config_parser(self, cparser, section):$/;"	m	class:Opt
+_get_git_current_tag	umbrella/common/setup.py	/^def _get_git_current_tag():$/;"	f
+_get_git_next_version_suffix	umbrella/common/setup.py	/^def _get_git_next_version_suffix(branch_name):$/;"	f
+_get_git_post_version	umbrella/common/setup.py	/^def _get_git_post_version():$/;"	f
+_get_git_tag_info	umbrella/common/setup.py	/^def _get_git_tag_info():$/;"	f
+_get_group	umbrella/common/cfg.py	/^    def _get_group(self, group_or_name, autocreate=False):$/;"	m	class:ConfigOpts
+_get_image	umbrella/api/image.py	/^    def _get_image(self, req, image, image_type=None):$/;"	m	class:Controller
+_get_images	umbrella/api/image.py	/^    def _get_images(self, req):$/;"	m	class:Controller
+_get_item_host	umbrella/monitor/manager.py	/^def _get_item_host(item):$/;"	f
+_get_log_file_path	umbrella/common/log.py	/^def _get_log_file_path(binary=None):$/;"	f
+_get_map_flavor	umbrella/api/server.py	/^    def _get_map_flavor(self, req, tenant_id, flavor_id):$/;"	m	class:Controller
+_get_nbs_info	umbrella/api/server.py	/^def _get_nbs_info(flavor):$/;"	f
+_get_opt_info	umbrella/common/cfg.py	/^    def _get_opt_info(self, opt_name, group=None):$/;"	m	class:ConfigOpts
+_get_optparse_container	umbrella/common/cfg.py	/^    def _get_optparse_container(self, parser, group):$/;"	m	class:Opt
+_get_optparse_group	umbrella/common/cfg.py	/^    def _get_optparse_group(self, parser):$/;"	m	class:OptGroup
+_get_optparse_kwargs	umbrella/common/cfg.py	/^    def _get_optparse_kwargs(self, group, **kwargs):$/;"	m	class:FloatOpt
+_get_optparse_kwargs	umbrella/common/cfg.py	/^    def _get_optparse_kwargs(self, group, **kwargs):$/;"	m	class:IntOpt
+_get_optparse_kwargs	umbrella/common/cfg.py	/^    def _get_optparse_kwargs(self, group, **kwargs):$/;"	m	class:ListOpt
+_get_optparse_kwargs	umbrella/common/cfg.py	/^    def _get_optparse_kwargs(self, group, **kwargs):$/;"	m	class:MultiStrOpt
+_get_optparse_kwargs	umbrella/common/cfg.py	/^    def _get_optparse_kwargs(self, group, **kwargs):$/;"	m	class:Opt
+_get_optparse_kwargs	umbrella/common/cfg.py	/^    def _get_optparse_kwargs(self, group, action='store_true', **kwargs):$/;"	m	class:BoolOpt
+_get_optparse_prefix	umbrella/common/cfg.py	/^    def _get_optparse_prefix(self, prefix, group):$/;"	m	class:Opt
+_get_paste_config_path	umbrella/common/config.py	/^def _get_paste_config_path():$/;"	f
+_get_power_state	umbrella/api/server.py	/^    def _get_power_state(self, power_state):$/;"	m	class:Controller
+_get_section	umbrella/common/iniparser.py	/^    def _get_section(self, line):$/;"	m	class:BaseParser
+_get_terminal_size_posix	umbrella/common/utils.py	/^    def _get_terminal_size_posix():$/;"	f	function:get_terminal_size
+_get_terminal_size_unknownOS	umbrella/common/utils.py	/^    def _get_terminal_size_unknownOS():$/;"	f	function:get_terminal_size
+_get_terminal_size_win32	umbrella/common/utils.py	/^    def _get_terminal_size_win32():$/;"	f	function:get_terminal_size
+_get_uri	umbrella/virt/libvirt.py	/^    def _get_uri(self):$/;"	m	class:LibvirtInspector
+_glance_request	umbrella/api/image.py	/^    def _glance_request(self, req):$/;"	m	class:Controller
+_has_changed	umbrella/common/wsgi.py	/^        def _has_changed(old, new, param):$/;"	f	function:Server.reload
+_image_api	umbrella/api/router.py	/^    def _image_api(self, mapper):$/;"	m	class:API
+_inner	umbrella/common/utils.py	/^        def _inner():$/;"	f	function:LoopingCall.start
+_is_flavor_for_creating	umbrella/api/server.py	/^def _is_flavor_for_creating(flavor):$/;"	f
+_is_in_time	umbrella/api/statistic.py	/^def _is_in_time(target_time, start, end):$/;"	f
+_is_match	umbrella/common/utils.py	/^        def _is_match(some_str):$/;"	f	function:no_4byte_params.wrapper
+_is_opt_registered	umbrella/common/cfg.py	/^def _is_opt_registered(opts, opt):$/;"	f
+_iterable	umbrella/common/client.py	/^    def _iterable(self, body):$/;"	m	class:BaseClient
+_loggers	umbrella/common/log.py	/^_loggers = {}$/;"	v
+_management_url	umbrella/common/auth.py	/^        def _management_url(self, resp):$/;"	f	function:KeystoneStrategy._v1_auth
+_map_capacity_key	umbrella/api/statistic.py	/^        def _map_capacity_key(resource_key):$/;"	f	function:Controller.list_az_usage
+_map_sort_key	umbrella/api/list_operation/sort.py	/^    def _map_sort_key(sort_key):$/;"	f	function:sort_floating_ips
+_map_sort_key	umbrella/api/list_operation/sort.py	/^    def _map_sort_key(sort_key):$/;"	f	function:sort_host_usage
+_map_sort_key	umbrella/api/list_operation/sort.py	/^    def _map_sort_key(sort_key):$/;"	f	function:sort_images
+_map_sort_key	umbrella/api/list_operation/sort.py	/^    def _map_sort_key(sort_key):$/;"	f	function:sort_instance_error
+_map_sort_key	umbrella/api/list_operation/sort.py	/^    def _map_sort_key(sort_key):$/;"	f	function:sort_keypairs
+_map_sort_key	umbrella/api/list_operation/sort.py	/^    def _map_sort_key(sort_key):$/;"	f	function:sort_quotas
+_map_sort_key	umbrella/api/list_operation/sort.py	/^    def _map_sort_key(sort_key):$/;"	f	function:sort_security_groups
+_map_sort_key	umbrella/api/list_operation/sort.py	/^    def _map_sort_key(sort_key):$/;"	f	function:sort_servers
+_map_sort_key	umbrella/api/list_operation/sort.py	/^    def _map_sort_key(sort_key):$/;"	f	function:sort_snapshot_error
+_map_sort_key	umbrella/api/list_operation/sort.py	/^    def _map_sort_key(sort_key):$/;"	f	function:sort_tenants_usage
+_map_sort_key	umbrella/tests/sort_test.py	/^        def _map_sort_key(sort_key):$/;"	f	function:SortTest.test_map_opts_and_sort
+_map_sort_key	umbrella/tests/sort_test.py	/^        def _map_sort_key(sort_key):$/;"	f	function:SortTest.test_sort_not_mapped
+_memory	umbrella/common/local.py	/^_memory = Global()$/;"	v
+_newer_version	umbrella/common/version.py	/^    def _newer_version(self, pending_version):$/;"	m	class:VersionInfo
+_normalize_time	umbrella/api/statistic.py	/^    def _normalize_time(self, request):$/;"	m	class:RequestDeserializer
+_nova_request	umbrella/api/server.py	/^    def _nova_request(self, req):$/;"	m	class:Controller
+_or_quotas_filter	umbrella/api/list_operation/filter.py	/^def _or_quotas_filter(quotas, result, search_opts, tenantid, keys,$/;"	f
+_paginate_query	umbrella/db/sqlalchemy/api.py	/^def _paginate_query(query, model, limit, sort_keys, marker=None,$/;"	f
+_parse_cli_opts	umbrella/common/cfg.py	/^    def _parse_cli_opts(self, args):$/;"	m	class:ConfigOpts
+_parse_config_files	umbrella/common/cfg.py	/^    def _parse_config_files(self):$/;"	m	class:ConfigOpts
+_parse_list	umbrella/common/cfg.py	/^    def _parse_list(self, option, opt, value, parser):$/;"	m	class:ListOpt
+_pushing	umbrella/common/client.py	/^            def _pushing(method):$/;"	f	function:BaseClient._do_request
+_recog_ip_type	umbrella/api/server.py	/^def _recog_ip_type(ip):$/;"	f
+_register_opt	umbrella/common/cfg.py	/^    def _register_opt(self, opt):$/;"	m	class:OptGroup
+_remove_children	umbrella/common/wsgi.py	/^    def _remove_children(self, pid):$/;"	m	class:Server
+_repack_server_data	umbrella/api/server.py	/^    def _repack_server_data(self, server, req, tenant_id):$/;"	m	class:Controller
+_repack_user_data	umbrella/api/user.py	/^    def _repack_user_data(self, value):$/;"	m	class:Controller
+_retry	umbrella/common/client.py	/^            def _retry(res):$/;"	f	function:BaseClient._do_request
+_retry_on_deadlock	umbrella/db/sqlalchemy/api.py	/^def _retry_on_deadlock(exc):$/;"	f
+_run_shell_command	umbrella/common/setup.py	/^def _run_shell_command(cmd):$/;"	f
+_runner	umbrella/tests/utils.py	/^        def _runner(*args, **kw):$/;"	f	function:depends_on_exe.__call__
+_runner	umbrella/tests/utils.py	/^        def _runner(*args, **kw):$/;"	f	function:requires.__call__
+_sanitize	umbrella/common/cfg.py	/^        def _sanitize(opt, value):$/;"	f	function:ConfigOpts.log_opt_values
+_sanitizer	umbrella/common/wsgi.py	/^    def _sanitizer(obj):$/;"	m	class:JSONRequestDeserializer
+_sanitizer	umbrella/common/wsgi.py	/^    def _sanitizer(self, obj):$/;"	m	class:JSONResponseSerializer
+_search_dirs	umbrella/common/cfg.py	/^def _search_dirs(dirs, basename, extension=""):$/;"	f
+_seekable	umbrella/common/client.py	/^    def _seekable(self, body):$/;"	m	class:BaseClient
+_sendable	umbrella/common/client.py	/^    def _sendable(self, body):$/;"	m	class:BaseClient
+_sendbody	umbrella/common/client.py	/^            def _sendbody(connection, iter):$/;"	f	function:BaseClient._do_request
+_server_api	umbrella/api/router.py	/^    def _server_api(self, mapper):$/;"	m	class:API
+_setup	umbrella/common/cfg.py	/^    def _setup(self, project, prog, version, usage, default_config_files):$/;"	m	class:ConfigOpts
+_setup_logging_from_conf	umbrella/common/log.py	/^def _setup_logging_from_conf(product_name):$/;"	f
+_simple	umbrella/common/client.py	/^            def _simple(body):$/;"	f	function:BaseClient._do_request
+_single_run	umbrella/common/wsgi.py	/^    def _single_run(self, application, sock):$/;"	m	class:Server
+_skipper	umbrella/tests/utils.py	/^        def _skipper(*args, **kw):$/;"	f	function:skip_if.__call__
+_skipper	umbrella/tests/utils.py	/^        def _skipper(*args, **kw):$/;"	f	function:skip_test.__call__
+_skipper	umbrella/tests/utils.py	/^        def _skipper(*args, **kw):$/;"	f	function:skip_unless.__call__
+_sort_floating_ips	umbrella/api/list_operation/sort.py	/^    def _sort_floating_ips(floating_ips, sort_key, sort_dir):$/;"	f	function:sort_floating_ips
+_sort_servers	umbrella/api/list_operation/sort.py	/^    def _sort_servers(servers, sort_key, sort_dir):$/;"	f	function:sort_servers
+_split_key_value	umbrella/common/iniparser.py	/^    def _split_key_value(self, line):$/;"	m	class:BaseParser
+_static_result	umbrella/monitor/cpu.py	/^    def _static_result(self, all_domains_samples):$/;"	m	class:CpuController
+_static_result	umbrella/monitor/disk.py	/^    def _static_result(self, all_domains_samples):$/;"	m	class:DiskController
+_static_result	umbrella/monitor/mem.py	/^    def _static_result(self, all_domains_samples):$/;"	m	class:MemController
+_static_result	umbrella/monitor/net.py	/^    def _static_result(self, all_domains_samples):$/;"	m	class:NetController
+_statistic_api	umbrella/api/router.py	/^    def _statistic_api(self, mapper):$/;"	m	class:API
+_statistic_instance_operation	umbrella/api/statistic.py	/^    def _statistic_instance_operation(self, req, tenant_id,$/;"	m	class:Controller
+_statistic_snapshot_operation	umbrella/api/statistic.py	/^    def _statistic_snapshot_operation(self, req, start=None, end=None):$/;"	m	class:Controller
+_str_to_bool	umbrella/api/monitor.py	/^    def _str_to_bool(self, value):$/;"	m	class:RequestDeserializer
+_substitute	umbrella/common/cfg.py	/^    def _substitute(self, value):$/;"	m	class:ConfigOpts
+_translators	umbrella/i18n.py	/^_translators = TranslatorFactory(domain='glance')$/;"	v
+_unregister_opt	umbrella/common/cfg.py	/^    def _unregister_opt(self, opt):$/;"	m	class:OptGroup
+_unset_defaults_and_overrides	umbrella/common/cfg.py	/^    def _unset_defaults_and_overrides(self):$/;"	m	class:ConfigOpts
+_user_api	umbrella/api/router.py	/^    def _user_api(self, mapper):$/;"	m	class:API
+_v1_auth	umbrella/common/auth.py	/^    def _v1_auth(self, token_url):$/;"	m	class:KeystoneStrategy
+_v2_auth	umbrella/common/auth.py	/^    def _v2_auth(self, token_url):$/;"	m	class:KeystoneStrategy
+_validate_limit	umbrella/api/monitor.py	/^    def _validate_limit(self, limit):$/;"	m	class:RequestDeserializer
+_validate_sort_dir	umbrella/api/monitor.py	/^    def _validate_sort_dir(self, sort_dir):$/;"	m	class:RequestDeserializer
+_verify_and_respawn_children	umbrella/common/wsgi.py	/^    def _verify_and_respawn_children(self, pid, status):$/;"	m	class:Server
+_version_control	umbrella/db/sqlalchemy/migration.py	/^def _version_control(version):$/;"	f
+_writeElapsedTime	tools/colorizer.py	/^    def _writeElapsedTime(self, elapsed):$/;"	m	class:SubunitTestResult
+_writeResult	tools/colorizer.py	/^    def _writeResult(self, test_name, elapsed, long_result, color,$/;"	m	class:SubunitTestResult
+_write_to_database	umbrella/monitor/cpu.py	/^    def _write_to_database(self, domain_result):$/;"	m	class:CpuController
+_write_to_database	umbrella/monitor/disk.py	/^    def _write_to_database(self, domain_result):$/;"	m	class:DiskController
+_write_to_database	umbrella/monitor/mem.py	/^    def _write_to_database(self, domain_result):$/;"	m	class:MemController
+_write_to_database	umbrella/monitor/net.py	/^    def _write_to_database(self, domain_result):$/;"	m	class:NetController
+addError	tools/colorizer.py	/^    def addError(self, test, err):$/;"	m	class:SubunitTestResult
+addFailure	tools/colorizer.py	/^    def addFailure(self, test, err):$/;"	m	class:SubunitTestResult
+addSkip	tools/colorizer.py	/^    def addSkip(self, test, reason=None, details=None):$/;"	m	class:SubunitTestResult
+addSuccess	tools/colorizer.py	/^    def addSuccess(self, test):$/;"	m	class:SubunitTestResult
+add_column	umbrella/common/utils.py	/^    def add_column(self, width, label="", just='l'):$/;"	m	class:PrettyTable
+add_command_parsers	umbrella/cmd/manage.py	/^def add_command_parsers(subparsers):$/;"	f
+add_cpu_sample	umbrella/db/sqlalchemy/api.py	/^def add_cpu_sample(sample):$/;"	f
+add_disk_sample	umbrella/db/sqlalchemy/api.py	/^def add_disk_sample(sample):$/;"	f
+add_legacy_command_parsers	umbrella/cmd/manage.py	/^def add_legacy_command_parsers(command_object, subparsers):$/;"	f
+add_mem_sample	umbrella/db/sqlalchemy/api.py	/^def add_mem_sample(sample):$/;"	f
+add_net_sample	umbrella/db/sqlalchemy/api.py	/^def add_net_sample(sample):$/;"	f
+admin_opts	umbrella/openstack/api.py	/^admin_opts = [$/;"	v
+advance_time_delta	umbrella/common/timeutils.py	/^def advance_time_delta(timedelta):$/;"	f
+advance_time_seconds	umbrella/common/timeutils.py	/^def advance_time_seconds(seconds):$/;"	f
+alarm_opts	umbrella/monitor/manager.py	/^alarm_opts = [$/;"	v
+alarming_clear	umbrella/tests/utils.py	/^    def alarming_clear(self):$/;"	m	class:FakeDB
+alarming_create	umbrella/tests/utils.py	/^    def alarming_create(self, values, session=None):$/;"	m	class:FakeDB
+alarming_get	umbrella/tests/utils.py	/^    def alarming_get(self, id):$/;"	m	class:FakeDB
+alarming_get_all	umbrella/tests/utils.py	/^    def alarming_get_all(self):$/;"	m	class:FakeDB
+analysis_item_used	umbrella/monitor/manager.py	/^def analysis_item_used(item_dict, key):$/;"	f
+and_	umbrella/api/list_operation/filter.py	/^def and_(items, keys, values):$/;"	f
+args	umbrella/cmd/manage.py	/^def args(*args, **kwargs):$/;"	f
+assertAlarmEqual	umbrella/tests/db_test.py	/^    def assertAlarmEqual(self, first, second):$/;"	m	class:SqlAlarmTest
+assertSettingEqual	umbrella/tests/db_test.py	/^    def assertSettingEqual(self, first, second):$/;"	m	class:SqlSettingTest
+assignment	umbrella/common/cfg.py	/^    def assignment(self, key, value):$/;"	m	class:ConfigParser
+assignment	umbrella/common/iniparser.py	/^    def assignment(self, key, value):$/;"	m	class:BaseParser
+authenticate	umbrella/common/auth.py	/^    def authenticate(self):$/;"	m	class:BaseStrategy
+authenticate	umbrella/common/auth.py	/^    def authenticate(self):$/;"	m	class:KeystoneStrategy
+authenticate	umbrella/common/auth.py	/^    def authenticate(self):$/;"	m	class:NoAuthStrategy
+best_match_content_type	umbrella/common/wsgi.py	/^    def best_match_content_type(self):$/;"	m	class:Request
+best_match_language	umbrella/common/wsgi.py	/^    def best_match_language(self):$/;"	m	class:Request
+bind_opts	umbrella/common/wsgi.py	/^bind_opts = [$/;"	v
+cache_timeout_opts	umbrella/openstack/api.py	/^cache_timeout_opts = [$/;"	v
+calc_item	umbrella/monitor/manager.py	/^def calc_item(items, level, key):$/;"	f
+calc_resource_remainder	umbrella/monitor/manager.py	/^def calc_resource_remainder(usage, capacity, key, unit='platform'):$/;"	f
+canonical_version_string	umbrella/common/version.py	/^    def canonical_version_string(self, always=False):$/;"	m	class:VersionInfo
+canonicalize_emails	umbrella/common/setup.py	/^def canonicalize_emails(changelog, mapping):$/;"	f
+check_alarm	umbrella/monitor/manager.py	/^    def check_alarm(self, level, usage):$/;"	m	class:Manager
+check_auth_params	umbrella/common/auth.py	/^    def check_auth_params(self):$/;"	m	class:KeystoneStrategy
+check_cmd	tools/install_venv_common.py	/^    def check_cmd(self, cmd):$/;"	m	class:Distro
+check_dependencies	tools/install_venv_common.py	/^    def check_dependencies(self):$/;"	m	class:InstallVenv
+check_pkg	tools/install_venv_common.py	/^    def check_pkg(self, pkg):$/;"	m	class:Fedora
+check_python_version	tools/install_venv_common.py	/^    def check_python_version(self):$/;"	m	class:InstallVenv
+check_threshold	umbrella/monitor/alarm.py	/^    def check_threshold(self, level, usages_dict):$/;"	m	class:AlarmCheck
+check_type_usage	umbrella/monitor/alarm.py	/^    def check_type_usage(self, level, setting_type, type_usage):$/;"	m	class:AlarmCheck
+child_hup	umbrella/common/wsgi.py	/^        def child_hup(*args):$/;"	f	function:Server.run_child
+choices	umbrella/virt/libvirt.py	/^                choices=['kvm', 'lxc', 'qemu', 'uml', 'xen'],$/;"	v
+chunkiter	umbrella/common/utils.py	/^def chunkiter(fp, chunk_size=65536):$/;"	f
+chunkreadable	umbrella/common/utils.py	/^def chunkreadable(iter, chunk_size=65536):$/;"	f
+classify_item	umbrella/monitor/manager.py	/^def classify_item(item, item_classify, key):$/;"	f
+clear	umbrella/common/cfg.py	/^    def clear(self):$/;"	m	class:ConfigOpts
+clear_alarms	umbrella/api/monitor.py	/^    def clear_alarms(self, req):$/;"	m	class:Controller
+clear_db_env	umbrella/db/sqlalchemy/api.py	/^def clear_db_env():$/;"	f
+clear_default	umbrella/common/cfg.py	/^    def clear_default(self, name, group=None):$/;"	m	class:ConfigOpts
+clear_override	umbrella/common/cfg.py	/^    def clear_override(self, name, group=None):$/;"	m	class:ConfigOpts
+clear_time_override	umbrella/common/timeutils.py	/^def clear_time_override():$/;"	f
+collect_cpu_info	umbrella/monitor/cpu.py	/^    def collect_cpu_info(self):$/;"	m	class:CpuController
+collect_disk_info	umbrella/monitor/disk.py	/^    def collect_disk_info(self):$/;"	m	class:DiskController
+collect_mem_info	umbrella/monitor/mem.py	/^    def collect_mem_info(self):$/;"	m	class:MemController
+collect_net_info	umbrella/monitor/net.py	/^    def collect_net_info(self):$/;"	m	class:NetController
+command_opt	umbrella/cmd/manage.py	/^command_opt = cfg.SubCommandOpt('command',$/;"	v
+comment	umbrella/common/iniparser.py	/^    def comment(self, comment):$/;"	m	class:BaseParser
+common_cli_opts	umbrella/common/cfg.py	/^    common_cli_opts = [$/;"	v	class:CommonConfigOpts
+common_opts	umbrella/common/config.py	/^common_opts = [$/;"	v
+compile_big_int_sqlite	umbrella/db/sqlalchemy/models.py	/^def compile_big_int_sqlite(type_, compiler, **kw):$/;"	f
+config	umbrella/tests/utils.py	/^    def config(self, **kw):$/;"	m	class:BaseTestCase
+configure	umbrella/common/wsgi.py	/^    def configure(self, old_conf=None, has_changed=None):$/;"	m	class:Server
+configure_db	umbrella/tests/utils.py	/^    def configure_db(self):$/;"	m	class:FakeDB
+configure_from_url	umbrella/common/client.py	/^    def configure_from_url(self, url):$/;"	m	class:BaseClient
+configure_socket	umbrella/common/wsgi.py	/^    def configure_socket(self, old_conf=None, has_changed=None):$/;"	m	class:Server
+connect	umbrella/common/client.py	/^    def connect(self):$/;"	m	class:HTTPSClientAuthConnection
+context_opts	umbrella/api/middleware/context.py	/^context_opts = [$/;"	v
+convert_bool	umbrella/common/cfg.py	/^        def convert_bool(v):$/;"	f	function:BoolOpt._get_from_config_parser
+convert_usages_to_metric	umbrella/monitor/monitor.py	/^def convert_usages_to_metric(usages, level):$/;"	f
+cooperative_iter	umbrella/common/utils.py	/^def cooperative_iter(iter):$/;"	f
+cooperative_read	umbrella/common/utils.py	/^def cooperative_read(fd):$/;"	f
+copy_subunit_log	run_tests.sh	/^function copy_subunit_log {$/;"	f
+cpu_load	umbrella/db/sqlalchemy/models.py	/^    cpu_load = Column(Integer)$/;"	v	class:Cpu
+cpu_opts	umbrella/common/config.py	/^cpu_opts = [$/;"	v
+createLock	umbrella/common/log.py	/^        def createLock(self):$/;"	m	class:NullHandler
+create_flavor	umbrella/api/server.py	/^    def create_flavor(self, req, tenant_id, body):$/;"	m	class:Controller
+create_mashup_dict	umbrella/common/utils.py	/^def create_mashup_dict(image_meta):$/;"	f
+create_pool	umbrella/common/wsgi.py	/^    def create_pool(self):$/;"	m	class:Server
+create_resource	umbrella/api/image.py	/^def create_resource():$/;"	f
+create_resource	umbrella/api/monitor.py	/^def create_resource():$/;"	f
+create_resource	umbrella/api/server.py	/^def create_resource():$/;"	f
+create_resource	umbrella/api/statistic.py	/^def create_resource():$/;"	f
+create_resource	umbrella/api/user.py	/^def create_resource():$/;"	f
+create_resource	umbrella/api/v1/api.py	/^def create_resource():$/;"	f
+create_resource	umbrella/api/v1/myservers.py	/^def create_resource():$/;"	f
+create_tables	umbrella/db/sqlalchemy/migrate_repo/schema.py	/^def create_tables(tables):$/;"	f
+create_virtualenv	tools/install_venv_common.py	/^    def create_virtualenv(self, no_site_packages=True):$/;"	m	class:InstallVenv
+created_at	umbrella/db/sqlalchemy/models.py	/^    created_at = Column(DateTime, default=lambda: our_timeutils.utc_to_local($/;"	v	class:UmbrellaBase
+db_sync	umbrella/db/migration.py	/^def db_sync(version=None, init_version=0, engine=None):$/;"	f
+db_sync	umbrella/db/sqlalchemy/migration.py	/^def db_sync(version=None, current_version=None):$/;"	f
+db_version	umbrella/db/sqlalchemy/migration.py	/^def db_version():$/;"	f
+decorator	umbrella/virt/libvirt.py	/^    def decorator(self, *args, **kwargs):$/;"	f	function:retry_on_disconnect
+default	umbrella/common/cfg.py	/^                default=False,$/;"	v	class:CommonConfigOpts
+default	umbrella/common/cfg.py	/^               default='LOG_USER',$/;"	v	class:CommonConfigOpts
+default	umbrella/common/cfg.py	/^               default=DEFAULT_LOG_DATE_FORMAT,$/;"	v	class:CommonConfigOpts
+default	umbrella/common/cfg.py	/^               default=DEFAULT_LOG_FORMAT,$/;"	v	class:CommonConfigOpts
+default	umbrella/common/config.py	/^                default=['ami', 'ari', 'aki', 'bare', 'ovf', 'ova'],$/;"	v
+default	umbrella/common/config.py	/^                default=['ami', 'ari', 'aki', 'vhd', 'vmdk', 'raw', 'qcow2',$/;"	v
+default	umbrella/common/config.py	/^               default='taskflow',$/;"	v
+default	umbrella/common/config.py	/^               default=48,$/;"	v
+default	umbrella/common/config.py	/^               default=None,$/;"	v
+default	umbrella/common/log.py	/^                default=False,$/;"	v
+default	umbrella/common/log.py	/^                default=True,$/;"	v
+default	umbrella/common/log.py	/^                default=[$/;"	v
+default	umbrella/common/log.py	/^               default='%(asctime)s %(levelname)s %(name)s [%(request_id)s '$/;"	v
+default	umbrella/common/log.py	/^               default='%(asctime)s %(process)d %(levelname)s %(name)s [-]'$/;"	v
+default	umbrella/common/log.py	/^               default='%(asctime)s %(process)d TRACE %(name)s %(instance)s',$/;"	v
+default	umbrella/common/log.py	/^               default='%(funcName)s %(pathname)s:%(lineno)d',$/;"	v
+default	umbrella/common/log.py	/^               default='0644',$/;"	v
+default	umbrella/common/log.py	/^               default='[instance: %(uuid)s] ',$/;"	v
+default	umbrella/common/log.py	/^               default=None,$/;"	v
+default	umbrella/common/wsgi.py	/^    def default(self, request):$/;"	m	class:JSONRequestDeserializer
+default	umbrella/common/wsgi.py	/^    def default(self, response, result):$/;"	m	class:JSONResponseSerializer
+default	umbrella/openstack/api.py	/^                                 default=60 * 60 * 24)$/;"	v
+default	umbrella/virt/libvirt.py	/^                default='kvm',$/;"	v
+default	umbrella/virt/libvirt.py	/^                default='qemu:\/\/\/system',$/;"	v
+deferred_version_string	umbrella/common/version.py	/^    def deferred_version_string(self, prefix=""):$/;"	m	class:VersionInfo
+define_alarming_table	umbrella/db/sqlalchemy/migrate_repo/versions/002_add_alarming_table.py	/^def define_alarming_table(meta):$/;"	f
+define_cpu_table	umbrella/db/sqlalchemy/migrate_repo/versions/004_add_cpu_table.py	/^def define_cpu_table(meta):$/;"	f
+define_disk_table	umbrella/db/sqlalchemy/migrate_repo/versions/002_add_disk_table.py	/^def define_disk_table(meta):$/;"	f
+define_mem_table	umbrella/db/sqlalchemy/migrate_repo/versions/003_add_mem_table.py	/^def define_mem_table(meta):$/;"	f
+define_net_table	umbrella/db/sqlalchemy/migrate_repo/versions/001_add_net_table.py	/^def define_net_table(meta):$/;"	f
+define_settings_table	umbrella/db/sqlalchemy/migrate_repo/versions/001_add_settings_table.py	/^def define_settings_table(meta):$/;"	f
+delete	umbrella/api/image.py	/^    def delete(self, req, image_id):$/;"	m	class:Controller
+delete	umbrella/api/server.py	/^    def delete(self, req, tenant_id, id):$/;"	m	class:Controller
+delete_alarm	umbrella/api/monitor.py	/^    def delete_alarm(self, req, alarm_id):$/;"	m	class:Controller
+delete_flavor	umbrella/api/server.py	/^    def delete_flavor(self, req, tenant_id, flavor_id):$/;"	m	class:Controller
+delete_user	umbrella/api/user.py	/^    def delete_user(self, req, id):$/;"	m	class:Controller
+depends_on_exe	umbrella/tests/utils.py	/^class depends_on_exe(object):$/;"	c
+deprecated_opts	umbrella/common/config.py	/^                deprecated_opts=[cfg.DeprecatedOpt('container_formats',$/;"	v
+deprecated_opts	umbrella/common/config.py	/^                deprecated_opts=[cfg.DeprecatedOpt('disk_formats',$/;"	v
+deprecated_opts	umbrella/common/config.py	/^               deprecated_opts=[cfg.DeprecatedOpt('task_time_to_live',$/;"	v
+destroy_setting	umbrella/api/monitor.py	/^    def destroy_setting(self, req, uuid):$/;"	m	class:Controller
+dict_store	umbrella/common/local.py	/^def dict_store():$/;"	f
+dict_to_setting_ref	umbrella/tests/utils.py	/^    def dict_to_setting_ref(self, dict_data):$/;"	m	class:FakeDB
+die	tools/install_venv_common.py	/^    def die(self, message, *args):$/;"	m	class:InstallVenv
+disable_interspersed_args	umbrella/common/cfg.py	/^    def disable_interspersed_args(self):$/;"	m	class:ConfigOpts
+disk_opts	umbrella/common/config.py	/^disk_opts = [$/;"	v
+dispatch	umbrella/common/wsgi.py	/^    def dispatch(self, obj, action, *args, **kwargs):$/;"	m	class:Resource
+dnspython_installed	umbrella/cmd/__init__.py	/^    dnspython_installed = False$/;"	v
+dnspython_installed	umbrella/cmd/__init__.py	/^    dnspython_installed = True$/;"	v
+do_request	umbrella/common/client.py	/^    def do_request(self, method, action, body=None, headers=None,$/;"	m	class:BaseClient
+done	tools/colorizer.py	/^    def done(self):$/;"	m	class:SubunitTestResult
+downgrade	umbrella/cmd/manage.py	/^    def downgrade(self, version=None):$/;"	m	class:DbCommands
+downgrade	umbrella/cmd/manage.py	/^    def downgrade(self, version=None):$/;"	m	class:DbLegacyCommands
+downgrade	umbrella/db/sqlalchemy/migrate_repo/versions/001_add_net_table.py	/^def downgrade(migrate_engine):$/;"	f
+downgrade	umbrella/db/sqlalchemy/migrate_repo/versions/001_add_settings_table.py	/^def downgrade(migrate_engine):$/;"	f
+downgrade	umbrella/db/sqlalchemy/migrate_repo/versions/002_add_alarming_table.py	/^def downgrade(migrate_engine):$/;"	f
+downgrade	umbrella/db/sqlalchemy/migrate_repo/versions/002_add_disk_table.py	/^def downgrade(migrate_engine):$/;"	f
+downgrade	umbrella/db/sqlalchemy/migrate_repo/versions/003_add_mem_table.py	/^def downgrade(migrate_engine):$/;"	f
+downgrade	umbrella/db/sqlalchemy/migrate_repo/versions/004_add_cpu_table.py	/^def downgrade(migrate_engine):$/;"	f
+downgrade	umbrella/db/sqlalchemy/migration.py	/^def downgrade(version):$/;"	f
+drop_tables	umbrella/db/sqlalchemy/migrate_repo/schema.py	/^def drop_tables(tables):$/;"	f
+dumps	umbrella/common/jsonutils.py	/^def dumps(value, default=to_primitive, **kwargs):$/;"	f
+emit	umbrella/common/log.py	/^        def emit(self, record):$/;"	m	class:NullHandler
+enable_interspersed_args	umbrella/common/cfg.py	/^    def enable_interspersed_args(self):$/;"	m	class:ConfigOpts
+error_empty_key	umbrella/common/iniparser.py	/^    def error_empty_key(self, line):$/;"	m	class:BaseParser
+error_invalid_assignment	umbrella/common/iniparser.py	/^    def error_invalid_assignment(self, line):$/;"	m	class:BaseParser
+error_no_section	umbrella/common/cfg.py	/^    def error_no_section(self):$/;"	m	class:ConfigParser
+error_no_section_end_bracket	umbrella/common/iniparser.py	/^    def error_no_section_end_bracket(self, line):$/;"	m	class:BaseParser
+error_no_section_name	umbrella/common/iniparser.py	/^    def error_no_section_name(self, line):$/;"	m	class:BaseParser
+error_unexpected_continuation	umbrella/common/iniparser.py	/^    def error_unexpected_continuation(self, line):$/;"	m	class:BaseParser
+eventlet_opts	umbrella/common/wsgi.py	/^eventlet_opts = [$/;"	v
+exception_to_str	umbrella/common/utils.py	/^def exception_to_str(exc):$/;"	f
+execute	umbrella/tests/utils.py	/^def execute(cmd,$/;"	f
+exit_code	tools/colorizer.py	/^    exit_code = 0$/;"	v
+exit_code	tools/colorizer.py	/^    exit_code = 1$/;"	v
+export_metadefs	umbrella/cmd/manage.py	/^    def export_metadefs(self, path=None):$/;"	m	class:DbLegacyCommands
+factory	umbrella/api/v1/example.py	/^    def factory(cls, global_conf, **kwargs):$/;"	m	class:LogFilter
+factory	umbrella/api/v1/example.py	/^    def factory(cls,global_conf,**kwargs):$/;"	m	class:Calculator
+factory	umbrella/api/v1/example.py	/^    def factory(cls,global_conf,**kwargs):$/;"	m	class:ShowVersion
+factory	umbrella/api/v1/pastedeploylab.py	/^    def factory(cls, global_conf, **kwargs):$/;"	m	class:LogFilter
+factory	umbrella/api/v1/pastedeploylab.py	/^    def factory(cls,global_conf,**kwargs):$/;"	m	class:Calculator
+factory	umbrella/api/v1/pastedeploylab.py	/^    def factory(cls,global_conf,**kwargs):$/;"	m	class:ShowVersion
+factory	umbrella/common/wsgi.py	/^    def factory(cls, global_conf, **local_conf):$/;"	m	class:Middleware
+factory	umbrella/common/wsgi.py	/^    def factory(cls, global_conf, **local_conf):$/;"	m	class:Router
+fail	umbrella/cmd/api.py	/^def fail(e):$/;"	f
+fail	umbrella/cmd/collector.py	/^def fail(e):$/;"	f
+fake_construct_usage	umbrella/tests/statistic_test.py	/^        def fake_construct_usage(self, usages):$/;"	f	function:ControllerTest.test_show_by_host
+fake_filter_quotas	umbrella/tests/server_test.py	/^        def fake_filter_quotas(req, tenant_id, converted_result):$/;"	f	function:ControllerTest.test_list_all_quotas
+fake_filter_quotas	umbrella/tests/server_test.py	/^        def fake_filter_quotas(req, tenant_id, converted_result):$/;"	f	function:ControllerTest.test_list_all_quotas_filter_out_tenant
+fake_get_all_tenants	umbrella/tests/__init__.py	/^def fake_get_all_tenants(auth_token=None):$/;"	f
+fake_get_all_users	umbrella/tests/__init__.py	/^def fake_get_all_users(auth_token=None):$/;"	f
+fake_get_detault_quotas	umbrella/tests/filter_test.py	/^        def fake_get_detault_quotas(tenant_id, target_id, auth_token):$/;"	f	function:FilterTest.test_filter_quotas
+fake_get_hosts_az	umbrella/tests/statistic_test.py	/^        def fake_get_hosts_az(tenant_id, auth_token):$/;"	f	function:ControllerTest.test_show_by_host
+fake_get_hosts_capacity	umbrella/tests/statistic_test.py	/^        def fake_get_hosts_capacity(tenant_id, auth_token):$/;"	f	function:ControllerTest.test_show_by_host
+fake_get_keypairs	umbrella/tests/server_test.py	/^        def fake_get_keypairs(tenant_id, auth_token):$/;"	f	function:ControllerTest.test_list_all_quotas
+fake_get_keypairs	umbrella/tests/server_test.py	/^        def fake_get_keypairs(tenant_id, auth_token):$/;"	f	function:ControllerTest.test_list_all_quotas_filter_out_tenant
+fake_get_map_flavor	umbrella/tests/server_test.py	/^        def fake_get_map_flavor(self, req, tenant_id, flavor_id):$/;"	f	function:ControllerTest.test_list_flavor_key_id
+fake_get_map_flavor	umbrella/tests/server_test.py	/^        def fake_get_map_flavor(self, req, tenant_id, flavor_id):$/;"	f	function:ControllerTest.test_list_flavor_key_info
+fake_get_tenant	umbrella/tests/server_test.py	/^        def fake_get_tenant(tenantid, auth_token):$/;"	f	function:ControllerTest.test_list_all_quotas
+fake_get_tenant	umbrella/tests/server_test.py	/^        def fake_get_tenant(tenantid, auth_token):$/;"	f	function:ControllerTest.test_list_all_quotas_filter_out_tenant
+fake_get_user	umbrella/tests/server_test.py	/^        def fake_get_user(userid, auth_token):$/;"	f	function:ControllerTest.test_list_all_quotas
+fake_get_user	umbrella/tests/server_test.py	/^        def fake_get_user(userid, auth_token):$/;"	f	function:ControllerTest.test_list_all_quotas_filter_out_tenant
+fake_nova_request	umbrella/tests/server_test.py	/^        def fake_nova_request(self, req):$/;"	f	function:ControllerTest.test_list_all_quotas
+fake_nova_request	umbrella/tests/server_test.py	/^        def fake_nova_request(self, req):$/;"	f	function:ControllerTest.test_list_all_quotas_filter_out_tenant
+fake_nova_request	umbrella/tests/server_test.py	/^        def fake_nova_request(self, req):$/;"	f	function:ControllerTest.test_list_quotas
+fake_request_usages	umbrella/tests/statistic_test.py	/^        def fake_request_usages(self, level, az_name=None):$/;"	f	function:ControllerTest.test_index
+fake_request_usages	umbrella/tests/statistic_test.py	/^        def fake_request_usages(self, level, az_name=None):$/;"	f	function:ControllerTest.test_list_platform_usage
+fake_request_usages	umbrella/tests/statistic_test.py	/^        def fake_request_usages(self, level, az_name=None):$/;"	f	function:ControllerTest.test_show_by_host
+fake_time	umbrella/tests/monitor_test.py	/^def fake_time():$/;"	f
+filter	umbrella/common/wsgi.py	/^        def filter(app):$/;"	f	function:Middleware.factory
+filter_floating_ips	umbrella/api/list_operation/filter.py	/^def filter_floating_ips(req, ips):$/;"	f
+filter_host_usages	umbrella/api/list_operation/filter.py	/^def filter_host_usages(req, usages):$/;"	f
+filter_image_properties	umbrella/api/image.py	/^def filter_image_properties(image_metas_dict):$/;"	f
+filter_images	umbrella/api/list_operation/filter.py	/^def filter_images(req, images):$/;"	f
+filter_instance_error	umbrella/api/list_operation/filter.py	/^def filter_instance_error(req, error):$/;"	f
+filter_items	umbrella/api/list_operation/filter.py	/^def filter_items(req, items, keys, tenant_id_key, values,$/;"	f
+filter_keypairs	umbrella/api/list_operation/filter.py	/^def filter_keypairs(req, keypairs):$/;"	f
+filter_quotas	umbrella/api/list_operation/filter.py	/^def filter_quotas(req, tenant_id, quotas):$/;"	f
+filter_security_groups	umbrella/api/list_operation/filter.py	/^def filter_security_groups(req, groups):$/;"	f
+filter_servers	umbrella/api/list_operation/filter.py	/^def filter_servers(req, servers):$/;"	f
+filter_snapshot_error	umbrella/api/list_operation/filter.py	/^def filter_snapshot_error(req, error):$/;"	f
+filter_tenants_usages	umbrella/api/list_operation/filter.py	/^def filter_tenants_usages(req, usages):$/;"	f
+find_config_files	umbrella/common/cfg.py	/^def find_config_files(project=None, prog=None, extension='.conf'):$/;"	f
+find_executable	umbrella/tests/utils.py	/^def find_executable(cmdname):$/;"	f
+find_file	umbrella/common/cfg.py	/^    def find_file(self, name):$/;"	m	class:ConfigOpts
+fix_greendns_ipv6	umbrella/cmd/__init__.py	/^def fix_greendns_ipv6():$/;"	f
+format	umbrella/common/log.py	/^    def format(self, record):$/;"	m	class:ColorHandler
+format	umbrella/common/log.py	/^    def format(self, record):$/;"	m	class:JSONFormatter
+format	umbrella/common/log.py	/^    def format(self, record):$/;"	m	class:LegacyFormatter
+formatException	umbrella/common/log.py	/^    def formatException(self, ei, strip_newlines=True):$/;"	m	class:JSONFormatter
+formatException	umbrella/common/log.py	/^    def formatException(self, exc_info, record=None):$/;"	m	class:LegacyFormatter
+format_dimension	umbrella/api/statistic.py	/^format_dimension = monitor.format_dimension$/;"	v
+format_dimension	umbrella/monitor/monitor.py	/^def format_dimension(level, key):$/;"	f
+format_metric	umbrella/monitor/monitor.py	/^def format_metric(metric_name, dimensions, value, unit):$/;"	f
+from_dict	umbrella/context.py	/^    def from_dict(cls, values):$/;"	m	class:RequestContext
+from_json	umbrella/common/wsgi.py	/^    def from_json(self, datastring):$/;"	m	class:JSONRequestDeserializer
+from_migration_import	umbrella/db/sqlalchemy/migrate_repo/schema.py	/^def from_migration_import(module_name, fromlist):$/;"	f
+generate_authors	umbrella/common/setup.py	/^def generate_authors():$/;"	f
+generate_autoindex	umbrella/common/setup.py	/^            def generate_autoindex(self):$/;"	m	class:get_cmdclass.LocalSDist.LocalBuildDoc
+generate_floating_ips	umbrella/tests/sort_test.py	/^        def generate_floating_ips(ip):$/;"	f	function:SortTest.test_floating_ips_unicode
+generate_images	umbrella/tests/sort_test.py	/^        def generate_images(**kwargs):$/;"	f	function:SortTest.test_sort_images
+generate_instance_error	umbrella/tests/sort_test.py	/^        def generate_instance_error(**kwargs):$/;"	f	function:SortTest.test_sort_instance_error
+generate_keypairs	umbrella/tests/sort_test.py	/^        def generate_keypairs(**kwargs):$/;"	f	function:SortTest.test_umbrella_sort_keypairs
+generate_quotas	umbrella/tests/sort_test.py	/^        def generate_quotas(**kwargs):$/;"	f	function:SortTest.test_sort_quotas
+generate_security_groups	umbrella/tests/sort_test.py	/^        def generate_security_groups(**kwargs):$/;"	f	function:SortTest.test_sort_security_groups
+generate_servers	umbrella/tests/sort_test.py	/^        def generate_servers(fixed_ip):$/;"	f	function:SortTest.test_sort_servers_fixed_ips
+generate_signature	umbrella/monitor/monitor.py	/^    def generate_signature(self, http_method):$/;"	m	class:Monitor
+generate_snapshot_error	umbrella/tests/sort_test.py	/^        def generate_snapshot_error(**kwargs):$/;"	f	function:SortTest.test_sort_snapshot_error
+generate_usages	umbrella/tests/sort_test.py	/^    def generate_usages(**kwargs):$/;"	m	class:Utils
+generic_log_opts	umbrella/common/log.py	/^generic_log_opts = [$/;"	v
+get	umbrella/common/cfg.py	/^    def get(self, section, names, multi=False):$/;"	m	class:MultiConfigParser
+getLogger	umbrella/common/log.py	/^def getLogger(name='unknown', version='unknown'):$/;"	f
+get_action_args	umbrella/common/wsgi.py	/^    def get_action_args(self, request_environment):$/;"	m	class:Resource
+get_alarm	umbrella/api/monitor.py	/^    def get_alarm(self, req, alarm_id):$/;"	m	class:Controller
+get_alarming	umbrella/common/local.py	/^    def get_alarming(self, level, setting_type, usage, expire):$/;"	m	class:Global
+get_all_tenants	umbrella/openstack/api.py	/^def get_all_tenants(auth_token=None):$/;"	f
+get_all_users	umbrella/openstack/api.py	/^def get_all_users(auth_token=None):$/;"	f
+get_api	umbrella/db/__init__.py	/^def get_api():$/;"	f
+get_api	umbrella/tests/utils.py	/^    def get_api(cls, *args, **kwargs):$/;"	m	class:FakeDB
+get_asynchronous_eventlet_pool	umbrella/common/wsgi.py	/^def get_asynchronous_eventlet_pool(size=1000):$/;"	f
+get_az_capacity	umbrella/api/statistic.py	/^    def get_az_capacity(self, req, tenant_id, az_name):$/;"	m	class:Controller
+get_backend	umbrella/db/migration.py	/^def get_backend():$/;"	f
+get_bind_addr	umbrella/common/wsgi.py	/^def get_bind_addr(default_port=None):$/;"	f
+get_cmdclass	umbrella/common/setup.py	/^def get_cmdclass():$/;"	f
+get_connect_kwargs	umbrella/common/client.py	/^    def get_connect_kwargs(self):$/;"	m	class:BaseClient
+get_connection	umbrella/virt/libvirt.py	/^    def get_connection(self):$/;"	m	class:LibvirtInspector
+get_connection_type	umbrella/common/client.py	/^    def get_connection_type(self):$/;"	m	class:BaseClient
+get_content_range	umbrella/common/wsgi.py	/^    def get_content_range(self):$/;"	m	class:Request
+get_content_type	umbrella/common/wsgi.py	/^    def get_content_type(self, allowed_content_types):$/;"	m	class:Request
+get_cpu_sample	umbrella/api/v1/api.py	/^    def get_cpu_sample(self, req, instance_uuid):$/;"	m	class:Controller
+get_detault_quotas	umbrella/openstack/api.py	/^def get_detault_quotas(tenant_id, target_id, auth_token):$/;"	f
+get_disk_sample	umbrella/api/v1/api.py	/^    def get_disk_sample(self, req, instance_uuid):$/;"	m	class:Controller
+get_distro	tools/install_venv_common.py	/^    def get_distro(self):$/;"	m	class:InstallVenv
+get_ecus	umbrella/monitor/manager.py	/^    def get_ecus(self, level=models.PLATFORM_LEVEL, az_name=None):$/;"	m	class:Manager
+get_elapsed_time_color	tools/colorizer.py	/^def get_elapsed_time_color(elapsed_time):$/;"	f
+get_endpoint	umbrella/common/auth.py	/^def get_endpoint(service_catalog, service_type='image', endpoint_region=None,$/;"	f
+get_engine	umbrella/db/sqlalchemy/api.py	/^def get_engine():$/;"	f
+get_extra_specs	umbrella/openstack/api.py	/^def get_extra_specs(c, result, tenant_id, auth_token, flavor_id):$/;"	f
+get_flavor	umbrella/api/server.py	/^    def get_flavor(self, req, tenant_id, flavor_id):$/;"	m	class:Controller
+get_flavor	umbrella/openstack/api.py	/^def get_flavor(tenant_id, auth_token, flavor_id):$/;"	f
+get_flavors	umbrella/api/server.py	/^        def get_flavors(c, tenant_id):$/;"	f	function:Controller._get_map_flavor
+get_floating_ips	umbrella/monitor/manager.py	/^    def get_floating_ips(self, level=models.PLATFORM_LEVEL, az_name=None):$/;"	m	class:Manager
+get_git_branchname	umbrella/common/setup.py	/^def get_git_branchname():$/;"	f
+get_host_usage	umbrella/api/server.py	/^    def get_host_usage(self, req, tenant_id, host):$/;"	m	class:Controller
+get_hosts_az	umbrella/openstack/api.py	/^def get_hosts_az(tenant_id, auth_token):$/;"	f
+get_hosts_capacity	umbrella/openstack/api.py	/^def get_hosts_capacity(tenant_id, auth_token):$/;"	f
+get_image	umbrella/openstack/api.py	/^def get_image(auth_token, image_id):$/;"	f
+get_image_meta_from_headers	umbrella/common/utils.py	/^def get_image_meta_from_headers(response):$/;"	f
+get_isolated_test_env	umbrella/tests/utils.py	/^def get_isolated_test_env():$/;"	f
+get_item	umbrella/common/local.py	/^    def get_item(self, cache_dir, key):$/;"	m	class:Global
+get_item	umbrella/monitor/manager.py	/^    def get_item(self, data_key, used_key, level=models.PLATFORM_LEVEL,$/;"	m	class:Manager
+get_items	umbrella/common/utils.py	/^    def get_items():$/;"	f	function:create_mashup_dict
+get_keypairs	umbrella/openstack/api.py	/^def get_keypairs(tenant_id, auth_token):$/;"	f
+get_local_gb	umbrella/monitor/manager.py	/^    def get_local_gb(self, level=models.PLATFORM_LEVEL, az_name=None):$/;"	m	class:Manager
+get_map_id	umbrella/api/server.py	/^        def get_map_id(flavors):$/;"	f	function:Controller.list_flavor_key_id
+get_mem_sample	umbrella/api/v1/api.py	/^    def get_mem_sample(self, req, instance_uuid):$/;"	m	class:Controller
+get_memory_mb	umbrella/monitor/manager.py	/^    def get_memory_mb(self, level=models.PLATFORM_LEVEL, az_name=None):$/;"	m	class:Manager
+get_migrate_repo_path	umbrella/db/sqlalchemy/migration.py	/^def get_migrate_repo_path():$/;"	f
+get_net_sample	umbrella/api/v1/api.py	/^    def get_net_sample(self, req, instance_uuid):$/;"	m	class:Controller
+get_network_qos	umbrella/monitor/manager.py	/^    def get_network_qos(self, level=models.PLATFORM_LEVEL, az_name=None):$/;"	m	class:Manager
+get_number	umbrella/api/server.py	/^        def get_number(flavors):$/;"	f	function:Controller.list_flavor_key_info
+get_one_net	umbrella/db/sqlalchemy/api.py	/^def get_one_net():$/;"	f
+get_plugin_from_strategy	umbrella/common/auth.py	/^def get_plugin_from_strategy(strategy, creds=None, insecure=False):$/;"	f
+get_post_version	umbrella/common/setup.py	/^def get_post_version(projectname):$/;"	f
+get_pre_version	umbrella/common/setup.py	/^def get_pre_version(projectname, base_version):$/;"	f
+get_reqs_from_files	umbrella/common/setup.py	/^def get_reqs_from_files(requirements_files):$/;"	f
+get_search_plugins	umbrella/common/utils.py	/^def get_search_plugins():$/;"	f
+get_servers	umbrella/monitor/manager.py	/^    def get_servers(self, level=models.PLATFORM_LEVEL, az_name=None):$/;"	m	class:Manager
+get_session	umbrella/db/sqlalchemy/api.py	/^def get_session(autocommit=True, expire_on_commit=False):$/;"	f
+get_setting	umbrella/common/local.py	/^    def get_setting(self, level, setting_type, default=None):$/;"	m	class:Global
+get_setting_by_level_type	umbrella/api/monitor.py	/^    def get_setting_by_level_type(self, req, level, setting_type):$/;"	m	class:Controller
+get_setting_by_uuid	umbrella/api/monitor.py	/^    def get_setting_by_uuid(self, req, uuid):$/;"	m	class:Controller
+get_socket	umbrella/common/wsgi.py	/^def get_socket(default_port):$/;"	f
+get_status_code	umbrella/common/client.py	/^    def get_status_code(self, response):$/;"	m	class:BaseClient
+get_tenant	umbrella/openstack/api.py	/^def get_tenant(tenant_id, auth_token):$/;"	f
+get_terminal_size	umbrella/common/utils.py	/^def get_terminal_size():$/;"	f
+get_test_suite_socket	umbrella/common/utils.py	/^def get_test_suite_socket():$/;"	f
+get_unused_port	umbrella/tests/utils.py	/^def get_unused_port():$/;"	f
+get_usage	umbrella/api/server.py	/^    def get_usage(self, req, tenant_id, target_id=None):$/;"	m	class:Controller
+get_usages	umbrella/openstack/api.py	/^def get_usages(tenant_id, auth_token):$/;"	f
+get_user	umbrella/openstack/api.py	/^def get_user(user_id, auth_token):$/;"	f
+get_vcpus	umbrella/monitor/manager.py	/^    def get_vcpus(self, level=models.PLATFORM_LEVEL, az_name=None):$/;"	m	class:Manager
+get_zone_by_host	umbrella/api/statistic.py	/^        def get_zone_by_host(zones, host):$/;"	f	function:Controller.show_by_host
+getheader	umbrella/tests/utils.py	/^    def getheader(self, name, default=None):$/;"	m	class:FakeHTTPResponse
+group	umbrella/common/config.py	/^                                                   group='DEFAULT')]),$/;"	v
+group	umbrella/common/config.py	/^                                                  group='DEFAULT')]),$/;"	v
+handle	umbrella/common/log.py	/^        def handle(self, record):$/;"	m	class:NullHandler
+handle_redirects	umbrella/common/client.py	/^def handle_redirects(func):$/;"	f
+handle_unauthenticated	umbrella/common/client.py	/^def handle_unauthenticated(func):$/;"	f
+handler	umbrella/cmd/manage.py	/^                                handler=add_command_parsers)$/;"	v
+has_body	umbrella/common/wsgi.py	/^    def has_body(self, request):$/;"	m	class:JSONRequestDeserializer
+help	umbrella/cmd/manage.py	/^                                help='Available commands',$/;"	v
+help	umbrella/common/cfg.py	/^                help='Print debugging output'),$/;"	v	class:CommonConfigOpts
+help	umbrella/common/cfg.py	/^                help='Print more verbose output'),$/;"	v	class:CommonConfigOpts
+help	umbrella/common/cfg.py	/^                help='Use syslog for logging.'),$/;"	v	class:CommonConfigOpts
+help	umbrella/common/cfg.py	/^               help='(Optional) Name of log file to output to. '$/;"	v	class:CommonConfigOpts
+help	umbrella/common/cfg.py	/^               help='(Optional) The directory to keep log files in '$/;"	v	class:CommonConfigOpts
+help	umbrella/common/cfg.py	/^               help='A logging.Formatter log message format string which may '$/;"	v	class:CommonConfigOpts
+help	umbrella/common/cfg.py	/^               help='Format string for %(asctime)s in log records. '$/;"	v	class:CommonConfigOpts
+help	umbrella/common/cfg.py	/^               help='If this option is specified, the logging configuration '$/;"	v	class:CommonConfigOpts
+help	umbrella/common/cfg.py	/^               help='syslog facility to receive log lines')$/;"	v	class:CommonConfigOpts
+help	umbrella/common/config.py	/^                help=_("Deploy the v1 OpenStack Images API.")),$/;"	v
+help	umbrella/common/config.py	/^                help=_("Deploy the v1 OpenStack Registry API.")),$/;"	v
+help	umbrella/common/config.py	/^                help=_("Deploy the v2 OpenStack Images API.")),$/;"	v
+help	umbrella/common/config.py	/^                help=_("Deploy the v2 OpenStack Registry API.")),$/;"	v
+help	umbrella/common/config.py	/^                help=_("Deploy the v3 OpenStack Objects API.")),$/;"	v
+help	umbrella/common/config.py	/^                help=_("Supported values for the 'container_format' "$/;"	v
+help	umbrella/common/config.py	/^                help=_("Supported values for the 'disk_format' "$/;"	v
+help	umbrella/common/config.py	/^                help=_('Whether to allow users to specify image properties '$/;"	v
+help	umbrella/common/config.py	/^                help=_('Whether to include the backend image locations '$/;"	v
+help	umbrella/common/config.py	/^                help=_('Whether to include the backend image storage location '$/;"	v
+help	umbrella/common/config.py	/^               help=_("Maximum size of image a user can upload in bytes. "$/;"	v
+help	umbrella/common/config.py	/^               help=_("Set a system wide quota for every user. This value is "$/;"	v
+help	umbrella/common/config.py	/^               help=_("Specifies which task executor to be used to run the "$/;"	v
+help	umbrella/common/config.py	/^               help=_("Time in hours for which a task lives after, either "$/;"	v
+help	umbrella/common/config.py	/^               help=_("in a period, total times to get info to static"))$/;"	v
+help	umbrella/common/config.py	/^               help=_("time period to gather vms memory info, "$/;"	v
+help	umbrella/common/config.py	/^               help=_("time period to gather vms network info, "$/;"	v
+help	umbrella/common/config.py	/^               help=_('AES key for encrypting store \\'location\\' metadata. '$/;"	v
+help	umbrella/common/config.py	/^               help=_('Default value for the number of items returned by a '$/;"	v
+help	umbrella/common/config.py	/^               help=_('Digest algorithm which will be used for digital '$/;"	v
+help	umbrella/common/config.py	/^               help=_('Maximum number of image members per image. '$/;"	v
+help	umbrella/common/config.py	/^               help=_('Maximum number of locations allowed on an image. '$/;"	v
+help	umbrella/common/config.py	/^               help=_('Maximum number of properties allowed on an image. '$/;"	v
+help	umbrella/common/config.py	/^               help=_('Maximum number of tags allowed on an image. '$/;"	v
+help	umbrella/common/config.py	/^               help=_('Maximum permissible number of items that could be '$/;"	v
+help	umbrella/common/config.py	/^               help=_('Name of the paste configuration file.')),$/;"	v
+help	umbrella/common/config.py	/^               help=_('The hostname\/IP of the pydev process listening for '$/;"	v
+help	umbrella/common/config.py	/^               help=_('The port on which a pydev process is listening for '$/;"	v
+help	umbrella/common/config.py	/^               help=_('Work dir for asynchronous task operations. '$/;"	v
+help	umbrella/common/log.py	/^                help='Log output to standard error'),$/;"	v
+help	umbrella/common/log.py	/^                help='publish error events'),$/;"	v
+help	umbrella/common/log.py	/^               help='Default file mode used when creating log files'),$/;"	v
+help	umbrella/common/log.py	/^               help='If an instance UUID is passed with the log message, '$/;"	v
+help	umbrella/common/log.py	/^               help='If an instance is passed with the log message, format '$/;"	v
+help	umbrella/common/log.py	/^               help='Log output to a named file'),$/;"	v
+help	umbrella/common/log.py	/^               help='Log output to a per-service log file in named directory'),$/;"	v
+help	umbrella/common/log.py	/^               help='data to append to log format when level is DEBUG'),$/;"	v
+help	umbrella/common/log.py	/^               help='format string to use for log messages with context'),$/;"	v
+help	umbrella/common/log.py	/^               help='format string to use for log messages without context'),$/;"	v
+help	umbrella/common/log.py	/^               help='prefix each line of exception output with this format'),$/;"	v
+help	umbrella/common/wsgi.py	/^                help=_("If False doesn't trace SQL requests."))$/;"	v
+help	umbrella/common/wsgi.py	/^                help=_('If False fully disable profiling feature.')),$/;"	v
+help	umbrella/common/wsgi.py	/^                help=_('If False, server will return the header '$/;"	v
+help	umbrella/common/wsgi.py	/^               help=_("items to monitor")),$/;"	v
+help	umbrella/common/wsgi.py	/^               help=_('Address to bind the server.  Useful when '$/;"	v
+help	umbrella/common/wsgi.py	/^               help=_('Maximum line size of message headers to be accepted. '$/;"	v
+help	umbrella/common/wsgi.py	/^               help=_('The backlog value that will be used when creating the '$/;"	v
+help	umbrella/common/wsgi.py	/^               help=_('The number of child process workers that will be '$/;"	v
+help	umbrella/common/wsgi.py	/^               help=_('The port on which the server will listen.')),$/;"	v
+help	umbrella/common/wsgi.py	/^               help=_('The value for the socket option TCP_KEEPIDLE.  This is '$/;"	v
+help	umbrella/common/wsgi.py	/^               help=_('Timeout for client connections\\' socket operations. '$/;"	v
+help	umbrella/virt/libvirt.py	/^                help='Libvirt domain type.'),$/;"	v
+help	umbrella/virt/libvirt.py	/^                help='Override the default libvirt URI '$/;"	v
+hup	umbrella/common/wsgi.py	/^    def hup(self, *args):$/;"	m	class:Server
+id	umbrella/db/sqlalchemy/models.py	/^    id = Column(Integer, primary_key=True, autoincrement=True)$/;"	v	class:Cpu
+id	umbrella/db/sqlalchemy/models.py	/^    id = Column(Integer, primary_key=True, autoincrement=True)$/;"	v	class:Disk
+id	umbrella/db/sqlalchemy/models.py	/^    id = Column(Integer, primary_key=True, autoincrement=True)$/;"	v	class:Mem
+id	umbrella/db/sqlalchemy/models.py	/^    id = Column(Integer, primary_key=True, autoincrement=True)$/;"	v	class:Net
+image_format_opts	umbrella/common/config.py	/^image_format_opts = [$/;"	v
+image_iterator	umbrella/common/client.py	/^    def image_iterator(self, connection, headers, body):$/;"	m	class:BaseClient
+image_meta_to_http_headers	umbrella/common/utils.py	/^def image_meta_to_http_headers(image_meta):$/;"	f
+impl	umbrella/db/sqlalchemy/models.py	/^    impl = Text$/;"	v	class:JSONEncodedDict
+import_class	umbrella/common/importutils.py	/^def import_class(import_str):$/;"	f
+import_module	umbrella/common/importutils.py	/^def import_module(import_str):$/;"	f
+import_object	umbrella/common/importutils.py	/^def import_object(import_str, *args, **kwargs):$/;"	f
+import_object_ns	umbrella/common/importutils.py	/^def import_object_ns(name_space, import_str, *args, **kwargs):$/;"	f
+import_opt	umbrella/common/cfg.py	/^    def import_opt(self, name, module_str, group=None):$/;"	m	class:ConfigOpts
+index	umbrella/api/image.py	/^    def index(self, req):$/;"	m	class:Controller
+index	umbrella/api/image.py	/^    def index(self, response, images):$/;"	m	class:ImageSerialize
+index	umbrella/api/server.py	/^    def index(self, req, tenant_id):$/;"	m	class:Controller
+index	umbrella/api/statistic.py	/^    def index(self, req, tenant_id):$/;"	m	class:Controller
+index	umbrella/api/user.py	/^    def index(self, req):$/;"	m	class:Controller
+index	umbrella/api/v1/myservers.py	/^    def index(self, req):$/;"	m	class:Controller
+init	umbrella/openstack/api.py	/^def init():$/;"	f
+install_dependencies	tools/install_venv_common.py	/^    def install_dependencies(self):$/;"	m	class:InstallVenv
+install_virtualenv	tools/install_venv_common.py	/^    def install_virtualenv(self):$/;"	m	class:Distro
+install_virtualenv	tools/install_venv_common.py	/^    def install_virtualenv(self):$/;"	m	class:Fedora
+instance_uuid	umbrella/db/sqlalchemy/models.py	/^    instance_uuid = Column(String(30), nullable=False)$/;"	v	class:Cpu
+instance_uuid	umbrella/db/sqlalchemy/models.py	/^    instance_uuid = Column(String(30), nullable=False)$/;"	v	class:Disk
+instance_uuid	umbrella/db/sqlalchemy/models.py	/^    instance_uuid = Column(String(30), nullable=False)$/;"	v	class:Mem
+instance_uuid	umbrella/db/sqlalchemy/models.py	/^    instance_uuid = Column(String(30), nullable=False)$/;"	v	class:Net
+is_authenticated	umbrella/common/auth.py	/^    def is_authenticated(self):$/;"	m	class:BaseStrategy
+is_authenticated	umbrella/common/auth.py	/^    def is_authenticated(self):$/;"	m	class:KeystoneStrategy
+is_authenticated	umbrella/common/auth.py	/^    def is_authenticated(self):$/;"	m	class:NoAuthStrategy
+is_older_than	umbrella/common/timeutils.py	/^def is_older_than(before, seconds):$/;"	f
+is_uuid_like	umbrella/common/utils.py	/^def is_uuid_like(val):$/;"	f
+is_valid_fqdn	umbrella/common/utils.py	/^def is_valid_fqdn(fqdn):$/;"	f
+is_valid_hostname	umbrella/common/utils.py	/^def is_valid_hostname(hostname):$/;"	f
+isotime	umbrella/common/timeutils.py	/^def isotime(at=None):$/;"	f
+item1	umbrella/tests/sort_test.py	/^item1 = {$/;"	v
+item2	umbrella/tests/sort_test.py	/^item2 = {$/;"	v
+item3	umbrella/tests/sort_test.py	/^item3 = {$/;"	v
+item4	umbrella/tests/sort_test.py	/^item4 = {$/;"	v
+item5	umbrella/tests/sort_test.py	/^item5 = {$/;"	v
+item6	umbrella/tests/sort_test.py	/^item6 = {$/;"	v
+item7	umbrella/tests/sort_test.py	/^item7 = {$/;"	v
+items	umbrella/db/sqlalchemy/models.py	/^    def items(self):$/;"	m	class:UmbrellaBase
+items	umbrella/tests/sort_test.py	/^items = [item1, item2, item3]$/;"	v
+keys	umbrella/db/sqlalchemy/models.py	/^    def keys(self):$/;"	m	class:UmbrellaBase
+keystone_admin_request	umbrella/api/user.py	/^    def keystone_admin_request(self, req):$/;"	m	class:Controller
+kill_children	umbrella/common/wsgi.py	/^    def kill_children(self, *args):$/;"	m	class:Server
+lineno	umbrella/common/iniparser.py	/^    lineno = 0$/;"	v	class:BaseParser
+list_alarms	umbrella/api/monitor.py	/^    def list_alarms(self, req, marker=None, limit=None,$/;"	m	class:Controller
+list_alarms	umbrella/api/monitor.py	/^    def list_alarms(self, request):$/;"	m	class:RequestDeserializer
+list_alarms	umbrella/api/monitor.py	/^    def list_alarms(self, response, result):$/;"	m	class:ResponseSerializer
+list_all_quotas	umbrella/api/server.py	/^    def list_all_quotas(self, req, tenant_id):$/;"	m	class:Controller
+list_az	umbrella/api/server.py	/^    def list_az(self, req, tenant_id):$/;"	m	class:Controller
+list_az_usage	umbrella/api/statistic.py	/^    def list_az_usage(self, req, tenant_id, az_name):$/;"	m	class:Controller
+list_flavor	umbrella/openstack/api.py	/^def list_flavor(tenant_id, auth_token, detailed=False):$/;"	f
+list_flavor_key_id	umbrella/api/server.py	/^    def list_flavor_key_id(self, req, tenant_id, flavor_id=None):$/;"	m	class:Controller
+list_flavor_key_info	umbrella/api/server.py	/^    def list_flavor_key_info(self, req, tenant_id, flavor_id=None):$/;"	m	class:Controller
+list_floating_ips	umbrella/api/server.py	/^    def list_floating_ips(self, req, tenant_id):$/;"	m	class:Controller
+list_keypairs	umbrella/api/server.py	/^    def list_keypairs(self, req, tenant_id):$/;"	m	class:Controller
+list_platform_usage	umbrella/api/statistic.py	/^    def list_platform_usage(self, req, tenant_id):$/;"	m	class:Controller
+list_quotas	umbrella/api/server.py	/^    def list_quotas(self, req, tenant_id, target_id):$/;"	m	class:Controller
+list_security_groups	umbrella/api/server.py	/^    def list_security_groups(self, req, tenant_id):$/;"	m	class:Controller
+list_settings	umbrella/api/monitor.py	/^    def list_settings(self, req, filters={}, sort_key='created_at',$/;"	m	class:Controller
+list_settings	umbrella/api/monitor.py	/^    def list_settings(self, request):$/;"	m	class:RequestDeserializer
+load	umbrella/common/jsonutils.py	/^def load(s):$/;"	f
+load_metadefs	umbrella/cmd/manage.py	/^    def load_metadefs(self, path=None, merge=False,$/;"	m	class:DbLegacyCommands
+load_paste_app	umbrella/common/config.py	/^def load_paste_app(app_name, flavor=None, conf_file=None):$/;"	f
+loads	umbrella/common/jsonutils.py	/^def loads(s):$/;"	f
+local_to_utc	umbrella/common/timeutils.py	/^def local_to_utc(datetime_obj):$/;"	f
+log_opt_values	umbrella/common/cfg.py	/^    def log_opt_values(self, logger, lvl):$/;"	m	class:ConfigOpts
+log_opts	umbrella/common/log.py	/^log_opts = [$/;"	v
+logging_cli_opts	umbrella/common/cfg.py	/^    logging_cli_opts = [$/;"	v	class:CommonConfigOpts
+logging_excepthook	umbrella/common/log.py	/^    def logging_excepthook(type, value, tb):$/;"	f	function:_create_logging_excepthook
+lookup_by_uuid	umbrella/virt/libvirt.py	/^    def lookup_by_uuid(self, instance_uuid):$/;"	m	class:LibvirtInspector
+main	tools/install_venv.py	/^def main(argv):$/;"	f
+main	umbrella/cmd/api.py	/^def main():$/;"	f
+main	umbrella/cmd/collector.py	/^def main():$/;"	f
+main	umbrella/cmd/manage.py	/^def main():$/;"	f
+make_alarm_dict	umbrella/api/monitor.py	/^def make_alarm_dict(alarm):$/;"	f
+make_auth_plugin	umbrella/common/client.py	/^    def make_auth_plugin(self, creds, insecure):$/;"	m	class:BaseClient
+make_header	umbrella/common/utils.py	/^    def make_header(self):$/;"	m	class:PrettyTable
+make_quota_fixture	umbrella/tests/filter_test.py	/^        def make_quota_fixture(**kwargs):$/;"	f	function:FilterTest.test_filter_quotas
+make_row	umbrella/common/utils.py	/^    def make_row(self, *args):$/;"	m	class:PrettyTable
+make_server_fixture	umbrella/tests/filter_test.py	/^        def make_server_fixture(**kwargs):$/;"	f	function:FilterTest.test_filter_servers
+make_setting_dict	umbrella/api/monitor.py	/^def make_setting_dict(setting):$/;"	f
+map_opts_and_sort	umbrella/api/list_operation/sort.py	/^def map_opts_and_sort(req, items, mapped_method, sort_method=None):$/;"	f
+mapped_description	umbrella/api/statistic.py	/^        def mapped_description(metricName):$/;"	f	function:Controller._build_usage_for_history
+mapped_name	umbrella/api/statistic.py	/^        def mapped_name(name):$/;"	f	function:Controller._build_usage_for_history
+marshall_now	umbrella/common/timeutils.py	/^def marshall_now(now=None):$/;"	f
+mem_opts	umbrella/common/config.py	/^mem_opts = [$/;"	v
+mem_used	umbrella/db/sqlalchemy/models.py	/^    mem_used = Column(Integer)$/;"	v	class:Mem
+message	umbrella/common/exception.py	/^    message = _("%(cls)s exception was raised in the last rpc call: %(val)s")$/;"	v	class:RPCError
+message	umbrella/common/exception.py	/^    message = _("A metadata definition object with name=%(object_name)s"$/;"	v	class:MetadefDuplicateObject
+message	umbrella/common/exception.py	/^    message = _("A metadata definition property with name=%(property_name)s"$/;"	v	class:MetadefDuplicateProperty
+message	umbrella/common/exception.py	/^    message = _("A metadata definition resource-type with"$/;"	v	class:MetadefDuplicateResourceType
+message	umbrella/common/exception.py	/^    message = _("A metadata tag with name=%(name)s"$/;"	v	class:MetadefDuplicateTag
+message	umbrella/common/exception.py	/^    message = _("An object with the same identifier already exists.")$/;"	v	class:Duplicate
+message	umbrella/common/exception.py	/^    message = _("An object with the same identifier is currently being "$/;"	v	class:Conflict
+message	umbrella/common/exception.py	/^    message = _("An object with the specified identifier was not found.")$/;"	v	class:NotFound
+message	umbrella/common/exception.py	/^    message = _("An unknown exception occurred")$/;"	v	class:UmbrellaException
+message	umbrella/common/exception.py	/^    message = _("An unknown task exception occurred")$/;"	v	class:TaskException
+message	umbrella/common/exception.py	/^    message = _("Artifact cannot change state from %(source)s to %(target)s")$/;"	v	class:InvalidArtifactStateTransition
+message	umbrella/common/exception.py	/^    message = _("Artifact has no property %(prop)s")$/;"	v	class:ArtifactInvalidProperty
+message	umbrella/common/exception.py	/^    message = _("Artifact state cannot be changed from %(curr)s to %(to)s")$/;"	v	class:ArtifactInvalidStateTransition
+message	umbrella/common/exception.py	/^    message = _("Artifact type with name '%(name)s' and version '%(version)s' "$/;"	v	class:UnknownArtifactType
+message	umbrella/common/exception.py	/^    message = _("Artifact with a circular dependency can not be created")$/;"	v	class:ArtifactCircularDependency
+message	umbrella/common/exception.py	/^    message = _("Artifact with id=%(id)s is not accessible")$/;"	v	class:ArtifactForbidden
+message	umbrella/common/exception.py	/^    message = _("Artifact with id=%(id)s was not found")$/;"	v	class:ArtifactNotFound
+message	umbrella/common/exception.py	/^    message = _("Artifact with the specified type, name and version"$/;"	v	class:ArtifactDuplicateDirectDependency
+message	umbrella/common/exception.py	/^    message = _("Artifact with the specified type, name and version"$/;"	v	class:ArtifactDuplicateNameTypeVersion
+message	umbrella/common/exception.py	/^    message = _("Artifact with the specified type, name and version"$/;"	v	class:ArtifactDuplicateTransitiveDependency
+message	umbrella/common/exception.py	/^    message = _("Attribute '%(property)s' is read-only.")$/;"	v	class:ReadonlyProperty
+message	umbrella/common/exception.py	/^    message = _("Attribute '%(property)s' is reserved.")$/;"	v	class:ReservedProperty
+message	umbrella/common/exception.py	/^    message = _("Auth service at URL %(url)s not found.")$/;"	v	class:AuthUrlNotFound
+message	umbrella/common/exception.py	/^    message = _("Authorization failed.")$/;"	v	class:AuthorizationFailure
+message	umbrella/common/exception.py	/^    message = _("Cannot load artifact '%(name)s'")$/;"	v	class:ArtifactLoadError
+message	umbrella/common/exception.py	/^    message = _("Cannot use this parameter with the operator %(op)s")$/;"	v	class:ArtifactInvalidPropertyParameter
+message	umbrella/common/exception.py	/^    message = _("Connect error\/bad request to Auth service at URL %(url)s.")$/;"	v	class:AuthBadRequest
+message	umbrella/common/exception.py	/^    message = _("Data supplied was not valid.")$/;"	v	class:Invalid
+message	umbrella/common/exception.py	/^    message = _("Driver %(driver_name)s could not be configured correctly. "$/;"	v	class:BadDriverConfiguration
+message	umbrella/common/exception.py	/^    message = _("Image %(image_id)s is protected and cannot be deleted.")$/;"	v	class:ProtectedImageDelete
+message	umbrella/common/exception.py	/^    message = _("Image status transition from %(cur_status)s to"$/;"	v	class:InvalidImageStatusTransition
+message	umbrella/common/exception.py	/^    message = _("Image with the given id %(image_id)s was not found")$/;"	v	class:ImageNotFound
+message	umbrella/common/exception.py	/^    message = _("Incorrect auth strategy, expected \\"%(expected)s\\" but "$/;"	v	class:BadAuthStrategy
+message	umbrella/common/exception.py	/^    message = _("Invalid configuration in property protection file.")$/;"	v	class:InvalidPropertyProtectionConfiguration
+message	umbrella/common/exception.py	/^    message = _("Invalid content type %(content_type)s")$/;"	v	class:InvalidContentType
+message	umbrella/common/exception.py	/^    message = _("Invalid jsonpatch request")$/;"	v	class:JsonPatchException
+message	umbrella/common/exception.py	/^    message = _("Invalid property definition")$/;"	v	class:InvalidArtifactTypePropertyDefinition
+message	umbrella/common/exception.py	/^    message = _("Invalid type definition")$/;"	v	class:InvalidArtifactTypeDefinition
+message	umbrella/common/exception.py	/^    message = _("Invalid value '%(value)s' for parameter '%(param)s': "$/;"	v	class:InvalidParameterValue
+message	umbrella/common/exception.py	/^    message = _("Invalid value for option %(option)s: %(value)s")$/;"	v	class:InvalidOptionValue
+message	umbrella/common/exception.py	/^    message = _("Maximum redirects (%(redirects)s) was exceeded.")$/;"	v	class:MaxRedirectsExceeded
+message	umbrella/common/exception.py	/^    message = _("Metadata definition namespace %(namespace)s is protected"$/;"	v	class:ProtectedMetadefNamespaceDelete
+message	umbrella/common/exception.py	/^    message = _("Metadata definition namespace=%(namespace_name)s"$/;"	v	class:MetadefNamespaceNotFound
+message	umbrella/common/exception.py	/^    message = _("Metadata definition object %(object_name)s is protected"$/;"	v	class:ProtectedMetadefObjectDelete
+message	umbrella/common/exception.py	/^    message = _("Metadata definition property %(property_name)s is protected"$/;"	v	class:ProtectedMetadefNamespacePropDelete
+message	umbrella/common/exception.py	/^    message = _("Metadata definition resource-type %(resource_type_name)s is"$/;"	v	class:ProtectedMetadefResourceTypeSystemDelete
+message	umbrella/common/exception.py	/^    message = _("Metadata definition resource-type-association"$/;"	v	class:ProtectedMetadefResourceTypeAssociationDelete
+message	umbrella/common/exception.py	/^    message = _("Metadata definition tag %(tag_name)s is protected"$/;"	v	class:ProtectedMetadefTagDelete
+message	umbrella/common/exception.py	/^    message = _("Missing required credential: %(required)s")$/;"	v	class:MissingCredentialError
+message	umbrella/common/exception.py	/^    message = _("Multiple 'image' service matches for region %(region)s. This "$/;"	v	class:RegionAmbiguity
+message	umbrella/common/exception.py	/^    message = _("No image data could be found")$/;"	v	class:ImageDataNotFound
+message	umbrella/common/exception.py	/^    message = _("No plugin for '%(name)s' has been loaded")$/;"	v	class:ArtifactPluginNotFound
+message	umbrella/common/exception.py	/^    message = _("Operator %(op)s is not supported")$/;"	v	class:ArtifactUnsupportedPropertyOperator
+message	umbrella/common/exception.py	/^    message = _("Property '%(name)s' may not have value '%(val)s': %(msg)s")$/;"	v	class:InvalidArtifactPropertyValue
+message	umbrella/common/exception.py	/^    message = _("Property's %(prop)s value has not been found")$/;"	v	class:ArtifactPropertyValueNotFound
+message	umbrella/common/exception.py	/^    message = _("Provided header feature is unsupported: %(feature)s")$/;"	v	class:UnsupportedHeaderFeature
+message	umbrella/common/exception.py	/^    message = _("Provided object does not match schema "$/;"	v	class:InvalidObject
+message	umbrella/common/exception.py	/^    message = _("Provided status of task is unsupported: %(status)s")$/;"	v	class:InvalidTaskStatus
+message	umbrella/common/exception.py	/^    message = _("Provided type of task is unsupported: %(type)s")$/;"	v	class:InvalidTaskType
+message	umbrella/common/exception.py	/^    message = _("Received invalid HTTP redirect.")$/;"	v	class:InvalidRedirect
+message	umbrella/common/exception.py	/^    message = _("Redirecting to %(uri)s for authorization.")$/;"	v	class:AuthorizationRedirect
+message	umbrella/common/exception.py	/^    message = _("Registry was not configured correctly on API server. "$/;"	v	class:BadRegistryConnectionConfiguration
+message	umbrella/common/exception.py	/^    message = _("Server worker creation failed: %(reason)s.")$/;"	v	class:WorkerCreationFailure
+message	umbrella/common/exception.py	/^    message = _("Show level %(shl)s is not supported in this operation")$/;"	v	class:ArtifactUnsupportedShowLevel
+message	umbrella/common/exception.py	/^    message = _("Sort direction supplied was not valid.")$/;"	v	class:InvalidSortDir
+message	umbrella/common/exception.py	/^    message = _("Sort key supplied was not valid.")$/;"	v	class:InvalidSortKey
+message	umbrella/common/exception.py	/^    message = _("Status transition from %(cur_status)s to"$/;"	v	class:InvalidTaskStatusTransition
+message	umbrella/common/exception.py	/^    message = _("System SIGHUP signal received.")$/;"	v	class:SIGHUPInterrupt
+message	umbrella/common/exception.py	/^    message = _("Task was not configured properly")$/;"	v	class:BadTaskConfiguration
+message	umbrella/common/exception.py	/^    message = _("Task with the given id %(task_id)s was not found")$/;"	v	class:TaskNotFound
+message	umbrella/common/exception.py	/^    message = _("The Store URI was malformed.")$/;"	v	class:BadStoreUri
+message	umbrella/common/exception.py	/^    message = _("The limit has been exceeded on the number of allowed image "$/;"	v	class:ImageLocationLimitExceeded
+message	umbrella/common/exception.py	/^    message = _("The limit has been exceeded on the number of allowed image "$/;"	v	class:ImageMemberLimitExceeded
+message	umbrella/common/exception.py	/^    message = _("The limit has been exceeded on the number of allowed image "$/;"	v	class:ImagePropertyLimitExceeded
+message	umbrella/common/exception.py	/^    message = _("The limit has been exceeded on the number of allowed image "$/;"	v	class:ImageTagLimitExceeded
+message	umbrella/common/exception.py	/^    message = _("The location %(location)s already exists")$/;"	v	class:DuplicateLocation
+message	umbrella/common/exception.py	/^    message = _("The metadata definition %(record_type)s with"$/;"	v	class:MetadefIntegrityError
+message	umbrella/common/exception.py	/^    message = _("The metadata definition namespace=%(namespace_name)s"$/;"	v	class:MetadefDuplicateNamespace
+message	umbrella/common/exception.py	/^    message = _("The metadata definition object with"$/;"	v	class:MetadefObjectNotFound
+message	umbrella/common/exception.py	/^    message = _("The metadata definition property with"$/;"	v	class:MetadefPropertyNotFound
+message	umbrella/common/exception.py	/^    message = _("The metadata definition resource-type association of"$/;"	v	class:MetadefDuplicateResourceTypeAssociation
+message	umbrella/common/exception.py	/^    message = _("The metadata definition resource-type association of"$/;"	v	class:MetadefResourceTypeAssociationNotFound
+message	umbrella/common/exception.py	/^    message = _("The metadata definition resource-type with"$/;"	v	class:MetadefResourceTypeNotFound
+message	umbrella/common/exception.py	/^    message = _("The metadata definition tag with"$/;"	v	class:MetadefTagNotFound
+message	umbrella/common/exception.py	/^    message = _("The provided body %(body)s is invalid "$/;"	v	class:InvalidJsonPatchBody
+message	umbrella/common/exception.py	/^    message = _("The provided image is too large.")$/;"	v	class:ImageSizeLimitExceeded
+message	umbrella/common/exception.py	/^    message = _("The provided path '%(path)s' is invalid: %(explanation)s")$/;"	v	class:InvalidJsonPatchPath
+message	umbrella/common/exception.py	/^    message = _("The request returned 500 Internal Server Error.")$/;"	v	class:ServerError
+message	umbrella/common/exception.py	/^    message = _("The request returned 503 Service Unavailable. This "$/;"	v	class:ServiceUnavailable
+message	umbrella/common/exception.py	/^    message = _("The request returned a 302 Multiple Choices. This generally "$/;"	v	class:MultipleChoices
+message	umbrella/common/exception.py	/^    message = _("The request returned a 413 Request Entity Too Large. This "$/;"	v	class:LimitExceeded
+message	umbrella/common/exception.py	/^    message = _("The request returned an unexpected status: %(status)s."$/;"	v	class:UnexpectedStatus
+message	umbrella/common/exception.py	/^    message = _("The search and index services are not available. Ensure you "$/;"	v	class:SearchNotAvailable
+message	umbrella/common/exception.py	/^    message = _("The size of the data %(image_size)s will exceed the limit. "$/;"	v	class:StorageQuotaFull
+message	umbrella/common/exception.py	/^    message = _("There was an error configuring the client.")$/;"	v	class:ClientConfigurationError
+message	umbrella/common/exception.py	/^    message = _("There was an error connecting to a server")$/;"	v	class:ClientConnectionError
+message	umbrella/common/exception.py	/^    message = _("Unable to filter using the specified range.")$/;"	v	class:InvalidFilterRangeValue
+message	umbrella/common/exception.py	/^    message = _("Unable to load schema: %(reason)s")$/;"	v	class:SchemaLoadError
+message	umbrella/common/exception.py	/^    message = _("Version is invalid: %(reason)s")$/;"	v	class:InvalidVersion
+message	umbrella/common/exception.py	/^    message = _("You are not authenticated.")$/;"	v	class:NotAuthenticated
+message	umbrella/common/exception.py	/^    message = _("You are not authorized to complete this action.")$/;"	v	class:Forbidden
+message	umbrella/common/exception.py	/^    message = _("You are not authorized to complete this action.")$/;"	v	class:ForbiddenPublicImage
+message	umbrella/common/exception.py	/^    message = _("You are not authorized to complete this action.")$/;"	v	class:MetadefForbidden
+message	umbrella/common/exception.py	/^    message = _($/;"	v	class:ArtifactNonMatchingTypeName
+message	umbrella/common/exception.py	/^    message = _('Image upload problem: %s')$/;"	v	class:UploadException
+metavar	umbrella/common/cfg.py	/^               metavar='DATE_FORMAT',$/;"	v	class:CommonConfigOpts
+metavar	umbrella/common/cfg.py	/^               metavar='FORMAT',$/;"	v	class:CommonConfigOpts
+metavar	umbrella/common/cfg.py	/^               metavar='PATH',$/;"	v	class:CommonConfigOpts
+methods_of	umbrella/cmd/manage.py	/^def methods_of(obj):$/;"	f
+minimal_add_command	umbrella/tests/utils.py	/^def minimal_add_command(port, name, suffix='', public=True):$/;"	f
+minimal_headers	umbrella/tests/utils.py	/^def minimal_headers(name, public=True):$/;"	f
+modify_network_qos	umbrella/api/server.py	/^    def modify_network_qos(self, req, tenant_id, server_id, qos_type, body):$/;"	m	class:Controller
+multi	umbrella/common/cfg.py	/^    multi = False$/;"	v	class:Opt
+multi	umbrella/common/cfg.py	/^    multi = True$/;"	v	class:MultiStrOpt
+mutating	umbrella/common/utils.py	/^def mutating(func):$/;"	f
+net_opts	umbrella/common/config.py	/^net_opts = [$/;"	v
+new_section	umbrella/common/cfg.py	/^    def new_section(self, section):$/;"	m	class:ConfigParser
+new_section	umbrella/common/iniparser.py	/^    def new_section(self, section):$/;"	m	class:BaseParser
+no_4byte_params	umbrella/common/utils.py	/^def no_4byte_params(f):$/;"	f
+normal_token	umbrella/openstack/api.py	/^def normal_token(auth_token):$/;"	f
+normalize_time	umbrella/common/timeutils.py	/^def normalize_time(timestamp):$/;"	f
+normalize_time_str	umbrella/api/statistic.py	/^def normalize_time_str(time_str):$/;"	f
+opts	umbrella/api/image.py	/^opts = [$/;"	v
+opts	umbrella/api/server.py	/^opts = [$/;"	v
+opts	umbrella/monitor/alarm.py	/^opts = [$/;"	v
+opts	umbrella/monitor/monitor.py	/^opts = [$/;"	v
+or_	umbrella/api/list_operation/filter.py	/^def or_(items, keys, value, tenantid_key, tenantid):$/;"	f
+owner	umbrella/context.py	/^    def owner(self):$/;"	m	class:RequestContext
+parse	umbrella/common/cfg.py	/^    def parse(self):$/;"	m	class:ConfigParser
+parse	umbrella/common/iniparser.py	/^    def parse(self, lineiter):$/;"	m	class:BaseParser
+parse_args	tools/install_venv_common.py	/^    def parse_args(self, argv):$/;"	m	class:InstallVenv
+parse_args	umbrella/common/config.py	/^def parse_args(args=None, usage=None, default_config_files=None):$/;"	f
+parse_cache_args	umbrella/common/config.py	/^def parse_cache_args(args=None):$/;"	f
+parse_dependency_links	umbrella/common/setup.py	/^def parse_dependency_links(requirements_files=['requirements.txt',$/;"	f
+parse_exc	umbrella/common/cfg.py	/^    def parse_exc(self, msg, lineno, line=None):$/;"	m	class:ConfigParser
+parse_exc	umbrella/common/iniparser.py	/^    parse_exc = ParseError$/;"	v	class:BaseParser
+parse_isotime	umbrella/common/timeutils.py	/^def parse_isotime(timestr):$/;"	f
+parse_mailmap	umbrella/common/setup.py	/^def parse_mailmap(mailmap='.mailmap'):$/;"	f
+parse_requirements	umbrella/common/setup.py	/^def parse_requirements(requirements_files=['requirements.txt',$/;"	f
+parse_strtime	umbrella/common/timeutils.py	/^def parse_strtime(timestr, fmt=PERFECT_TIME_FORMAT):$/;"	f
+parse_valid_host_port	umbrella/common/utils.py	/^def parse_valid_host_port(host_port):$/;"	f
+paste_deploy_opts	umbrella/common/config.py	/^paste_deploy_opts = [$/;"	v
+pbr	setup.py	/^    pbr=True)$/;"	v
+periodic_task_cpu	umbrella/common/wsgi.py	/^        def periodic_task_cpu():$/;"	f	function:Server.start_looping_cpu
+periodic_task_disk	umbrella/common/wsgi.py	/^        def periodic_task_disk():$/;"	f	function:Server.start_looping_disk
+periodic_task_mem	umbrella/common/wsgi.py	/^        def periodic_task_mem():$/;"	f	function:Server.start_looping_mem
+periodic_task_net	umbrella/common/wsgi.py	/^        def periodic_task_net():$/;"	f	function:Server.start_looping_net
+periodic_tasks	umbrella/monitor/manager.py	/^    def periodic_tasks(self, level):$/;"	m	class:Manager
+pip_install	tools/install_venv_common.py	/^    def pip_install(self, *args):$/;"	m	class:InstallVenv
+possible_topdir	umbrella/cmd/api.py	/^possible_topdir = os.path.normpath(os.path.join(os.path.abspath(sys.argv[0]),$/;"	v
+possible_topdir	umbrella/cmd/collector.py	/^possible_topdir = os.path.normpath(os.path.join(os.path.abspath(sys.argv[0]),$/;"	v
+possible_topdir	umbrella/cmd/manage.py	/^possible_topdir = os.path.normpath(os.path.join(os.path.abspath(sys.argv[0]),$/;"	v
+post	umbrella/monitor/monitor.py	/^    def post(self):$/;"	m	class:Monitor
+post_monitor	umbrella/monitor/manager.py	/^    def post_monitor(self, level, metric_list):$/;"	m	class:Manager
+printErrorList	tools/colorizer.py	/^    def printErrorList(self, flavor, errors):$/;"	m	class:SubunitTestResult
+printErrors	tools/colorizer.py	/^    def printErrors(self):$/;"	m	class:SubunitTestResult
+print_generator	umbrella/common/wsgi.py	/^    def print_generator(app_iter):$/;"	m	class:Debug
+print_help	tools/install_venv.py	/^def print_help():$/;"	f
+print_help	umbrella/common/cfg.py	/^    def print_help(self, file=None):$/;"	m	class:ConfigOpts
+print_usage	umbrella/common/cfg.py	/^    def print_usage(self, file=None):$/;"	m	class:ConfigOpts
+process	umbrella/common/log.py	/^    def process(self, msg, kwargs):$/;"	m	class:ContextAdapter
+process_bind_param	umbrella/db/sqlalchemy/models.py	/^    def process_bind_param(self, value, dialect):$/;"	m	class:JSONEncodedDict
+process_options	run_tests.sh	/^function process_options {$/;"	f
+process_request	umbrella/api/middleware/context.py	/^    def process_request(self, req):$/;"	m	class:AuthContextMiddleware
+process_request	umbrella/api/middleware/context.py	/^    def process_request(self, req):$/;"	m	class:ContextMiddleware
+process_request	umbrella/common/wsgi.py	/^    def process_request(self, req):$/;"	m	class:Middleware
+process_request	umbrella/tests/utils.py	/^    def process_request(self, req):$/;"	m	class:FakeAuthMiddleware
+process_response	umbrella/api/middleware/context.py	/^    def process_response(self, resp):$/;"	m	class:ContextMiddleware
+process_response	umbrella/common/wsgi.py	/^    def process_response(self, response):$/;"	m	class:Middleware
+process_result_value	umbrella/db/sqlalchemy/models.py	/^    def process_result_value(self, value, dialect):$/;"	m	class:JSONEncodedDict
+profiler_opts	umbrella/common/wsgi.py	/^profiler_opts = [$/;"	v
+rd_bytes_rate	umbrella/db/sqlalchemy/models.py	/^    rd_bytes_rate = Column(Integer)$/;"	v	class:Disk
+rd_req_rate	umbrella/db/sqlalchemy/models.py	/^    rd_req_rate = Column(Integer)$/;"	v	class:Disk
+read	umbrella/common/cfg.py	/^    def read(self, config_files):$/;"	m	class:MultiConfigParser
+read	umbrella/common/utils.py	/^    def read(self, i):$/;"	m	class:LimitingReader
+read	umbrella/common/utils.py	/^    def read(self, length=None):$/;"	m	class:CooperativeReader
+read_versioninfo	umbrella/common/setup.py	/^def read_versioninfo(project):$/;"	f
+readfn	umbrella/common/utils.py	/^    def readfn(*args):$/;"	f	function:cooperative_read
+register_cli_opt	umbrella/common/cfg.py	/^    def register_cli_opt(self, opt, group=None):$/;"	m	class:ConfigOpts
+register_cli_opts	umbrella/common/cfg.py	/^    def register_cli_opts(self, opts, group=None):$/;"	m	class:ConfigOpts
+register_group	umbrella/common/cfg.py	/^    def register_group(self, group):$/;"	m	class:ConfigOpts
+register_opt	umbrella/common/cfg.py	/^    def register_opt(self, opt, group=None):$/;"	m	class:ConfigOpts
+register_opts	umbrella/common/cfg.py	/^    def register_opts(self, opts, group=None):$/;"	m	class:ConfigOpts
+reject	umbrella/common/wsgi.py	/^    def reject(self, req, allowed_methods, *args, **kwargs):$/;"	m	class:RejectMethodController
+reload	umbrella/common/wsgi.py	/^    def reload(self):$/;"	m	class:Server
+request	umbrella/openstack/client.py	/^    def request(self, req):$/;"	m	class:BaseClient
+request_admin_token	umbrella/openstack/api.py	/^def request_admin_token(search_cache=True):$/;"	f
+request_usages	umbrella/monitor/manager.py	/^    def request_usages(self, level, az_name=None):$/;"	m	class:Manager
+requires	umbrella/tests/utils.py	/^class requires(object):$/;"	c
+reset	umbrella/common/cfg.py	/^    def reset(self):$/;"	m	class:ConfigOpts
+response	umbrella/openstack/client.py	/^    def response(self, method, action, params={}, headers={}, body=None):$/;"	m	class:BaseClient
+retry_on_disconnect	umbrella/virt/libvirt.py	/^def retry_on_disconnect(function):$/;"	f
+retry_with_new_token	umbrella/monitor/manager.py	/^def retry_with_new_token(fn):$/;"	f
+routematch	umbrella/common/wsgi.py	/^    def routematch(self, url=None, environ=None):$/;"	m	class:APIMapper
+run	umbrella/common/setup.py	/^            def run(self):$/;"	m	class:get_cmdclass.LocalSDist.LocalBuildDoc
+run	umbrella/common/setup.py	/^        def run(self):$/;"	m	class:get_cmdclass.LocalSDist
+run_child	umbrella/common/wsgi.py	/^    def run_child(self):$/;"	m	class:Server
+run_command	tools/install_venv_common.py	/^    def run_command(self, cmd, redirect_output=True, check_exit_code=True):$/;"	m	class:InstallVenv
+run_command_with_code	tools/install_venv_common.py	/^    def run_command_with_code(self, cmd, redirect_output=True,$/;"	m	class:InstallVenv
+run_pep8	run_tests.sh	/^function run_pep8 {$/;"	f
+run_server	umbrella/common/wsgi.py	/^    def run_server(self):$/;"	m	class:Server
+run_tests	run_tests.sh	/^function run_tests {$/;"	f
+runner	tools/colorizer.py	/^    runner = unittest.TextTestRunner($/;"	v
+runner	tools/colorizer.py	/^    runner = unittest.TextTestRunner(verbosity=2)$/;"	v
+rx_bytes_rate	umbrella/db/sqlalchemy/models.py	/^    rx_bytes_rate = Column(Integer)$/;"	v	class:Net
+rx_packets_rate	umbrella/db/sqlalchemy/models.py	/^    rx_packets_rate = Column(Integer)$/;"	v	class:Net
+sa_logger	umbrella/db/sqlalchemy/api.py	/^sa_logger = None$/;"	v
+safe_mkdirs	umbrella/common/utils.py	/^def safe_mkdirs(path):$/;"	f
+safe_remove	umbrella/common/utils.py	/^def safe_remove(path):$/;"	f
+save	umbrella/db/sqlalchemy/models.py	/^    def save(self, session=None):$/;"	m	class:UmbrellaBase
+save_alarming	umbrella/common/local.py	/^    def save_alarming(self, level, setting_type, usage):$/;"	m	class:Global
+save_item	umbrella/common/local.py	/^    def save_item(self, cache_dir, key, item, timeout=60):$/;"	m	class:Global
+save_setting	umbrella/api/monitor.py	/^    def save_setting(self, req, body, uuid=None):$/;"	m	class:Controller
+save_setting	umbrella/common/local.py	/^    def save_setting(self, level, setting_type, setting):$/;"	m	class:Global
+seconds_ago	umbrella/common/timeutils.py	/^def seconds_ago(seconds):$/;"	f
+seconds_from_now	umbrella/common/timeutils.py	/^def seconds_from_now(before):$/;"	f
+server_action	umbrella/api/server.py	/^    def server_action(self, req, tenant_id, server_id, body):$/;"	m	class:Controller
+setUp	umbrella/tests/__init__.py	/^    def setUp(self):$/;"	m	class:BaseTest
+setUp	umbrella/tests/alarm_test.py	/^    def setUp(self):$/;"	m	class:AlarmTest
+setUp	umbrella/tests/base.py	/^    def setUp(self):$/;"	m	class:IsolatedUnitTest
+setUp	umbrella/tests/db_test.py	/^    def setUp(self):$/;"	m	class:SqlAlarmExceptionTest
+setUp	umbrella/tests/db_test.py	/^    def setUp(self):$/;"	m	class:SqlAlarmTest
+setUp	umbrella/tests/db_test.py	/^    def setUp(self):$/;"	m	class:SqlSettingExceptionTest
+setUp	umbrella/tests/db_test.py	/^    def setUp(self):$/;"	m	class:SqlSettingTest
+setUp	umbrella/tests/monitor_test.py	/^    def setUp(self):$/;"	m	class:MonitorTest
+setUp	umbrella/tests/utils.py	/^    def setUp(self):$/;"	m	class:BaseTestCase
+set_auth_token	umbrella/common/client.py	/^    def set_auth_token(self, auth_tok):$/;"	m	class:BaseClient
+set_default	umbrella/common/cfg.py	/^    def set_default(self, name, default, group=None):$/;"	m	class:ConfigOpts
+set_eventlet_hub	umbrella/common/wsgi.py	/^def set_eventlet_hub():$/;"	f
+set_override	umbrella/common/cfg.py	/^    def set_override(self, name, override, group=None):$/;"	m	class:ConfigOpts
+set_password	umbrella/api/user.py	/^    def set_password(self, req, user_id, body):$/;"	m	class:Controller
+set_time_override	umbrella/common/timeutils.py	/^def set_time_override(override_time=datetime.datetime.utcnow()):$/;"	f
+set_xattr	umbrella/tests/utils.py	/^    def set_xattr(path, key, value):$/;"	f	function:xattr_writes_supported
+setting_get_by_lever_type	umbrella/tests/utils.py	/^    def setting_get_by_lever_type(self, level, setting_type, session=None):$/;"	m	class:FakeDB
+setting_set	umbrella/tests/utils.py	/^    def setting_set(self, level, setting_type, capacity=0, threshold=0.0,$/;"	m	class:FakeDB
+setup	umbrella/common/log.py	/^def setup(product_name):$/;"	f
+setup_remote_pydev_debug	umbrella/common/utils.py	/^def setup_remote_pydev_debug(host, port):$/;"	f
+short	umbrella/common/cfg.py	/^                short='d',$/;"	v	class:CommonConfigOpts
+short	umbrella/common/cfg.py	/^                short='v',$/;"	v	class:CommonConfigOpts
+show	umbrella/api/image.py	/^    def show(self, req, image_id):$/;"	m	class:Controller
+show	umbrella/api/image.py	/^    def show(self, response, image_metas):$/;"	m	class:ImageSerialize
+show	umbrella/api/server.py	/^    def show(self, req, tenant_id, id):$/;"	m	class:Controller
+show	umbrella/api/user.py	/^    def show(self, req, id):$/;"	m	class:Controller
+show	umbrella/api/v1/myservers.py	/^    def show(self, req, id):$/;"	m	class:Controller
+show_by_host	umbrella/api/statistic.py	/^    def show_by_host(self, req, tenant_id):$/;"	m	class:Controller
+show_by_tenant	umbrella/api/statistic.py	/^    def show_by_tenant(self, req, tenant_id):$/;"	m	class:Controller
+show_deleted	umbrella/context.py	/^    def show_deleted(self):$/;"	m	class:RequestContext
+show_security_group	umbrella/api/server.py	/^    def show_security_group(self, req, tenant_id, id):$/;"	m	class:Controller
+skip_if	umbrella/tests/utils.py	/^class skip_if(object):$/;"	c
+skip_if_disabled	umbrella/tests/utils.py	/^def skip_if_disabled(func):$/;"	f
+skip_test	umbrella/tests/utils.py	/^class skip_test(object):$/;"	c
+skip_unless	umbrella/tests/utils.py	/^class skip_unless(object):$/;"	c
+socket_opts	umbrella/common/wsgi.py	/^socket_opts = [$/;"	v
+sort_floating_ips	umbrella/api/list_operation/sort.py	/^def sort_floating_ips(req, ips):$/;"	f
+sort_host_usage	umbrella/api/list_operation/sort.py	/^def sort_host_usage(req, usages):$/;"	f
+sort_images	umbrella/api/list_operation/sort.py	/^def sort_images(req, images):$/;"	f
+sort_instance_error	umbrella/api/list_operation/sort.py	/^def sort_instance_error(req, error):$/;"	f
+sort_items	umbrella/api/list_operation/sort.py	/^def sort_items(items, sort_key, sort_dir):$/;"	f
+sort_key_for_ip	umbrella/api/list_operation/sort.py	/^    def sort_key_for_ip(item):$/;"	f	function:sort_key_for_ip_wrapped
+sort_key_for_ip_wrapped	umbrella/api/list_operation/sort.py	/^def sort_key_for_ip_wrapped(sort_key):$/;"	f
+sort_keypairs	umbrella/api/list_operation/sort.py	/^def sort_keypairs(req, keypairs):$/;"	f
+sort_quotas	umbrella/api/list_operation/sort.py	/^def sort_quotas(req, quotas):$/;"	f
+sort_security_groups	umbrella/api/list_operation/sort.py	/^def sort_security_groups(req, groups):$/;"	f
+sort_servers	umbrella/api/list_operation/sort.py	/^def sort_servers(req, servers):$/;"	f
+sort_snapshot_error	umbrella/api/list_operation/sort.py	/^def sort_snapshot_error(req, error):$/;"	f
+sort_tenants_usage	umbrella/api/list_operation/sort.py	/^def sort_tenants_usage(req, usages):$/;"	f
+ssl_wrap_socket	umbrella/common/wsgi.py	/^def ssl_wrap_socket(sock):$/;"	f
+standardize_tenant_name	umbrella/openstack/api.py	/^def standardize_tenant_name(tenant):$/;"	f
+start	umbrella/common/utils.py	/^    def start(self, interval, initial_delay=None):$/;"	m	class:LoopingCall
+start	umbrella/common/wsgi.py	/^    def start(self, application, default_port):$/;"	m	class:Server
+startTest	tools/colorizer.py	/^    def startTest(self, test):$/;"	m	class:SubunitTestResult
+start_looping_cpu	umbrella/common/wsgi.py	/^    def start_looping_cpu(self):$/;"	m	class:Server
+start_looping_disk	umbrella/common/wsgi.py	/^    def start_looping_disk(self):$/;"	m	class:Server
+start_looping_mem	umbrella/common/wsgi.py	/^    def start_looping_mem(self):$/;"	m	class:Server
+start_looping_net	umbrella/common/wsgi.py	/^    def start_looping_net(self):$/;"	m	class:Server
+start_wsgi	umbrella/common/wsgi.py	/^    def start_wsgi(self):$/;"	m	class:Server
+stash_conf_values	umbrella/common/utils.py	/^def stash_conf_values():$/;"	f
+statistic_instance_error	umbrella/api/statistic.py	/^    def statistic_instance_error(self, req, tenant_id,$/;"	m	class:Controller
+statistic_instance_error	umbrella/api/statistic.py	/^    def statistic_instance_error(self, request):$/;"	m	class:RequestDeserializer
+statistic_instance_success	umbrella/api/statistic.py	/^    def statistic_instance_success(self, req, tenant_id,$/;"	m	class:Controller
+statistic_instance_success	umbrella/api/statistic.py	/^    def statistic_instance_success(self, request):$/;"	m	class:RequestDeserializer
+statistic_snapshot_create_error	umbrella/api/statistic.py	/^    def statistic_snapshot_create_error(self, req, start=None, end=None):$/;"	m	class:Controller
+statistic_snapshot_create_error	umbrella/api/statistic.py	/^    def statistic_snapshot_create_error(self, request):$/;"	m	class:RequestDeserializer
+statistic_snapshot_create_success	umbrella/api/statistic.py	/^    def statistic_snapshot_create_success(self, req, start=None, end=None):$/;"	m	class:Controller
+statistic_snapshot_create_success	umbrella/api/statistic.py	/^    def statistic_snapshot_create_success(self, request):$/;"	m	class:RequestDeserializer
+stop	umbrella/common/utils.py	/^    def stop(self):$/;"	m	class:LoopingCall
+stopTestRun	tools/colorizer.py	/^    def stopTestRun(self):$/;"	m	class:SubunitTestResult
+store	umbrella/common/local.py	/^store = WeakLocal()$/;"	v
+strategy	umbrella/common/auth.py	/^    def strategy(self):$/;"	m	class:BaseStrategy
+strategy	umbrella/common/auth.py	/^    def strategy(self):$/;"	m	class:KeystoneStrategy
+strategy	umbrella/common/auth.py	/^    def strategy(self):$/;"	m	class:NoAuthStrategy
+string_to_sign	umbrella/monitor/monitor.py	/^    def string_to_sign(self, http_method):$/;"	m	class:Monitor
+strtime	umbrella/common/timeutils.py	/^def strtime(at=None, fmt=PERFECT_TIME_FORMAT):$/;"	f
+supported	tools/colorizer.py	/^    def supported(stream=sys.stdout):$/;"	m	class:_AnsiColorizer
+supported	tools/colorizer.py	/^    def supported(stream=sys.stdout):$/;"	m	class:_NullColorizer
+supported	tools/colorizer.py	/^    def supported(stream=sys.stdout):$/;"	m	class:_Win32Colorizer
+sync	umbrella/cmd/manage.py	/^    def sync(self, version=None, current_version=None):$/;"	m	class:DbCommands
+sync	umbrella/cmd/manage.py	/^    def sync(self, version=None, current_version=None):$/;"	m	class:DbLegacyCommands
+t	umbrella/common/gettextutils.py	/^t = gettext.translation('common', 'locale', fallback=True)$/;"	v
+task_opts	umbrella/common/config.py	/^task_opts = [$/;"	v
+task_opts	umbrella/common/wsgi.py	/^task_opts = [$/;"	v
+tearDown	umbrella/tests/alarm_test.py	/^    def tearDown(self):$/;"	m	class:AlarmTest
+tearDown	umbrella/tests/base.py	/^    def tearDown(self):$/;"	m	class:IsolatedUnitTest
+tearDown	umbrella/tests/db_test.py	/^    def tearDown(self):$/;"	m	class:SqlAlarmExceptionTest
+tearDown	umbrella/tests/db_test.py	/^    def tearDown(self):$/;"	m	class:SqlAlarmTest
+tearDown	umbrella/tests/db_test.py	/^    def tearDown(self):$/;"	m	class:SqlSettingTest
+tearDown	umbrella/tests/utils.py	/^    def tearDown(self):$/;"	m	class:BaseTestCase
+tenant_id	umbrella/db/sqlalchemy/models.py	/^    tenant_id = Column(String(30), nullable=False)$/;"	v	class:Cpu
+tenant_id	umbrella/db/sqlalchemy/models.py	/^    tenant_id = Column(String(30), nullable=False)$/;"	v	class:Disk
+tenant_id	umbrella/db/sqlalchemy/models.py	/^    tenant_id = Column(String(30), nullable=False)$/;"	v	class:Mem
+tenant_id	umbrella/db/sqlalchemy/models.py	/^    tenant_id = Column(String(30), nullable=False)$/;"	v	class:Net
+test	tools/colorizer.py	/^test = subunit.ProtocolTestCase(sys.stdin, passthrough=None)$/;"	v
+test_Monitor_generate_signature	umbrella/tests/monitor_test.py	/^    def test_Monitor_generate_signature(self):$/;"	m	class:MonitorTest
+test_Monitor_string_to_sign	umbrella/tests/monitor_test.py	/^    def test_Monitor_string_to_sign(self):$/;"	m	class:MonitorTest
+test_alarm	umbrella/tests/alarm_test.py	/^    def test_alarm(self):$/;"	m	class:AlarmTest
+test_alarm_clear	umbrella/tests/db_test.py	/^    def test_alarm_clear(self):$/;"	m	class:SqlAlarmTest
+test_alarm_create	umbrella/tests/db_test.py	/^    def test_alarm_create(self):$/;"	m	class:SqlAlarmTest
+test_alarm_delete	umbrella/tests/db_test.py	/^    def test_alarm_delete(self):$/;"	m	class:SqlAlarmTest
+test_alarm_get	umbrella/tests/db_test.py	/^    def test_alarm_get(self):$/;"	m	class:SqlAlarmTest
+test_alarm_get_all	umbrella/tests/db_test.py	/^    def test_alarm_get_all(self):$/;"	m	class:SqlAlarmTest
+test_alarm_out_times	umbrella/tests/alarm_test.py	/^    def test_alarm_out_times(self):$/;"	m	class:AlarmTest
+test_alarm_update	umbrella/tests/db_test.py	/^    def test_alarm_update(self):$/;"	m	class:SqlAlarmTest
+test_and_	umbrella/tests/filter_test.py	/^    def test_and_(self):$/;"	m	class:FilterTest
+test_calc_item	umbrella/tests/test_monitor_manager.py	/^    def test_calc_item(self):$/;"	m	class:ManagerTest
+test_calc_resource_remainder	umbrella/tests/test_monitor_manager.py	/^    def test_calc_resource_remainder(self):$/;"	m	class:ManagerTest
+test_convert_usages_to_metric	umbrella/tests/monitor_test.py	/^    def test_convert_usages_to_metric(self):$/;"	m	class:MonitorTest
+test_destroy_setting	umbrella/tests/db_test.py	/^    def test_destroy_setting(self):$/;"	m	class:SqlSettingTest
+test_filter_floating_ips	umbrella/tests/filter_test.py	/^    def test_filter_floating_ips(self):$/;"	m	class:FilterTest
+test_filter_host_usages	umbrella/tests/filter_test.py	/^    def test_filter_host_usages(self):$/;"	m	class:FilterTest
+test_filter_images	umbrella/tests/filter_test.py	/^    def test_filter_images(self):$/;"	m	class:FilterTest
+test_filter_instance_error	umbrella/tests/filter_test.py	/^    def test_filter_instance_error(self):$/;"	m	class:FilterTest
+test_filter_keypairs	umbrella/tests/filter_test.py	/^    def test_filter_keypairs(self):$/;"	m	class:FilterTest
+test_filter_quotas	umbrella/tests/filter_test.py	/^    def test_filter_quotas(self):$/;"	m	class:FilterTest
+test_filter_security_groups	umbrella/tests/filter_test.py	/^    def test_filter_security_groups(self):$/;"	m	class:FilterTest
+test_filter_servers	umbrella/tests/filter_test.py	/^    def test_filter_servers(self):$/;"	m	class:FilterTest
+test_filter_snapshot_error	umbrella/tests/filter_test.py	/^    def test_filter_snapshot_error(self):$/;"	m	class:FilterTest
+test_filter_tenants_usages	umbrella/tests/filter_test.py	/^    def test_filter_tenants_usages(self):$/;"	m	class:FilterTest
+test_floating_ips_unicode	umbrella/tests/sort_test.py	/^    def test_floating_ips_unicode(self):$/;"	m	class:SortTest
+test_format_dimension	umbrella/tests/monitor_test.py	/^    def test_format_dimension(self):$/;"	m	class:MonitorTest
+test_format_metric	umbrella/tests/monitor_test.py	/^    def test_format_metric(self):$/;"	m	class:MonitorTest
+test_get_all_settings	umbrella/tests/db_test.py	/^    def test_get_all_settings(self):$/;"	m	class:SqlSettingTest
+test_get_by_level_type	umbrella/tests/db_test.py	/^    def test_get_by_level_type(self):$/;"	m	class:SqlSettingTest
+test_get_map_flavor	umbrella/tests/server_test.py	/^    def test_get_map_flavor(self):$/;"	m	class:ControllerTest
+test_get_setting	umbrella/tests/db_test.py	/^    def test_get_setting(self):$/;"	m	class:SqlSettingTest
+test_get_value_by_key	umbrella/tests/filter_test.py	/^    def test_get_value_by_key(self):$/;"	m	class:FilterTest
+test_get_value_by_key_not_found	umbrella/tests/filter_test.py	/^    def test_get_value_by_key_not_found(self):$/;"	m	class:FilterTest
+test_index	umbrella/tests/statistic_test.py	/^    def test_index(self):$/;"	m	class:ControllerTest
+test_is_flavor_for_creating_failed	umbrella/tests/server_test.py	/^    def test_is_flavor_for_creating_failed(self):$/;"	m	class:ControllerTest
+test_is_flavor_for_creating_passed	umbrella/tests/server_test.py	/^    def test_is_flavor_for_creating_passed(self):$/;"	m	class:ControllerTest
+test_list_all_quotas	umbrella/tests/server_test.py	/^    def test_list_all_quotas(self):$/;"	m	class:ControllerTest
+test_list_all_quotas_filter_out_tenant	umbrella/tests/server_test.py	/^    def test_list_all_quotas_filter_out_tenant(self):$/;"	m	class:ControllerTest
+test_list_flavor_key_id	umbrella/tests/server_test.py	/^    def test_list_flavor_key_id(self):$/;"	m	class:ControllerTest
+test_list_flavor_key_info	umbrella/tests/server_test.py	/^    def test_list_flavor_key_info(self):$/;"	m	class:ControllerTest
+test_list_platform_usage	umbrella/tests/statistic_test.py	/^    def test_list_platform_usage(self):$/;"	m	class:ControllerTest
+test_list_quotas	umbrella/tests/server_test.py	/^    def test_list_quotas(self):$/;"	m	class:ControllerTest
+test_map_opts_and_sort	umbrella/tests/sort_test.py	/^    def test_map_opts_and_sort(self):$/;"	m	class:SortTest
+test_no_alarm	umbrella/tests/alarm_test.py	/^    def test_no_alarm(self):$/;"	m	class:AlarmTest
+test_no_replicate_alarm_changed_usage	umbrella/tests/alarm_test.py	/^    def test_no_replicate_alarm_changed_usage(self):$/;"	m	class:AlarmTest
+test_not_exist	umbrella/tests/db_test.py	/^    def test_not_exist(self):$/;"	m	class:SqlAlarmExceptionTest
+test_not_exist	umbrella/tests/db_test.py	/^    def test_not_exist(self):$/;"	m	class:SqlSettingExceptionTest
+test_or_	umbrella/tests/filter_test.py	/^    def test_or_(self):$/;"	m	class:FilterTest
+test_replicate_alarm_changed_usage	umbrella/tests/alarm_test.py	/^    def test_replicate_alarm_changed_usage(self):$/;"	m	class:AlarmTest
+test_replicate_alarm_same_usage	umbrella/tests/alarm_test.py	/^    def test_replicate_alarm_same_usage(self):$/;"	m	class:AlarmTest
+test_save_same_level_type	umbrella/tests/db_test.py	/^    def test_save_same_level_type(self):$/;"	m	class:SqlSettingExceptionTest
+test_save_setting	umbrella/tests/db_test.py	/^    def test_save_setting(self):$/;"	m	class:SqlSettingTest
+test_show_by_host	umbrella/tests/statistic_test.py	/^    def test_show_by_host(self):$/;"	m	class:ControllerTest
+test_sort_floating_ips	umbrella/tests/sort_test.py	/^    def test_sort_floating_ips(self):$/;"	m	class:SortTest
+test_sort_host_usages	umbrella/tests/sort_test.py	/^    def test_sort_host_usages(self):$/;"	m	class:SortTest
+test_sort_images	umbrella/tests/sort_test.py	/^    def test_sort_images(self):$/;"	m	class:SortTest
+test_sort_instance_error	umbrella/tests/sort_test.py	/^    def test_sort_instance_error(self):$/;"	m	class:SortTest
+test_sort_not_mapped	umbrella/tests/sort_test.py	/^    def test_sort_not_mapped(self):$/;"	m	class:SortTest
+test_sort_quotas	umbrella/tests/sort_test.py	/^    def test_sort_quotas(self):$/;"	m	class:SortTest
+test_sort_security_groups	umbrella/tests/sort_test.py	/^    def test_sort_security_groups(self):$/;"	m	class:SortTest
+test_sort_servers_IP	umbrella/tests/sort_test.py	/^    def test_sort_servers_IP(self):$/;"	m	class:SortTest
+test_sort_servers_blank_IP	umbrella/tests/sort_test.py	/^    def test_sort_servers_blank_IP(self):$/;"	m	class:SortTest
+test_sort_servers_by_name	umbrella/tests/sort_test.py	/^    def test_sort_servers_by_name(self):$/;"	m	class:SortTest
+test_sort_servers_by_tenant_name	umbrella/tests/sort_test.py	/^    def test_sort_servers_by_tenant_name(self):$/;"	m	class:SortTest
+test_sort_servers_fixed_ips	umbrella/tests/sort_test.py	/^    def test_sort_servers_fixed_ips(self):$/;"	m	class:SortTest
+test_sort_servers_invalid_IP	umbrella/tests/sort_test.py	/^    def test_sort_servers_invalid_IP(self):$/;"	m	class:SortTest
+test_sort_servers_no_IP	umbrella/tests/sort_test.py	/^    def test_sort_servers_no_IP(self):$/;"	m	class:SortTest
+test_sort_snapshot_error	umbrella/tests/sort_test.py	/^    def test_sort_snapshot_error(self):$/;"	m	class:SortTest
+test_sort_tenants_usages	umbrella/tests/sort_test.py	/^    def test_sort_tenants_usages(self):$/;"	m	class:SortTest
+test_umbrella_sort_keypairs	umbrella/tests/sort_test.py	/^    def test_umbrella_sort_keypairs(self):$/;"	m	class:SortTest
+test_update_not_updatable_attr	umbrella/tests/db_test.py	/^    def test_update_not_updatable_attr(self):$/;"	m	class:SqlAlarmExceptionTest
+test_update_setting	umbrella/tests/db_test.py	/^    def test_update_setting(self):$/;"	m	class:SqlSettingTest
+test_update_to_same	umbrella/tests/db_test.py	/^    def test_update_to_same(self):$/;"	m	class:SqlSettingExceptionTest
+time_format	umbrella/api/v1/api.py	/^    def time_format(self,timeValue):$/;"	m	class:Controller
+timestamp_to_datetime	umbrella/common/timeutils.py	/^def timestamp_to_datetime(timestamp):$/;"	f
+title	umbrella/cmd/manage.py	/^                                title='Commands',$/;"	v
+to_dict	umbrella/context.py	/^    def to_dict(self):$/;"	m	class:RequestContext
+to_dict	umbrella/db/sqlalchemy/models.py	/^    def to_dict(self):$/;"	m	class:UmbrellaBase
+to_json	umbrella/common/wsgi.py	/^    def to_json(self, data):$/;"	m	class:JSONResponseSerializer
+to_primitive	umbrella/common/jsonutils.py	/^def to_primitive(value, convert_instances=False, level=0):$/;"	f
+translate_exception	umbrella/common/wsgi.py	/^def translate_exception(req, e):$/;"	f
+tx_bytes_rate	umbrella/db/sqlalchemy/models.py	/^    tx_bytes_rate = Column(Integer)$/;"	v	class:Net
+tx_packets_rate	umbrella/db/sqlalchemy/models.py	/^    tx_packets_rate = Column(Integer)$/;"	v	class:Net
+unload_metadefs	umbrella/cmd/manage.py	/^    def unload_metadefs(self):$/;"	m	class:DbLegacyCommands
+unmarshall_time	umbrella/common/timeutils.py	/^def unmarshall_time(tyme):$/;"	f
+unregister_opt	umbrella/common/cfg.py	/^    def unregister_opt(self, opt, group=None):$/;"	m	class:ConfigOpts
+unregister_opts	umbrella/common/cfg.py	/^    def unregister_opts(self, opts, group=None):$/;"	m	class:ConfigOpts
+unwrap	umbrella/db/__init__.py	/^def unwrap(db_api):$/;"	f
+update	umbrella/api/image.py	/^    def update(self, req, image_id, body=None):$/;"	m	class:Controller
+update_alarm	umbrella/api/monitor.py	/^    def update_alarm(self, req, alarm_id, body):$/;"	m	class:Controller
+update_quotas	umbrella/api/server.py	/^    def update_quotas(self, req, tenant_id, target_id, body):$/;"	m	class:Controller
+update_store	umbrella/context.py	/^    def update_store(self):$/;"	m	class:RequestContext
+update_user	umbrella/api/user.py	/^    def update_user(self, req, user_id, body):$/;"	m	class:Controller
+updated_at	umbrella/db/sqlalchemy/models.py	/^    updated_at = Column(DateTime, default=lambda: our_timeutils.utc_to_local($/;"	v	class:UmbrellaBase
+upgrade	umbrella/cmd/manage.py	/^    def upgrade(self, version=None):$/;"	m	class:DbCommands
+upgrade	umbrella/cmd/manage.py	/^    def upgrade(self, version=None):$/;"	m	class:DbLegacyCommands
+upgrade	umbrella/db/sqlalchemy/migrate_repo/versions/001_add_net_table.py	/^def upgrade(migrate_engine):$/;"	f
+upgrade	umbrella/db/sqlalchemy/migrate_repo/versions/001_add_settings_table.py	/^def upgrade(migrate_engine):$/;"	f
+upgrade	umbrella/db/sqlalchemy/migrate_repo/versions/002_add_alarming_table.py	/^def upgrade(migrate_engine):$/;"	f
+upgrade	umbrella/db/sqlalchemy/migrate_repo/versions/002_add_disk_table.py	/^def upgrade(migrate_engine):$/;"	f
+upgrade	umbrella/db/sqlalchemy/migrate_repo/versions/003_add_mem_table.py	/^def upgrade(migrate_engine):$/;"	f
+upgrade	umbrella/db/sqlalchemy/migrate_repo/versions/004_add_cpu_table.py	/^def upgrade(migrate_engine):$/;"	f
+upgrade	umbrella/db/sqlalchemy/migration.py	/^def upgrade(version=None):$/;"	f
+usage	run_tests.sh	/^function usage {$/;"	f
+usage_test_case	umbrella/tests/sort_test.py	/^    def usage_test_case(testcase_obj, sort_method, sort_list, expected,$/;"	m	class:Utils
+utc_to_local	umbrella/common/timeutils.py	/^def utc_to_local(datetime_obj):$/;"	f
+utcnow	umbrella/common/timeutils.py	/^def utcnow():$/;"	f
+utcnow_ts	umbrella/common/timeutils.py	/^def utcnow_ts():$/;"	f
+valid_sort_dir	umbrella/api/list_operation/sort.py	/^valid_sort_dir = ['asc', 'desc']$/;"	v
+valid_transfer_encoding	umbrella/common/wsgi.py	/^    valid_transfer_encoding = frozenset(['chunked', 'compress', 'deflate',$/;"	v	class:JSONRequestDeserializer
+validate_mysql_int	umbrella/common/utils.py	/^def validate_mysql_int(*args, **kwargs):$/;"	f
+values	umbrella/db/sqlalchemy/models.py	/^    def values(self):$/;"	m	class:UmbrellaBase
+version	umbrella/cmd/manage.py	/^    def version(self):$/;"	m	class:DbCommands
+version	umbrella/cmd/manage.py	/^    def version(self):$/;"	m	class:DbLegacyCommands
+version	umbrella/nt_version.py	/^version = '1.3.19'$/;"	v
+version_control	umbrella/cmd/manage.py	/^    def version_control(self, version=None):$/;"	m	class:DbCommands
+version_control	umbrella/cmd/manage.py	/^    def version_control(self, version=None):$/;"	m	class:DbLegacyCommands
+version_control	umbrella/db/sqlalchemy/migration.py	/^def version_control(version=None):$/;"	f
+version_info	umbrella/version.py	/^version_info = pbr.version.VersionInfo('umbrella')$/;"	v
+version_string	umbrella/common/version.py	/^    def version_string(self, always=False):$/;"	m	class:VersionInfo
+version_string_with_vcs	umbrella/common/version.py	/^    def version_string_with_vcs(self, always=False):$/;"	m	class:VersionInfo
+wait	umbrella/common/utils.py	/^    def wait(self):$/;"	m	class:LoopingCall
+wait	umbrella/common/wsgi.py	/^    def wait(self):$/;"	m	class:Server
+wait_on_children	umbrella/common/wsgi.py	/^    def wait_on_children(self):$/;"	m	class:Server
+warn	umbrella/common/log.py	/^    warn = logging.LoggerAdapter.warning$/;"	v	class:ContextAdapter
+warn_on_flake8_without_venv	run_tests.sh	/^function warn_on_flake8_without_venv {$/;"	f
+wr_bytes_rate	umbrella/db/sqlalchemy/models.py	/^    wr_bytes_rate = Column(Integer)$/;"	v	class:Disk
+wr_req_rate	umbrella/db/sqlalchemy/models.py	/^    wr_req_rate = Column(Integer)$/;"	v	class:Disk
+wrapped	umbrella/common/client.py	/^    def wrapped(self, *args, **kwargs):$/;"	f	function:handle_unauthenticated
+wrapped	umbrella/common/client.py	/^    def wrapped(self, method, url, body, headers):$/;"	f	function:handle_redirects
+wrapped	umbrella/common/utils.py	/^    def wrapped(self, req, *args, **kwargs):$/;"	f	function:mutating
+wrapped	umbrella/tests/utils.py	/^    def wrapped(*a, **kwargs):$/;"	f	function:skip_if_disabled
+wrapper	umbrella/common/utils.py	/^    def wrapper(*args, **kwargs):$/;"	f	function:no_4byte_params
+wrapper	umbrella/monitor/manager.py	/^    def wrapper(*args, **kwargs):$/;"	f	function:retry_with_new_token
+write	tools/colorizer.py	/^    def write(self, text, color):$/;"	m	class:_AnsiColorizer
+write	tools/colorizer.py	/^    def write(self, text, color):$/;"	m	class:_NullColorizer
+write	tools/colorizer.py	/^    def write(self, text, color):$/;"	m	class:_Win32Colorizer
+write	umbrella/common/log.py	/^    def write(self, msg):$/;"	m	class:WritableLogger
+writeSlowTests	tools/colorizer.py	/^    def writeSlowTests(self):$/;"	m	class:SubunitTestResult
+writeTestCase	tools/colorizer.py	/^    def writeTestCase(self, cls):$/;"	m	class:SubunitTestResult
+writeTests	tools/colorizer.py	/^    def writeTests(self):$/;"	m	class:SubunitTestResult
+write_git_changelog	umbrella/common/setup.py	/^def write_git_changelog():$/;"	f
+write_requirements	umbrella/common/setup.py	/^def write_requirements():$/;"	f
+write_versioninfo	umbrella/common/setup.py	/^def write_versioninfo(project, version):$/;"	f
+xattr_writes_supported	umbrella/tests/utils.py	/^def xattr_writes_supported(path):$/;"	f
