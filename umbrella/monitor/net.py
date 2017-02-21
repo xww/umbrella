@@ -61,7 +61,6 @@ class NetController(object):
 
 
     def _get_all_domains_one_sample(self, all_domains, all_domains_samples):
-        import ipdb;ipdb.set_trace()
         for domain in all_domains:
             domain_sample = {}
             tree = etree.fromstring(domain.XMLDesc(0))
@@ -86,20 +85,24 @@ class NetController(object):
 
             # for public netfow static
             chain_name = string.atoi(domain.name()[9:],16)
-            #cmdz = "iptables -L -nv|grep yinst|grep -v Chain|grep yinst-1036|awk '{print $2}'"
-            cmdz = "iptables -L -nv|grep zinst|grep -v Chain|grep zinst-"+str(chain_name)+"|awk '{print $2}'"
-            resultz = os.popen(cmdz).read()
-            if
-            cmdy = "iptables -L -nv|grep yinst|grep -v Chain|grep yinst-"+str(chain_name)+"|awk '{print $2}'"
-            resulty = os.popen(cmdz).read()
-
+            cmdz = "iptables -L -nv|grep zinst|grep -v Chain|grep zinst-"+str(chain_name)+"|awk '{print $1, $2}'"
+            pubnet_rx = os.popen(cmdz).read()
+            if pubnet_rx != '':
+                pubnet_packets_rx = pubnet_rx.split()[0]
+                pubnet_bytes_rx = pubnet_rx.split()[1]
+                domain_sample['net']['pubnet_packets_rx'] = pubnet_packets_rx
+                domain_sample['net']['pubnet_bytes_rx'] = pubnet_bytes_rx
+            cmdy = "iptables -L -nv|grep yinst|grep -v Chain|grep yinst-"+str(chain_name)+"|awk '{print $1, $2}'"
+            pubnet_tx = os.popen(cmdy).read()
+            if pubnet_tx != '':
+                pubnet_packets_tx = pubnet_tx.split()[0]
+                pubnet_bytes_tx = pubnet_tx.split()[1]
+                domain_sample['net']['pubnet_packets_tx'] = pubnet_packets_tx
+                domain_sample['net']['pubnet_bytes_tx'] = pubnet_bytes_tx              
 
             domain_sample['time'] = time.time()
-
             all_domains_samples[domain.UUIDString()].append(domain_sample)
 
-#            # write nic info into database
-#            db_api.insert_net_info(net_info)
 
     def _static_result(self, all_domains_samples):
         for k, samples in all_domains_samples.iteritems():
@@ -139,6 +142,10 @@ class NetController(object):
                 'tx_packets_rate':int(sum(rate_sample[
                 'tx_packets_rate'])/len(rate_sample['tx_packets_rate'])),
             }
+            domain_result['pubnet_packets_tx'] = samples[0]['net']['pubnet_packets_tx']
+            domain_result['pubnet_bytes_tx'] = samples[0]['net']['pubnet_bytes_tx']
+            domain_result['pubnet_packets_rx'] = samples[0]['net']['pubnet_packets_rx']
+            domain_result['pubnet_bytes_rx'] = samples[0]['net']['pubnet_bytes_rx']
             domain_result['instance_uuid'] = samples[0]['instance_uuid']
             domain_result['tenant_id'] = samples[0]['tenant_id']
             LOG.info(_LI("Get instance %s net info: rx_bytes_rate: %s, "
@@ -154,29 +161,4 @@ class NetController(object):
 
     def _write_to_database(self, domain_result):
         db_api.add_net_sample(domain_result)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

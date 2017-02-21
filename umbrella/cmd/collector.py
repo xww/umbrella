@@ -59,7 +59,7 @@ def fail(e):
 
 
 def main():
-    try:
+    try:        
         config.parse_args()
         wsgi.set_eventlet_hub()
         logging.setup(CONF, 'umbrella')

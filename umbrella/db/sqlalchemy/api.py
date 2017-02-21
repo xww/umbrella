@@ -220,10 +220,15 @@ def add_net_sample(sample):
         value = models.Net(
            instance_uuid=sample['instance_uuid'],
             tenant_id=sample['tenant_id'],
-            tx_bytes_rate=sample['tx_bytes_rate'],
-            tx_packets_rate=sample['tx_packets_rate'],
-            rx_bytes_rate=sample['rx_bytes_rate'],
-            rx_packets_rate=sample['tx_packets_rate']
+            total_packets_rate_rx=sample['rx_packets_rate'],
+            total_bytes_rate_rx=sample['rx_bytes_rate'],
+            total_packets_rate_tx=sample['tx_packets_rate'],
+            total_bytes_rate_tx=sample['tx_bytes_rate'],
+            pubnet_bytes_tx=sample['pubnet_bytes_tx'],
+            pubnet_bytes_rx=sample['pubnet_bytes_rx'],
+            pubnet_packets_tx=sample['pubnet_packets_tx'],
+            pubnet_packets_rx=sample['pubnet_packets_rx'],
+            
         )
 
         value.save(session=session)
@@ -266,6 +271,5 @@ def add_mem_sample(sample):
             tenant_id=sample['tenant_id'],
             mem_used=sample['mem_used'],
         )
-
         value.save(session=session)
         #session.commit()
