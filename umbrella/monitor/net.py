@@ -61,6 +61,7 @@ class NetController(object):
 
 
     def _get_all_domains_one_sample(self, all_domains, all_domains_samples):
+        import ipdb;ipdb.set_trace()
         for domain in all_domains:
             domain_sample = {}
             tree = etree.fromstring(domain.XMLDesc(0))
@@ -86,10 +87,11 @@ class NetController(object):
             # for public netfow static
             chain_name = string.atoi(domain.name()[9:],16)
             #cmdz = "iptables -L -nv|grep yinst|grep -v Chain|grep yinst-1036|awk '{print $2}'"
-            cmdz = "iptables -L -nv|grep zinst|grep -v Chain|grep zinst-"+chain_name+"|awk '{print $2}'"
+            cmdz = "iptables -L -nv|grep zinst|grep -v Chain|grep zinst-"+str(chain_name)+"|awk '{print $2}'"
             resultz = os.popen(cmdz).read()
-            cmdy = "iptables -L -nv|grep yinst|grep -v Chain|grep yinst-"+chain_name+"|awk '{print $2}'"
-            resultz = os.popen(cmdz).read()
+            if
+            cmdy = "iptables -L -nv|grep yinst|grep -v Chain|grep yinst-"+str(chain_name)+"|awk '{print $2}'"
+            resulty = os.popen(cmdz).read()
 
 
             domain_sample['time'] = time.time()
