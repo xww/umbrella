@@ -46,7 +46,7 @@ class Controller():
         -- Returns a set of
         resource data
     """
-
+    
     def __init__(self):
         #self.notifier = notifier.Notifier()
         #registry.configure_registry_client()
@@ -56,6 +56,16 @@ class Controller():
         #else:
         #    self.prop_enforcer = None
         pass
+    
+    def get_session(self):
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+        DB_CONNECT_STRING = 'mysql://root:ubuntu@compute1/umbrella'
+        engine = create_engine(DB_CONNECT_STRING, echo=True)
+        DB_Session = sessionmaker(bind=engine)
+        session = DB_Session()
+        return session       
+        
 
     def time_format(self,timeValue):
         timeStamp = int(time.mktime(time.strptime(timeValue,"%Y-%m-%dT%H-%M-%SZ")))
@@ -108,7 +118,8 @@ class Controller():
         params.update(req.GET)
         start_time = self.time_format(params['start'])
         end_time = self.time_format(params['end'])
-        session = db_api.get_session()
+        #session = db_api.get_session()
+        session = self.get_session()
         query = session.query(models.Cpu).\
                filter_by(instance_uuid = instance_uuid).\
                filter(models.Cpu.created_at >= start_time).\

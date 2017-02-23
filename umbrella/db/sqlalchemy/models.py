@@ -74,7 +74,6 @@ class UmbrellaBase(models.ModelBase, models.TimestampMixin):
         "created_at", "updated_at"])
 
     def save(self, session=None):
-        from umbrella.db.sqlalchemy import api as db_api
         super(UmbrellaBase, self).save(session or db_api.get_session())
 
     created_at = Column(DateTime, default=lambda: our_timeutils.utc_to_local(

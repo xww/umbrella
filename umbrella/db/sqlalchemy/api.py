@@ -48,6 +48,8 @@ STATUSES = ['active', 'saving', 'queued', 'killed', 'pending_delete',
             'deleted', 'deactivated']
 
 CONF = cfg.CONF
+from oslo_db import options
+CONF.register_opts(options.database_opts, 'database')
 
 _FACADE = None
 _LOCK = threading.Lock()
