@@ -236,6 +236,26 @@ def add_net_sample(sample):
         value.save(session=session)
         #session.commit()
 
+def add_net2_sample(sample):
+    session = get_session()
+    with session.begin():
+        value = models.Net2(
+           instance_uuid=sample['instance_uuid'],
+            tenant_id=sample['tenant_id'],
+            total_packets_rate_rx=sample['rx_packets_rate'],
+            total_bytes_rate_rx=sample['rx_bytes_rate'],
+            total_packets_rate_tx=sample['tx_packets_rate'],
+            total_bytes_rate_tx=sample['tx_bytes_rate'],
+            pubnet_bytes_tx=sample['pubnet_bytes_tx'],
+            pubnet_bytes_rx=sample['pubnet_bytes_rx'],
+            pubnet_packets_tx=sample['pubnet_packets_tx'],
+            pubnet_packets_rx=sample['pubnet_packets_rx'],
+            
+        )
+
+        value.save(session=session)
+        #session.commit()
+
 def add_disk_sample(sample):
     session = get_session()
     with session.begin():

@@ -51,6 +51,7 @@ from umbrella import i18n
 from umbrella.monitor import cpu
 from umbrella.monitor import disk
 from umbrella.monitor import net
+from umbrella.monitor import net2
 from umbrella.monitor import mem
 
 _ = i18n._
@@ -116,7 +117,7 @@ profiler_opts = [
 ]
 
 task_opts = [
-    cfg.ListOpt("monitor_items", default = ["cpu", "disk", "mem", "net"],
+    cfg.ListOpt("monitor_items", default = ["cpu", "disk", "mem", "net2"],
                help=_("items to monitor")),
 ]
 
@@ -359,6 +360,18 @@ class Server(object):
         net_periodic = utils.LoopingCall(periodic_task_net)
         net_periodic.start(interval=cfg.CONF.net_task_period, initial_delay=3)
         self.timers.append(net_periodic)
+
+    def start_looping_net2(self):
+        def periodic_task_net2():
+            try:
+                net2.Net2Controller().collect_net2_info()
+            except Exception:
+                LOG.exception(_LI("Error occured when net"
+                                  " periodic task executes."))
+
+        net2_periodic = utils.LoopingCall(periodic_task_net2)
+        net2_periodic.start(interval=cfg.CONF.net2_task_period, initial_delay=3)
+        self.timers.append(net2_periodic)
 
     def start_looping_mem(self):
         def periodic_task_mem():

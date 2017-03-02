@@ -172,6 +172,13 @@ net_opts = [
     cfg.IntOpt("net_task_times", default=5,
                help=_("in a period, total times to get info to static"))
 ]
+net2_opts = [
+    cfg.IntOpt("net2_task_period", default=60,
+               help=_("time period to gather vms network info, "
+                      "unit is second")),
+    cfg.IntOpt("net2_task_times", default=5,
+               help=_("in a period, total times to get info to static"))
+]
 cpu_opts = [
     cfg.IntOpt("cpu_task_period", default=60,
                help=_("time period to gather vms network info, "
@@ -200,6 +207,7 @@ CONF.register_opts(image_format_opts, group='image_format')
 CONF.register_opts(task_opts, group='task')
 CONF.register_opts(common_opts)
 CONF.register_opts(net_opts)
+CONF.register_opts(net2_opts)
 CONF.register_opts(cpu_opts)
 CONF.register_opts(disk_opts)
 CONF.register_opts(mem_opts)

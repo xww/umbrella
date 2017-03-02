@@ -41,6 +41,10 @@ class API(wsgi.Router):
                        controller=api_resource,
                        action="get_net_sample",
                        conditions=dict(method=["GET"]))
+        mapper.connect("/net2/{instance_uuid}",
+                       controller=api_resource,
+                       action="get_net2_sample",
+                       conditions=dict(method=["GET"]))
         mapper.connect("/cpu/{instance_uuid}",
                        controller=api_resource,
                        action="get_cpu_sample",

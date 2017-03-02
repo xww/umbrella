@@ -142,6 +142,32 @@ class Net(BASE, UmbrellaBase):
     pubnet_packets_rate_tx = Column(Integer)
     pubnet_packets_rate_rx = Column(Integer)
 
+class Net2(BASE, UmbrellaBase):
+    __tablename__ = 'net2'
+    __table_args__ = (Index('ix_instance_uuid', 'instance_uuid'),
+                      Index('ix_tenant_id', 'tenant_id'),
+                      Index('ix_id', 'id'))
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    instance_uuid = Column(String(30), nullable=False)
+    tenant_id = Column(String(30), nullable=False)
+    total_packets_rate_rx = Column(Integer)
+    total_bytes_rate_rx = Column(Integer)
+    total_packets_rate_tx = Column(Integer)
+    total_bytes_rate_tx = Column(Integer)
+    total_packets_rx = Column(Integer)
+    total_bytes_rx = Column(Integer)
+    total_packets_tx = Column(Integer)
+    total_bytess_tx = Column(Integer)
+    pubnet_bytes_tx = Column(Integer)
+    pubnet_bytes_rx = Column(Integer)
+    pubnet_packets_tx = Column(Integer)
+    pubnet_packets_rx = Column(Integer)
+    pubnet_bytes_rate_tx = Column(Integer)
+    pubnet_bytes_rate_rx = Column(Integer)
+    pubnet_packets_rate_tx = Column(Integer)
+    pubnet_packets_rate_rx = Column(Integer)
+
 
 class Disk(BASE, UmbrellaBase):
     __tablename__ = 'disk'

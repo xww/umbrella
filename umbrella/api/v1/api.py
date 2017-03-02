@@ -97,6 +97,22 @@ class Controller():
             result.append(item.to_dict())
         return result
 
+    def get_net2_sample(self, req, instance_uuid):
+        params = {}
+        params.update(req.GET)
+        start_time = self.time_format(params['start'])
+        end_time = self.time_format(params['end'])
+        session = db_api.get_session()
+        query = session.query(models.Net).\
+               filter_by(instance_uuid = instance_uuid).\
+               filter(models.Net.created_at >= start_time).\
+               filter(models.Net.created_at <= end_time).\
+               group_by(models.Net.created_at).all()
+        result = []
+        for item in query:
+            result.append(item.to_dict())
+        return result
+
     def get_disk_sample(self, req, instance_uuid):
         params = {}
         params.update(req.GET)
