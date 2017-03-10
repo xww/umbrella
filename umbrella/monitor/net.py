@@ -54,7 +54,7 @@ class NetController(object):
             # before next sample, we need to sleep some time
             #greenthread.sleep(random.randint(1,
             #            cfg.CONF.net_task_period / cfg.CONF.net_task_times))
-            greenthread.sleep(5)
+            greenthread.sleep(cfg.CONF.net_task_period)
 
         # statics result and write into database
         self._static_result(all_domains_samples)
@@ -85,20 +85,27 @@ class NetController(object):
 
             # for public netfow static
             chain_name = string.atoi(domain.name()[9:],16)
-            cmdz = "iptables -L -nv|grep zinst|grep -v Chain|grep zinst-"+str(chain_name)+"|awk '{print $1, $2}'"
+            cmdz = "iptables -L -xnv|grep zinst|grep -v Chain|grep zinst-"+str(chain_name)+"|awk '{print $1, $2}'"
             pubnet_rx = os.popen(cmdz).read()
             if pubnet_rx != '':
                 pubnet_packets_rx = pubnet_rx.split()[0]
                 pubnet_bytes_rx = pubnet_rx.split()[1]
                 domain_sample['net']['pubnet_packets_rx'] = pubnet_packets_rx
                 domain_sample['net']['pubnet_bytes_rx'] = pubnet_bytes_rx
-            cmdy = "iptables -L -nv|grep yinst|grep -v Chain|grep yinst-"+str(chain_name)+"|awk '{print $1, $2}'"
+            else:
+                domain_sample['net']['pubnet_packets_rx'] = 0
+                domain_sample['net']['pubnet_bytes_rx'] = 0
+
+            cmdy = "iptables -L -xnv|grep yinst|grep -v Chain|grep yinst-"+str(chain_name)+"|awk '{print $1, $2}'"
             pubnet_tx = os.popen(cmdy).read()
             if pubnet_tx != '':
                 pubnet_packets_tx = pubnet_tx.split()[0]
                 pubnet_bytes_tx = pubnet_tx.split()[1]
                 domain_sample['net']['pubnet_packets_tx'] = pubnet_packets_tx
-                domain_sample['net']['pubnet_bytes_tx'] = pubnet_bytes_tx              
+                domain_sample['net']['pubnet_bytes_tx'] = pubnet_bytes_tx
+            else:
+                domain_sample['net']['pubnet_packets_tx'] = 0
+                domain_sample['net']['pubnet_bytes_tx'] = 0
 
             domain_sample['time'] = time.time()
             all_domains_samples[domain.UUIDString()].append(domain_sample)
@@ -142,10 +149,23 @@ class NetController(object):
                 'tx_packets_rate':int(sum(rate_sample[
                 'tx_packets_rate'])/len(rate_sample['tx_packets_rate'])),
             }
-            domain_result['pubnet_packets_tx'] = samples[0]['net']['pubnet_packets_tx']
-            domain_result['pubnet_bytes_tx'] = samples[0]['net']['pubnet_bytes_tx']
-            domain_result['pubnet_packets_rx'] = samples[0]['net']['pubnet_packets_rx']
-            domain_result['pubnet_bytes_rx'] = samples[0]['net']['pubnet_bytes_rx']
+            #domain_result['pubnet_packets_tx'] = samples[0]['net']['pubnet_packets_tx']
+            #domain_result['pubnet_bytes_tx'] = samples[0]['net']['pubnet_bytes_tx']
+            #domain_result['pubnet_packets_rx'] = samples[0]['net']['pubnet_packets_rx']
+            #domain_result['pubnet_bytes_rx'] = samples[0]['net']['pubnet_bytes_rx']
+            domain_result['pubnet_packets_rate_tx'] = (int(samples[1]['net']['pubnet_packets_tx']) - 
+                                                       int(samples[0]['net']['pubnet_packets_tx']))/cfg.CONF.net_task_period
+            domain_result['pubnet_bytes_rate_tx'] = (int(samples[1]['net']['pubnet_bytes_tx']) - 
+                                                     int(samples[0]['net']['pubnet_bytes_tx']))/cfg.CONF.net_task_period
+            domain_result['pubnet_packets_rate_rx'] = (int(samples[1]['net']['pubnet_packets_rx']) - 
+                                                       int(samples[0]['net']['pubnet_packets_rx']))/cfg.CONF.net_task_period
+            domain_result['pubnet_bytes_rate_rx'] = (int(samples[1]['net']['pubnet_bytes_rx']) - 
+                                                     int(samples[0]['net']['pubnet_bytes_rx']))/cfg.CONF.net_task_period
+            self.pubnet_packets_tx = samples[0]['net']['pubnet_packets_tx']
+            self.pubnet_bytes_tx = samples[0]['net']['pubnet_bytes_tx']
+            self.pubnet_packets_rx = samples[0]['net']['pubnet_packets_rx']
+            self.pubnet_bytes_rx = samples[0]['net']['pubnet_bytes_rx']
+            
             domain_result['instance_uuid'] = samples[0]['instance_uuid']
             domain_result['tenant_id'] = samples[0]['tenant_id']
             LOG.info(_LI("Get instance %s net info: rx_bytes_rate: %s, "

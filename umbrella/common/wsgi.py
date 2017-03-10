@@ -117,7 +117,7 @@ profiler_opts = [
 ]
 
 task_opts = [
-    cfg.ListOpt("monitor_items", default = ["cpu", "disk", "mem", "net2"],
+    cfg.ListOpt("monitor_items", default = ["cpu", "disk", "mem", "net"],
                help=_("items to monitor")),
 ]
 

@@ -166,10 +166,10 @@ common_opts = [
                       ' Examples are "sha1", "sha256", "sha512", etc.')),
 ]
 net_opts = [
-    cfg.IntOpt("net_task_period", default=60,
+    cfg.IntOpt("net_task_period", default=10,
                help=_("time period to gather vms network info, "
                       "unit is second")),
-    cfg.IntOpt("net_task_times", default=5,
+    cfg.IntOpt("net_task_times", default=2,
                help=_("in a period, total times to get info to static"))
 ]
 net2_opts = [

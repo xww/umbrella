@@ -159,14 +159,14 @@ class Net2(BASE, UmbrellaBase):
     total_bytes_rx = Column(Integer)
     total_packets_tx = Column(Integer)
     total_bytess_tx = Column(Integer)
-    pubnet_bytes_tx = Column(Integer)
-    pubnet_bytes_rx = Column(Integer)
-    pubnet_packets_tx = Column(Integer)
-    pubnet_packets_rx = Column(Integer)
-    pubnet_bytes_rate_tx = Column(Integer)
-    pubnet_bytes_rate_rx = Column(Integer)
-    pubnet_packets_rate_tx = Column(Integer)
-    pubnet_packets_rate_rx = Column(Integer)
+    pubnet_bytes_tx = Column(BigInteger)
+    pubnet_bytes_rx = Column(BigInteger)
+    pubnet_packets_tx = Column(BigInteger)
+    pubnet_packets_rx = Column(BigInteger)
+    pubnet_bytes_rate_tx = Column(BigInteger)
+    pubnet_bytes_rate_rx = Column(BigInteger)
+    pubnet_packets_rate_tx = Column(BigInteger)
+    pubnet_packets_rate_rx = Column(BigInteger)
 
 
 class Disk(BASE, UmbrellaBase):

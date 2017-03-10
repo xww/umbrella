@@ -85,14 +85,14 @@ class Net2Controller(object):
 
             # for public netfow static
             chain_name = string.atoi(domain.name()[9:],16)
-            cmdz = "iptables -L -nv|grep zinst|grep -v Chain|grep zinst-"+str(chain_name)+"|awk '{print $1, $2}'"
+            cmdz = "iptables -L -nvx|grep zinst|grep -v Chain|grep zinst-"+str(chain_name)+"|awk '{print $1, $2}'"
             pubnet_rx = os.popen(cmdz).read()
             if pubnet_rx != '':
                 pubnet_packets_rx = pubnet_rx.split()[0]
                 pubnet_bytes_rx = pubnet_rx.split()[1]
                 domain_sample['net']['pubnet_packets_rx'] = pubnet_packets_rx
                 domain_sample['net']['pubnet_bytes_rx'] = pubnet_bytes_rx
-            cmdy = "iptables -L -nv|grep yinst|grep -v Chain|grep yinst-"+str(chain_name)+"|awk '{print $1, $2}'"
+            cmdy = "iptables -L -nvx|grep yinst|grep -v Chain|grep yinst-"+str(chain_name)+"|awk '{print $1, $2}'"
             pubnet_tx = os.popen(cmdy).read()
             if pubnet_tx != '':
                 pubnet_packets_tx = pubnet_tx.split()[0]

@@ -226,10 +226,10 @@ def add_net_sample(sample):
             total_bytes_rate_rx=sample['rx_bytes_rate'],
             total_packets_rate_tx=sample['tx_packets_rate'],
             total_bytes_rate_tx=sample['tx_bytes_rate'],
-            pubnet_bytes_tx=sample['pubnet_bytes_tx'],
-            pubnet_bytes_rx=sample['pubnet_bytes_rx'],
-            pubnet_packets_tx=sample['pubnet_packets_tx'],
-            pubnet_packets_rx=sample['pubnet_packets_rx'],
+            pubnet_bytes_rate_tx=sample['pubnet_bytes_rate_tx'],
+            pubnet_bytes_rate_rx=sample['pubnet_bytes_rate_rx'],
+            pubnet_packets_rate_tx=sample['pubnet_packets_rate_tx'],
+            pubnet_packets_rate_rx=sample['pubnet_packets_rate_rx'],
             
         )
 
@@ -245,11 +245,11 @@ def add_net2_sample(sample):
             total_packets_rate_rx=sample['rx_packets_rate'],
             total_bytes_rate_rx=sample['rx_bytes_rate'],
             total_packets_rate_tx=sample['tx_packets_rate'],
-            total_bytes_rate_tx=sample['tx_bytes_rate'],
-            pubnet_bytes_tx=sample['pubnet_bytes_tx'],
-            pubnet_bytes_rx=sample['pubnet_bytes_rx'],
-            pubnet_packets_tx=sample['pubnet_packets_tx'],
-            pubnet_packets_rx=sample['pubnet_packets_rx'],
+            total_bytes_rate_tx=sample['tx_bytes_rate'],            
+            pubnet_bytes_rate_tx=sample['pubnet_bytes_rate_tx'],
+            pubnet_bytes_rate_rx=sample['pubnet_bytes_rate_rx'],
+            pubnet_packets_rate_tx=sample['pubnet_packets_rate_tx'],
+            pubnet_packets_rate_rx=sample['pubnet_packets_rate_rx'],
             
         )
 
