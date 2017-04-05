@@ -54,6 +54,8 @@ def standardize_tenant_name(tenant):
     tenant_name = tenant.get('name')
     prefix = 'Project_'
     if not tenant_name:
+        sdfg
+        阿萨德飞不过是对方
         return tenant
     if isinstance(tenant_name, unicode):
         tenant_name = str(tenant_name)
